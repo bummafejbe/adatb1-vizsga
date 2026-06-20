@@ -92,7 +92,7 @@ body.study .showbtn{display:none}
 .card.mok{border-left:3px solid var(--ok)}
 .card.mpart{border-left:3px solid var(--part)}
 .card.mbad{border-left:3px solid var(--bad)}
-body.filterbad .card.mok{display:none}
+body.filterbad .card.mok,body.filterbad .vcard.mok{display:none}
 .card.hidden-by-search{display:none!important}
 .abadge{display:inline-block;font-family:var(--fh);font-weight:700;font-size:.78rem;border-radius:7px;padding:1px 9px;margin-right:7px}
 .abadge.I{background:#10301d;color:var(--ok);border:1px solid var(--ok)}
@@ -162,6 +162,70 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:.8rem;text-al
   .vgrid{grid-template-columns:1fr}
   p.m.blk,div.m.blk{font-size:.82em}
 }
+
+/* ===================== GYAKORLÁS modul ===================== */
+#gyak .ph{margin:6px 0 4px}
+.gintro{color:var(--dim);font-size:.92rem;margin:0 0 18px;max-width:62ch}
+.gmodes{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.gmode{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 16px 18px;display:flex;flex-direction:column}
+.gmode h3{margin:0 0 4px;font-size:1.12rem}
+.gmode .gdesc{color:var(--dim);font-size:.85rem;margin:0 0 12px;flex:0 0 auto}
+.gmode.featured{border-color:var(--acc);box-shadow:0 0 0 1px var(--accbg) inset}
+.gpill{align-self:flex-start;font-family:var(--fh);font-size:.74rem;font-weight:700;color:var(--acc);background:var(--accbg);border:1px solid var(--acc);border-radius:7px;padding:1px 9px;margin-bottom:8px}
+.gcounts{display:flex;gap:14px;margin:2px 0 12px}
+.gcount-b{background:var(--card2);border:1px solid var(--line2);border-radius:9px;padding:7px 12px;text-align:center;min-width:64px}
+.gcount-b b{display:block;font-family:var(--fh);font-size:1.4rem;color:var(--acc);line-height:1.1}
+.gcount-b span{font-size:.72rem;color:var(--dim)}
+.gmrow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.gmrow label{display:flex;flex-direction:column;gap:3px;font-size:.74rem;color:var(--dim);font-family:var(--fh)}
+select.gsel{background:var(--card2);border:1px solid var(--line2);color:var(--txt);border-radius:8px;padding:6px 9px;font-family:var(--fh);font-size:.86rem;cursor:pointer}
+.gchk{flex-direction:row!important;align-items:center;gap:6px!important;color:var(--txt)!important;align-self:flex-end}
+.gstart{margin-top:auto;background:var(--acc);border:1px solid var(--acc);color:#1a1206;border-radius:9px;padding:9px 16px;font-family:var(--fh);font-weight:700;font-size:.92rem;cursor:pointer}
+.gstart:hover{background:var(--acc2)}
+.gbtn2{background:var(--card2);border:1px solid var(--line2);color:var(--txt);border-radius:9px;padding:9px 16px;font-family:var(--fh);font-size:.92rem;cursor:pointer}
+.gbtn2:hover{border-color:var(--acc);color:var(--white)}
+.gbtn2:disabled,.gstart:disabled{opacity:.5;cursor:default}
+.gtools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:22px;padding-top:16px;border-top:1px solid var(--line)}
+.gtools .glink{background:none;border:1px solid var(--line2);color:var(--dim);border-radius:8px;padding:6px 12px;font-family:var(--fh);font-size:.82rem;cursor:pointer}
+.gtools .glink:hover{color:var(--white);border-color:var(--acc)}
+/* session */
+#gyak-sess{max-width:760px;margin:0 auto}
+.gtop{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.gprog{flex:1;height:7px;background:#0a0e13;border-radius:4px;overflow:hidden}
+.gprog i{display:block;height:100%;background:var(--acc);transition:width .25s}
+.gcount,.gtimer{font-family:var(--fm);font-size:.82rem;color:var(--dim)}
+.gtimer{color:var(--info)}
+.gquit{background:none;border:1px solid var(--line2);color:var(--dim);border-radius:7px;padding:4px 10px;font-size:.78rem;cursor:pointer}
+.gquit:hover{color:var(--bad);border-color:var(--bad)}
+.gbadge{font-family:var(--fh);font-size:.78rem;color:var(--acc);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}
+.gprompt{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 20px;font-size:1.18rem;line-height:1.5;color:var(--white);min-height:48px}
+.ginput{width:100%;box-sizing:border-box;margin-top:14px;background:var(--card2);border:1px solid var(--line2);color:var(--white);border-radius:9px;padding:12px 14px;font-family:var(--fm);font-size:1.05rem}
+.ginput:focus{outline:none;border-color:var(--acc)}
+.gactions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.gfeedback{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.gres2{font-family:var(--fh);font-weight:700;font-size:1.02rem;margin-bottom:6px}
+.gok{color:var(--ok)} .gbad{color:var(--bad)}
+.gline{color:var(--read);font-size:.95rem;margin:3px 0}
+.gexpl{color:var(--read);font-size:.92rem;line-height:1.5;margin-top:6px}
+.gself{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.gself>span{font-family:var(--fh);font-size:.85rem;color:var(--dim);margin-right:4px}
+.gself .mbtn{background:var(--card2);border:1px solid var(--line2);color:var(--txt);border-radius:8px;padding:6px 14px;font-family:var(--fh);font-size:.85rem;cursor:pointer}
+.gself .mbtn:hover{border-color:var(--acc)}
+.gself .mbtn.sel[data-m="ok"]{background:#10301d;border-color:var(--ok);color:var(--ok)}
+.gself .mbtn.sel[data-m="part"]{background:#332a10;border-color:var(--part);color:var(--part)}
+.gself .mbtn.sel[data-m="bad"]{background:#331515;border-color:var(--bad);color:var(--bad)}
+/* end screen */
+#gyak-end{max-width:680px;margin:0 auto;text-align:center}
+.gscore{font-family:var(--fh);font-weight:700;font-size:3rem;color:var(--acc);line-height:1.1;margin:8px 0}
+.gsub2{color:var(--dim);font-size:.95rem;margin-bottom:8px}
+.gperfect{color:var(--ok);font-size:1.2rem;margin:14px 0;font-family:var(--fh)}
+#gyak-end h3{font-size:1rem;color:var(--read);margin:22px 0 8px}
+.gmisslist{text-align:left;display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+.gmiss{display:flex;justify-content:space-between;gap:14px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--bad);border-radius:9px;padding:8px 12px}
+.gmq{color:var(--txt);font-size:.88rem}
+.gma{color:var(--acc2);font-family:var(--fm);font-size:.85rem;white-space:nowrap}
+#gyak-end .gactions{justify-content:center}
+@media(max-width:480px){.gma{white-space:normal}.gscore{font-size:2.4rem}}
 </style>
 </head>
 <body>
@@ -190,9 +254,11 @@ footer{border-top:1px solid var(--line);color:var(--dim);font-size:.8rem;text-al
     <nav id="tabs">
       <button data-t="tananyag" class="active">Tananyag</button>
       <button data-t="attekintes">Áttekintés</button>
+      <button data-t="gyak">Gyakorlás</button>
       <button data-t="kviz">Kvízkérdések</button>
       <button data-t="szojegyzek">Szójegyzék</button>
       <button data-t="glossary">Fogalomtár</button>
+      <button data-t="feladatok">Feladattípusok</button>
     </nav>
     <div class="hspace"></div>
     <button class="tgl" id="tglstudy" title="Minden válasz látszik (átnézéshez)">Tanulós mód</button>
@@ -433,6 +499,29 @@ WHERE  feltétel;</p>
     <h2>Áttekintés — mi vár rád a vizsgán?</h2>
     <div class="tsub">Adatbázisok I. (ELTE IK) · írásbeli vizsga a vizsgaidőszakban · előfeltétel: legalább elégséges gyakorlati jegy</div>
   </div>
+
+  <div class="topic" style="margin-top:18px"><h2>A vizsga felépítése</h2><div class="tsub">Canvas-felületen, személyes jelenléttel · időkorlát: <strong>20 perc + 100 perc</strong></div></div>
+  <div class="tablewrap"><table class="grid">
+    <tr><th>Rész</th><th>Idő</th><th>Pont</th><th>Küszöb (kell)</th><th>Forma</th></tr>
+    <tr><td><strong>1. Szójegyzékkvíz</strong></td><td>20 perc</td><td>20</td><td>min. 8</td><td>10 magyar→angol + 10 angol→magyar fordítás, automatikus javítás</td></tr>
+    <tr><td><strong>2. Beugró kvíz</strong></td><td>50 perc</td><td>50</td><td>min. 30</td><td>37 kérdés (24 db 1 pontos + 13 db 2 pontos): feleletválasztós, igaz/hamis, párosítás, numerikus…</td></tr>
+    <tr><td><strong>3. Gyakorlati feladatok</strong></td><td rowspan="2">50 perc</td><td>2×10</td><td rowspan="2">min. 5<br>(a 3.+4. együtt)</td><td>az előadáson látottakhoz hasonló feladatok → lásd a <em>Feladattípusok</em> fület</td></tr>
+    <tr><td><strong>4. Elméleti kérdés</strong></td><td>15</td><td>közepesen hosszú, kifejtős válaszok az anyag mélyebb megértéséről</td></tr>
+    <tr><td colspan="2" style="text-align:right"><strong>Összesen</strong></td><td><strong>85</strong></td><td colspan="2"></td></tr>
+  </table></div>
+  <div class="note">A szójegyzékkvíz pontszáma <strong>nem számít</strong> az osztályzatba — <em>kivéve, ha sikertelen</em> (akkor elégtelen kerül a Neptunba). A 2., 3., 4. rész csak akkor folytatódik/számít, ha a küszöbök (beugró ≥ 30 és a második rész ≥ 5) teljesülnek.</div>
+  <div class="tablewrap"><table class="grid">
+    <tr><th>Összpont (a 85-ből)</th><th>Százalék</th><th>Érdemjegy</th></tr>
+    <tr><td>0 – 34,99</td><td>[0%, 41,18%)</td><td>elégtelen (1)</td></tr>
+    <tr><td>35 – 46,74</td><td>[41,18%, 55%)</td><td>elégséges (2)</td></tr>
+    <tr><td>46,75 – 59,49</td><td>[55%, 70%)</td><td>közepes (3)</td></tr>
+    <tr><td>59,5 – 72,24</td><td>[70%, 85%)</td><td>jó (4)</td></tr>
+    <tr><td>72,25 – 85</td><td>[85%, 100%]</td><td>jeles (5)</td></tr>
+  </table></div>
+  <div class="callout">
+    <strong>Szabályok:</strong> a dolgozatot <strong>önállóan</strong> kell megírni; <strong>semmilyen segédeszköz</strong> (diasor, könyv, jegyzet, internet) nem használható; a kérdések egymás után jönnek, <strong>visszalépés nincs</strong>, beadás után módosítani nem lehet. Hozz fényképes igazolványt. <strong>Vizsgatematika:</strong> a teljes féléves anyag (relációs modell, relációs algebra optimalizálás, SQL, megszorítások, tranzakciók/nézetek/indexek, jogosultságok, tervezéselmélet, többértékű függőségek, E-K modell, objektum-relációs, XML/DTD/séma/XPath/XQuery) — témakörönkénti bontás lentebb.
+  </div>
+
   <div class="callout">
     A vizsga <strong>az egész féléves anyagra épül</strong>, elméleti és gyakorlati feladatokból áll. A két fő feladattípus, amire ez az oldal felkészít:
     <ol>
@@ -2186,6 +2275,406 @@ WHERE  feltétel;</p>
   </div>
   <div id="glossary-list"></div>
 </section>
+
+<style>
+/* ===== Feladattípusok fül ===== */
+#feladatok .lead{color:var(--read);font-size:.97rem;margin:2px 0 0}
+details.sol{margin:12px 0 4px;border:1px solid var(--line);border-radius:10px;background:var(--bg2);overflow:hidden}
+details.sol>summary{cursor:pointer;list-style:none;padding:9px 14px;font-family:var(--fh);font-size:.88rem;color:var(--acc);background:var(--accbg);border-bottom:1px solid transparent}
+details.sol>summary::-webkit-details-marker{display:none}
+details.sol>summary::before{content:"▸ ";}
+details.sol[open]>summary{border-bottom:1px solid var(--line)}
+details.sol[open]>summary::before{content:"▾ ";}
+details.sol>summary:hover{color:var(--acc2)}
+details.sol .solbody{padding:12px 16px}
+.steps{counter-reset:st;list-style:none;padding-left:0;margin:8px 0}
+.steps>li{position:relative;padding:6px 0 6px 38px;color:var(--read);border-top:1px dashed var(--line)}
+.steps>li:first-child{border-top:none}
+.steps>li::before{counter-increment:st;content:counter(st);position:absolute;left:0;top:6px;width:25px;height:25px;line-height:25px;text-align:center;border-radius:50%;background:var(--card2);border:1px solid var(--line2);color:var(--acc);font-family:var(--fm);font-size:.8rem}
+.fex{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 20px;margin:14px 0}
+.fex>h4{margin:0 0 6px;font-family:var(--fh);color:var(--white);font-size:1.05rem}
+.fex .task{color:var(--acc2);font-size:.95rem;margin:.2em 0 .4em}
+.fex .task::before{content:"Feladat: ";color:var(--acc);font-family:var(--fh);font-weight:700;font-size:.8rem;letter-spacing:.4px}
+.diag{font-family:var(--fm);font-size:.82rem;white-space:pre;overflow-x:auto;background:#0a0e13;border:1px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--read);line-height:1.5}
+.chase{border-collapse:collapse;font-family:var(--fm);font-size:.85rem;margin:6px 8px 6px 0;display:inline-table;vertical-align:top}
+.chase th{background:var(--card2);color:var(--white);padding:3px 10px;border:1px solid var(--line2)}
+.chase td{padding:3px 10px;border:1px solid var(--line);text-align:center;color:var(--read)}
+.chase td.dist{color:var(--ok);font-weight:700}
+.chase tr.win td{background:#10301d;color:var(--ok)}
+.chasewrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:8px 0}
+.chasearrow{font-family:var(--fh);color:var(--acc);font-size:.85rem;padding:0 4px}
+sub{font-size:.75em}
+</style>
+
+<!-- ============================= FELADATTÍPUSOK ============================= -->
+<section class="part" id="feladatok">
+  <div class="topic" id="t-feladatok">
+    <h2>Feladattípusok — kidolgozott gyakorlati példák</h2>
+    <div class="tsub">A vizsga <strong>gyakorlati részében</strong> (10–10 pont) az előadáson látottakhoz hasonló feladatok jönnek. Itt a <em>15_információk.pdf</em> „Gyakorlati feladattípusok” szakaszának minden példája lépésről lépésre kidolgozva szerepel. Nyisd ki a <em>„Megoldás”</em> sávokat, és előbb próbáld meg magad!</div>
+  </div>
+  <div class="cbar">
+    <a class="chip" href="#f-ff">FF: levezetés · lezárás · projekció</a>
+    <a class="chip" href="#f-bcnf">BCNF-felbontás</a>
+    <a class="chip" href="#f-chase">Chase-teszt (veszteségmentesség)</a>
+    <a class="chip" href="#f-ek">Egyed-kapcsolat modell</a>
+    <a class="chip" href="#f-or">Objektum-relációs SQL</a>
+    <a class="chip" href="#f-xml">DTD ↔ XML séma</a>
+    <a class="chip" href="#f-xpath">XPath · XQuery</a>
+  </div>
+
+  <!-- ===== 1. Funkcionális függőségek ===== -->
+  <div class="topic" id="f-ff"><h2>Funkcionális függőségek: levezetés, lezárás, projekció</h2><div class="tsub">Armstrong-axiómák · lezárási algoritmus · exponenciális (vetítő) algoritmus</div></div>
+
+  <div class="callout">
+    <strong>Armstrong-axiómák</strong> (ezekből minden FF-szabály levezethető):
+    <ul>
+      <li><strong>(A1) Reflexivitás:</strong> ha <span class="m">Y ⊆ X ⊆ R</span>, akkor <span class="m">X → Y</span>. Az ilyen FF <strong>triviális</strong>.</li>
+      <li><strong>(A2) Bővítés:</strong> ha <span class="m">X → Y</span>, akkor tetszőleges <span class="m">Z ⊆ R</span>-re <span class="m">XZ → YZ</span>.</li>
+      <li><strong>(A3) Tranzitivitás:</strong> ha <span class="m">X → Y</span> és <span class="m">Y → Z</span>, akkor <span class="m">X → Z</span>.</li>
+    </ul>
+  </div>
+
+  <div class="fex">
+    <h4>1/a · Levezetés Armstrong-axiómákkal</h4>
+    <p class="task">Legyen <span class="m">R = ABCD</span> és <span class="m">F = { A → C, B → D }</span>. Bizonyítsuk be levezetéssel, hogy <span class="m">AB → ABCD</span>!</p>
+    <details class="sol"><summary>Megoldás lépésről lépésre</summary><div class="solbody">
+      <ol class="steps">
+        <li><span class="m">A → C</span> — adott.</li>
+        <li><span class="m">AB → ABC</span> — (A2) bővítés <span class="m">AB</span>-vel az 1. lépésből.</li>
+        <li><span class="m">B → D</span> — adott.</li>
+        <li><span class="m">ABC → ABCD</span> — (A2) bővítés <span class="m">ABC</span>-vel a 3. lépésből.</li>
+        <li><span class="m">AB → ABCD</span> — (A3) tranzitivitás a 2. és 4. lépésből. <strong>∎</strong></li>
+      </ol>
+    </div></details>
+  </div>
+
+  <div class="fex">
+    <h4>1/b · Lezárási algoritmus (X⁺)</h4>
+    <p>Az <span class="m">Y⁺</span> lezárt az összes olyan <span class="m">A</span> attribútum halmaza, amire <span class="m">Y → A</span> következik <span class="m">F</span>-ből. <em>Kiindulás:</em> <span class="m">Y⁺ = Y</span>; <em>indukció:</em> ha egy <span class="m">X → A</span> FF bal oldala már benne van <span class="m">Y⁺</span>-ban, <span class="m">A</span>-t hozzávesszük — amíg lehet.</p>
+    <p class="task">Hallgatók(<span class="m">neptun-kód, név, jegyek, hely</span>), <span class="m">F = { neptun-kód → név, neptun-kód → jegyek, név → jegyek, név → hely }</span>. Mi lesz <span class="m">neptun-kód⁺</span>?</p>
+    <details class="sol"><summary>Megoldás lépésről lépésre</summary><div class="solbody">
+      <ol class="steps">
+        <li>Kiindulás: <span class="m">neptun-kód⁺ = { neptun-kód }</span>.</li>
+        <li><span class="m">neptun-kód → jegyek</span> ⟹ <span class="m">{ neptun-kód, jegyek }</span>.</li>
+        <li><span class="m">neptun-kód → név</span> ⟹ <span class="m">{ neptun-kód, jegyek, név }</span>.</li>
+        <li>Most már <span class="m">név</span> is bent van, így <span class="m">név → hely</span> is alkalmazható ⟹ <span class="m">{ neptun-kód, jegyek, név, hely }</span>.</li>
+        <li>Több nem adható hozzá → vége.</li>
+      </ol>
+      <p><strong>Eredmény:</strong> <span class="m">neptun-kód⁺ = { neptun-kód, jegyek, név, hely }</span> = az összes attribútum ⟺ <span class="m">neptun-kód</span> <strong>szuperkulcsa</strong> Hallgatók-nak.</p>
+    </div></details>
+  </div>
+
+  <div class="fex">
+    <h4>1/c · Exponenciális (vetítő) algoritmus</h4>
+    <p>FF-ek <strong>vetítése</strong> egy résrelációra: (1) minden <span class="m">X</span> attribútumhalmazra számítsuk ki <span class="m">X⁺</span>-t; (2) vegyük fel az <span class="m">X → A</span> FF-eket minden <span class="m">A ∈ X⁺ − X</span>-re; (3) dobjuk ki az <span class="m">XY → A</span>-t, ha már <span class="m">X → A</span> is megvan; (4) tartsuk meg csak a projektált attribútumokat tartalmazó FF-eket. <em>Trükk:</em> az üreshalmaznak és a teljes halmaznak nem kell lezárt; ha <span class="m">X⁺</span> = minden, akkor <span class="m">X</span> egyik bővítését sem kell nézni.</p>
+    <p class="task">Reláció <span class="m">ABC</span>, FF-ek <span class="m">A → B</span> és <span class="m">B → C</span>. Projektáljunk <span class="m">AC</span>-re!</p>
+    <details class="sol"><summary>Megoldás lépésről lépésre</summary><div class="solbody">
+      <ol class="steps">
+        <li><span class="m">A⁺ = ABC</span> ⟹ <span class="m">A → B</span>, <span class="m">A → C</span>. (Mivel <span class="m">A⁺</span> = minden, az <span class="m">AB</span> és <span class="m">AC</span> lezártját nem kell számolni.)</li>
+        <li><span class="m">B⁺ = BC</span> ⟹ <span class="m">B → C</span>.</li>
+        <li><span class="m">C⁺ = C</span> és <span class="m">BC⁺ = BC</span> — semmi újat nem adnak.</li>
+        <li>Kapott FF-ek: <span class="m">A → B</span>, <span class="m">A → C</span>, <span class="m">B → C</span>.</li>
+        <li>Vetítés <span class="m">AC</span>-re (csak A és C szerepelhet): <strong><span class="m">A → C</span></strong>.</li>
+      </ol>
+    </div></details>
+  </div>
+
+  <!-- ===== 2. BCNF ===== -->
+  <div class="topic" id="f-bcnf"><h2>BCNF-re való felbontás</h2><div class="tsub">sértő FF keresése · dekompozíció · ismétlés a részrelációkra</div></div>
+  <div class="callout">
+    <strong>R BCNF-ben van</strong>, ha minden nemtriviális <span class="m">X → Y</span> FF-re <span class="m">X</span> <strong>szuperkulcs</strong>. Sértő FF keresése: számold ki <span class="m">X⁺</span>-t; ha nem tartalmazza az összes attribútumot, <span class="m">X</span> nem szuperkulcs → sért. Ekkor a felbontás: <span class="m">R1 = X⁺</span> és <span class="m">R2 = R − (X⁺ − X)</span>, majd a két új sémát újra ellenőrizzük (és vetítjük rájuk az FF-eket).
+  </div>
+  <div class="fex">
+    <h4>2 · BCNF-felbontás végig</h4>
+    <p class="task">Főnökök(<span class="m">név, cím, kedveltTeák, gyártó, kedvencTea</span>), <span class="m">F = { név → cím, név → kedvencTea, kedveltTeák → gyártó }</span>.</p>
+    <details class="sol"><summary>Megoldás lépésről lépésre</summary><div class="solbody">
+      <ol class="steps">
+        <li>Vegyük a <span class="m">név → cím</span> FF-t. <span class="m">{név}⁺ = {név, cím, kedvencTea}</span> — nem az összes attribútum, tehát <span class="m">név</span> nem szuperkulcs → <strong>sért</strong>.</li>
+        <li>Felbontás: <span class="m">Főnökök1(név, cím, kedvencTea)</span> = <span class="m">{név}⁺</span>, és <span class="m">Főnökök2(név, kedveltTeák, gyártó)</span> = <span class="m">R − ({név}⁺ − {név})</span>.</li>
+        <li><span class="m">Főnökök1(név, cím, kedvencTea)</span>: FF-ek <span class="m">név → cím</span>, <span class="m">név → kedvencTea</span>; egyetlen kulcs <span class="m">{név}</span> → <strong>BCNF rendben</strong>.</li>
+        <li><span class="m">Főnökök2(név, kedveltTeák, gyártó)</span>: egyetlen FF <span class="m">kedveltTeák → gyártó</span>; a kulcs <span class="m">{név, kedveltTeák}</span>, de <span class="m">kedveltTeák</span> nem szuperkulcs → <strong>sért</strong>.</li>
+        <li><span class="m">kedveltTeák⁺ = {kedveltTeák, gyártó}</span> → felbontás: <span class="m">Főnökök3(kedveltTeák, gyártó)</span> és <span class="m">Főnökök4(név, kedveltTeák)</span>. Mindkettő BCNF.</li>
+      </ol>
+      <p><strong>Végeredmény:</strong> <span class="m">Főnökök1(név, cím, kedvencTea)</span>, <span class="m">Főnökök3(kedveltTeák, gyártó)</span>, <span class="m">Főnökök4(név, kedveltTeák)</span>.</p>
+    </div></details>
+  </div>
+
+  <!-- ===== 3. Chase ===== -->
+  <div class="topic" id="f-chase"><h2>Chase-teszt: veszteségmentesség ellenőrzése</h2><div class="tsub">tabló · szimbólumok egyenlősítése FF-ek mentén</div></div>
+  <div class="callout">
+    A felbontás <strong>veszteségmentes</strong>, ha <span class="m">r = Π<sub>R1</sub>(r) ⋈ … ⋈ Π<sub>Rk</sub>(r)</span>. Mivel <span class="m">r ⊆ join</span> mindig igaz, csak a fordított irányt kell vizsgálni. <strong>Tabló:</strong> résrelációnként egy sor; a kérdéses sor attribútumai <span class="dist">index nélküli</span> (megkülönböztetett) szimbólumok, a többi indexelt. Az F-beli FF-ek mentén <strong>egyenlősítünk</strong>: ha az egyik szimbólum index nélküli, a másik is azt kapja; két indexes közül a <em>kisebb indexű</em> nyer; minden előfordulást cserélünk. <strong>Vége:</strong> ha egy sor csupa index nélkülivé válik → <span style="color:var(--ok)">veszteségmentes</span>; ha nem tudunk több egyenlősítést → nem az.
+  </div>
+
+  <div class="fex">
+    <h4>3/a · Veszteségmentes felbontás</h4>
+    <p class="task">R(<span class="m">A,B,C,D</span>), <span class="m">F = { A → B, B → C, CD → A }</span>, felbontás: <span class="m">R1(A,D)</span>, <span class="m">R2(A,C)</span>, <span class="m">R3(B,C,D)</span>.</p>
+    <details class="sol"><summary>Megoldás lépésről lépésre (tabló)</summary><div class="solbody">
+      <div class="chasewrap">
+        <table class="chase"><tr><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+          <tr><td class="dist">a</td><td>b<sub>1</sub></td><td>c<sub>1</sub></td><td class="dist">d</td></tr>
+          <tr><td class="dist">a</td><td>b<sub>2</sub></td><td class="dist">c</td><td>d<sub>2</sub></td></tr>
+          <tr><td>a<sub>3</sub></td><td class="dist">b</td><td class="dist">c</td><td class="dist">d</td></tr></table>
+        <span class="chasearrow">A→B ⟹</span>
+        <table class="chase"><tr><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+          <tr><td class="dist">a</td><td>b<sub>1</sub></td><td>c<sub>1</sub></td><td class="dist">d</td></tr>
+          <tr><td class="dist">a</td><td>b<sub>1</sub></td><td class="dist">c</td><td>d<sub>2</sub></td></tr>
+          <tr><td>a<sub>3</sub></td><td class="dist">b</td><td class="dist">c</td><td class="dist">d</td></tr></table>
+        <span class="chasearrow">B→C ⟹</span>
+        <table class="chase"><tr><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+          <tr><td class="dist">a</td><td>b<sub>1</sub></td><td class="dist">c</td><td class="dist">d</td></tr>
+          <tr><td class="dist">a</td><td>b<sub>1</sub></td><td class="dist">c</td><td>d<sub>2</sub></td></tr>
+          <tr><td>a<sub>3</sub></td><td class="dist">b</td><td class="dist">c</td><td class="dist">d</td></tr></table>
+        <span class="chasearrow">CD→A ⟹</span>
+        <table class="chase"><tr><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+          <tr><td class="dist">a</td><td>b<sub>1</sub></td><td class="dist">c</td><td class="dist">d</td></tr>
+          <tr><td class="dist">a</td><td>b<sub>1</sub></td><td class="dist">c</td><td>d<sub>2</sub></td></tr>
+          <tr class="win"><td>a</td><td>b</td><td>c</td><td>d</td></tr></table>
+      </div>
+      <p>A 3. sor csupa index nélküli lett: <span class="m">(a, b, c, d) = t</span> → a felbontás <strong style="color:var(--ok)">veszteségmentes</strong>. (A <span class="m">CD → A</span> az 1. és 3. sort egyenlősítette C-n és D-n, így <span class="m">a<sub>3</sub> = a</span>.)</p>
+    </div></details>
+  </div>
+
+  <div class="fex">
+    <h4>3/b · NEM veszteségmentes felbontás (ellenpélda)</h4>
+    <p class="task">R(<span class="m">A,B,C,D</span>), <span class="m">F = { B → AD }</span>, felbontás: <span class="m">R1(A,B)</span>, <span class="m">R2(B,C)</span>, <span class="m">R3(C,D)</span>.</p>
+    <details class="sol"><summary>Megoldás lépésről lépésre (tabló)</summary><div class="solbody">
+      <div class="chasewrap">
+        <table class="chase"><tr><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+          <tr><td class="dist">a</td><td class="dist">b</td><td>c<sub>1</sub></td><td>d<sub>1</sub></td></tr>
+          <tr><td>a<sub>2</sub></td><td class="dist">b</td><td class="dist">c</td><td>d<sub>2</sub></td></tr>
+          <tr><td>a<sub>3</sub></td><td>b<sub>3</sub></td><td class="dist">c</td><td class="dist">d</td></tr></table>
+        <span class="chasearrow">B→AD ⟹</span>
+        <table class="chase"><tr><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+          <tr><td class="dist">a</td><td class="dist">b</td><td>c<sub>1</sub></td><td>d<sub>1</sub></td></tr>
+          <tr><td class="dist">a</td><td class="dist">b</td><td class="dist">c</td><td>d<sub>1</sub></td></tr>
+          <tr><td>a<sub>3</sub></td><td>b<sub>3</sub></td><td class="dist">c</td><td class="dist">d</td></tr></table>
+      </div>
+      <p>A <span class="m">B → AD</span> az 1. és 2. sort egyenlősíti (közös <span class="m">b</span>): <span class="m">a<sub>2</sub> = a</span> és <span class="m">d<sub>2</sub> = d<sub>1</sub></span>. Több FF nincs, a 3. sor <span class="m">B</span>-je <span class="m">b<sub>3</sub></span> marad — <strong>egyetlen sor sem lesz</strong> <span class="m">(a,b,c,d)</span>. A felbontás <strong style="color:var(--bad)">nem veszteségmentes</strong>: az összekapcsolásban megjelenik a <span class="m">t = (a,b,c,d)</span> sor, ami az eredeti relációban nem volt benne.</p>
+    </div></details>
+  </div>
+
+  <!-- ===== 4. E-K modell ===== -->
+  <div class="topic" id="f-ek"><h2>Egyed-kapcsolat modell</h2><div class="tsub">tervezési technikák · diagram → relációséma · könyvesbolt · kalózok</div></div>
+  <div class="callout">
+    <strong>Tervezési technikák:</strong> ① kerüld a redundanciát; ② óvatosan a gyenge egyedhalmazokkal; ③ ne használj egyedhalmazt, ha egy attribútum is elég. Egy egyedhalmaznak vagy <strong>legyen nem-kulcs attribútuma</strong>, vagy a <strong>„sok" végén</strong> álljon egy sok-egy kapcsolatban.
+  </div>
+  <div class="callout">
+    <strong>Diagram → relációséma átírása:</strong> egyedhalmaz → reláció (attribútumai az attribútumok); kapcsolat → reláció (a kapcsolt egyedhalmazok <em>kulcs</em>-attribútumai + a kapcsolat saját attribútumai). Egy relációba <strong>összevonható</strong> egy E egyedhalmaz relációja és azon sok-egy kapcsolatoké, ahol E a „sok" oldalon van. Gyenge egyedhalmaz relációja a <strong>teljes kulcsot</strong> tartalmazza (a más egyedhalmazoktól kapott kulcs-attribútumokkal együtt); a támogató kapcsolatot nem írjuk át (redundáns lenne).
+  </div>
+
+  <div class="fex">
+    <h4>4/a · Könyvesbolt (gyenge egyedhalmazok láncolata)</h4>
+    <p class="task">Könyvesbolt: azonosítószám (egyedi) + cím. A bolt <em>szekciókat</em> tartalmaz (szekciószám + megjelenés; a szám önmagában nem azonosít). A szekciót <em>polcokra</em> osztják (polcszám; önmagában szintén nem azonosít). Add meg a sémát!</p>
+    <details class="sol"><summary>Megoldás</summary><div class="solbody">
+      <p>A <strong>Szekció</strong> és a <strong>Polc</strong> gyenge egyedhalmazok: kulcsukhoz kell a támogató egyedhalmaz kulcsa is.</p>
+      <div class="diag">Polc ───Tartozik───&gt;&gt; Szekció ───Tartalmazza───&gt;&gt; Könyvesbolt
+(polcszám)            (szekciószám,                (azonosítószám,
+                      megjelenés)                  cím)</div>
+      <ul>
+        <li><span class="m">Könyvesbolt(<u>azonosítószám</u>, cím)</span></li>
+        <li><span class="m">Szekció(<u>szekció_szám</u>, <u>könyvesbolt_azonosítószám</u>, megjelenés)</span></li>
+        <li><span class="m">Polc(<u>polc_szám</u>, <u>szekció_szám</u>, <u>könyvesbolt_azonosítószám</u>)</span></li>
+      </ul>
+    </div></details>
+  </div>
+
+  <div class="fex">
+    <h4>4/b · Kalózok (teljes feladat: FF-ek → diagram → táblák)</h4>
+    <p class="task">Kalózt az egyedi <em>beceneve</em> azonosít (+ keresztnév, vadság minősítés, első kalózkodás dátuma, és a hajó, amin szolgál). Kalózhajót az egyedi <em>neve</em> (+ árbocok/ágyúk száma, megbízás dátuma, kapitány). Kereskedelmi hajót az egyedi <em>neve</em> (+ súly, árbocok száma). Egy kalózhajó egy kereskedelmi hajót egy adott napon <em>kifoszthat</em> (süllyedés?, kivégzések száma).</p>
+    <details class="sol"><summary>Megoldás — funkcionális függőségek</summary><div class="solbody">
+      <ul>
+        <li><span class="m">Kalóz becenév → keresztnév, vadság minősítés, első kalózkodás dátuma, Kalózhajó név</span></li>
+        <li><span class="m">Kalózhajó név → árbocok száma, ágyúk száma, megbízás dátuma, kapitány</span></li>
+        <li><span class="m">Kereskedelmi hajó név → súly, árbocok száma</span></li>
+        <li><span class="m">Kereskedelmi hajó név + Kalózhajó név + Kifosztás dátuma → süllyedés, kivégzések száma</span></li>
+      </ul>
+    </div></details>
+    <details class="sol"><summary>Megoldás — E-K diagram (kapcsolatok és multiplicitások)</summary><div class="solbody">
+      <div class="diag">Kapitány-e [1,1]──── Kalóz ────[1,M] Legénység része-e [1,1]── Kalózhajó
+   │[1,1]                                                            │[1,1]
+   └──────────────────────────────────────────── Kalózhajó ─────────┘
+                                                     │[1,1]
+                                              Részt vesz benne
+                                                     │[1,M]
+                                                 Kifosztás
+                                                     │[1,M]
+                                                  Áldozat-e
+                                                     │[1,1]
+                                              Kereskedelmi hajó</div>
+      <p>A <strong>Kifosztás</strong> gyenge egyedhalmaz: a <em>Részt vesz benne</em> (Kalózhajó felé) és az <em>Áldozat-e</em> (Kereskedelmi hajó felé) támogató kapcsolatokon át kapja a kulcsát.</p>
+    </div></details>
+    <details class="sol"><summary>Megoldás — táblatervek (oszlop / típus / kulcs)</summary><div class="solbody">
+      <div class="tablewrap"><table class="grid">
+        <tr><th>Kalóz</th><th>típus</th><th>kulcs</th></tr>
+        <tr><td>Becenév</td><td>Varchar(80)</td><td>PK</td></tr>
+        <tr><td>Keresztnév</td><td>Varchar(80)</td><td></td></tr>
+        <tr><td>Vadság minősítés</td><td>Integer</td><td></td></tr>
+        <tr><td>Első kalózkodás dátuma</td><td>Date</td><td></td></tr>
+        <tr><td>Kalózhajó név</td><td>Varchar(80)</td><td>FK1</td></tr>
+      </table></div>
+      <div class="tablewrap"><table class="grid">
+        <tr><th>Kalózhajó</th><th>típus</th><th>kulcs</th></tr>
+        <tr><td>Név</td><td>Varchar(80)</td><td>PK</td></tr>
+        <tr><td>Árbocok száma</td><td>Integer</td><td></td></tr>
+        <tr><td>Ágyúk száma</td><td>Integer</td><td></td></tr>
+        <tr><td>Megbízás dátuma</td><td>Date</td><td></td></tr>
+        <tr><td>Kapitány</td><td>Varchar(80)</td><td>FK1</td></tr>
+      </table></div>
+      <div class="tablewrap"><table class="grid">
+        <tr><th>Kereskedelmi hajó</th><th>típus</th><th>kulcs</th></tr>
+        <tr><td>Név</td><td>Varchar(80)</td><td>PK</td></tr>
+        <tr><td>Súly</td><td>Real</td><td></td></tr>
+        <tr><td>Árbocok száma</td><td>Integer</td><td></td></tr>
+      </table></div>
+      <div class="tablewrap"><table class="grid">
+        <tr><th>Kifosztás</th><th>típus</th><th>kulcs</th></tr>
+        <tr><td>Kereskedelmi hajó név</td><td>Varchar(80)</td><td>PK1 FK1</td></tr>
+        <tr><td>Kalózhajó név</td><td>Varchar(80)</td><td>PK2 FK2</td></tr>
+        <tr><td>Kifosztás dátuma</td><td>Date</td><td>PK3</td></tr>
+        <tr><td>Kereskedelmi hajó süllyedése</td><td>Char(1)</td><td></td></tr>
+        <tr><td>Kivégzések száma</td><td>Integer</td><td></td></tr>
+      </table></div>
+    </div></details>
+  </div>
+
+  <!-- ===== 5. Objektum-relációs ===== -->
+  <div class="topic" id="f-or"><h2>Objektum-relációs SQL</h2><div class="tsub">UDT · REF / DEREF / navigáció · beágyazott táblák</div></div>
+  <div class="callout">
+    <strong>UDT</strong> (felhasználói típus): <span class="m">CREATE TYPE</span>, majd <span class="m">CREATE TABLE &lt;tábla&gt; OF &lt;típus&gt;</span> vagy hagyományos oszlopként. <span class="m">REF T</span> = mutató egy T típusú objektumra (OID); <span class="m">DEREF</span> bontja ki; a navigáció (mezőelérés) a ponttal megy (<span class="m">se.teázó.név</span>), de <strong>kötelező az alias</strong>.
+  </div>
+  <div class="fex">
+    <h4>5/a · Típusok, táblák, beszúrás, lekérdezés (REF/DEREF)</h4>
+    <details class="sol"><summary>Kidolgozott példa</summary><div class="solbody">
+      <p class="m blk">CREATE TYPE TeázóTípus AS OBJECT ( név CHAR(20), cím CHAR(20) );
+CREATE TYPE TeaTípus   AS OBJECT ( név CHAR(20), gyártó CHAR(20) );
+CREATE TYPE FelszolgálTípus AS OBJECT (
+  teázó REF TeázóTípus,
+  tea   REF TeaTípus,
+  ár    FLOAT );
+
+CREATE TABLE Teázók    OF TeázóTípus;
+CREATE TABLE Teák      OF TeaTípus;
+CREATE TABLE Felszolgál OF FelszolgálTípus;</p>
+      <p class="m blk">INSERT INTO Teázók VALUES (TeázóTípus('Joe''s Teahouse', 'Maple str 1'));
+INSERT INTO Teák   VALUES (TeaTípus('Pyramid', 'Lipton'));
+INSERT INTO Felszolgál
+  SELECT FelszolgálTípus(REF(ba), REF(be), 3.5)
+  FROM   Teázók ba, Teák be
+  WHERE  ba.név = 'Joe''s Teahouse' AND be.név = 'Pyramid';</p>
+      <p>Az objektumokat kibontva (<span class="m">DEREF</span>), illetve mezőelérésssel:</p>
+      <p class="m blk">SELECT DEREF(se.teázó) AS TEÁZÓ, DEREF(se.tea) AS TEA, ár FROM Felszolgál se;
+-- TeázóTípus('Joe''s Teahouse','Maple str 1') | TeaTípus('Pyramid','Lipton') | 3.5
+
+SELECT se.teázó.név AS TEÁZÓ_NÉV, se.tea.név AS TEA_NÉV, ár FROM Felszolgál se;
+-- Joe's Teahouse | Pyramid | 3.5</p>
+    </div></details>
+  </div>
+  <div class="fex">
+    <h4>5/b · Beágyazott táblák (nested table)</h4>
+    <details class="sol"><summary>Kidolgozott példa</summary><div class="solbody">
+      <p>Egy sor komponense lehet egy teljes reláció. <span class="m">CREATE TYPE S AS TABLE OF T;</span> majd a tárolást a <span class="m">NESTED TABLE A STORE AS R</span> adja meg.</p>
+      <p class="m blk">CREATE TYPE TeaTípus AS OBJECT ( név CHAR(20), fajta CHAR(10), szín CHAR(10) );
+CREATE TYPE TeaTáblaTípus AS TABLE OF TeaTípus;
+
+CREATE TABLE Gyártók (
+  név  CHAR(30),
+  cím  CHAR(50),
+  teák TeaTáblaTípus )
+NESTED TABLE teák STORE AS TeaTábla;</p>
+      <p>A beágyazott táblát a <span class="m">TABLE(...)</span> alakítja hagyományos relációvá a FROM-ban; relációból a <span class="m">CAST(MULTISET(...) AS &lt;típus&gt;)</span> készít beágyazott táblát:</p>
+      <p class="m blk">SELECT bb.név
+FROM   TABLE( SELECT teák FROM Gyártók WHERE név = 'Lipton' ) bb
+WHERE  bb.fajta = 'herbal';
+
+INSERT INTO Gyártók VALUES (
+  'Pete''s', 'Palo Alto',
+  CAST( MULTISET( SELECT bb.tea FROM Teák bb WHERE bb.gyártó = 'Pete''s' )
+        AS TeaTáblaTípus ) );</p>
+    </div></details>
+  </div>
+
+  <!-- ===== 6. DTD / XML séma ===== -->
+  <div class="topic" id="f-xml"><h2>DTD ↔ XML séma</h2><div class="tsub">jól formáltság / validság · ELEMENT, ATTLIST · xs:complexType, xs:sequence</div></div>
+  <div class="callout">
+    <strong>DTD:</strong> <span class="m">ELEMENT</span> (tartalom-modell: <span class="m">*</span> = 0+, <span class="m">+</span> = 1+, <span class="m">EMPTY</span>), <span class="m">ATTLIST</span> (<span class="m">CDATA</span>, <span class="m">#REQUIRED</span>, <span class="m">ID/IDREF/IDREFS</span>). <strong>XML séma:</strong> névtér (<span class="m">xmlns:xs="…"</span>), <span class="m">xs:element</span>, <span class="m">xs:attribute</span>, összetett típus <span class="m">xs:complexType</span> + <span class="m">xs:sequence</span> (<span class="m">minOccurs/maxOccurs</span>), egyszerű típus <span class="m">xs:simpleType</span> + <span class="m">xs:restriction</span>.
+  </div>
+  <div class="fex">
+    <h4>6 · Ugyanaz DTD-ben és XML sémában</h4>
+    <details class="sol"><summary>DTD</summary><div class="solbody">
+      <p class="m blk">&lt;!DOCTYPE teázók [
+  &lt;!ELEMENT teázók (teázó*)&gt;
+  &lt;!ELEMENT teázó (tea+)&gt;
+  &lt;!ATTLIST teázó név CDATA #REQUIRED&gt;
+  &lt;!ELEMENT tea EMPTY&gt;
+  &lt;!ATTLIST tea név CDATA #REQUIRED&gt;
+]&gt;</p>
+    </div></details>
+    <details class="sol"><summary>Ekvivalens XML séma</summary><div class="solbody">
+      <p class="m blk">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
+
+  &lt;xs:complexType name="teaTípus"&gt;
+    &lt;xs:attribute name="név" type="xs:string" use="required"/&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:complexType name="teázóTípus"&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name="tea" type="teaTípus"
+                  minOccurs="1" maxOccurs="unbounded"/&gt;
+    &lt;/xs:sequence&gt;
+    &lt;xs:attribute name="név" type="xs:string" use="required"/&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:complexType name="teázókTípus"&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name="teázó" type="teázóTípus"
+                  minOccurs="0" maxOccurs="unbounded"/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:element name="teázók" type="teázókTípus"/&gt;
+&lt;/xs:schema&gt;</p>
+    </div></details>
+  </div>
+
+  <!-- ===== 7. XPath / XQuery ===== -->
+  <div class="topic" id="f-xpath"><h2>XPath és XQuery</h2><div class="tsub">útkifejezések, tengelyek, szűrők · FLWR, contains, data, összesítés</div></div>
+  <div class="callout">
+    <strong>XPath</strong> eredménye <em>tételek listája</em> (tétel = egyszerű érték vagy csomópont: dokumentum-, elem-, attribútum-csomópont). Útkifejezés <span class="m">/</span>-ekkel; szűrési feltétel <span class="m">[...]</span>-ben; tengelyek (axis) a bejárás irányát adják. <strong>XQuery</strong>: <span class="m">doc(URL)</span>, <strong>FLWR</strong> (<span class="m">for · let · where · order by · return</span>), <span class="m">contains</span>, összehasonlítások és <em>szigorú</em> összehasonlítások (<span class="m">eq, ne, lt…</span>), <span class="m">data()</span>, összesítések, összekapcsolások.
+  </div>
+  <div class="fex">
+    <h4>7/a · XPath útkifejezések egy dokumentumon</h4>
+    <details class="sol"><summary>Példa</summary><div class="solbody">
+      <p class="m blk">&lt;kocsmák&gt;
+  &lt;kocsma név="Joe bárja"&gt;
+    &lt;ár melyikSör="Bud"&gt;2.50&lt;/ár&gt;
+    &lt;ár melyikSör="Miller"&gt;3.00&lt;/ár&gt;
+  &lt;/kocsma&gt;
+  &lt;sör név="Bud" árulja="Joe bárja Sue bárja …"/&gt;
+&lt;/kocsmák&gt;</p>
+      <ul>
+        <li><span class="m">/kocsmák/kocsma/ár</span> — az összes <span class="m">ár</span> elemcsomópont.</li>
+        <li><span class="m">//ár/@melyikSör</span> — minden <span class="m">ár</span> <span class="m">melyikSör</span> attribútuma (Bud, Miller).</li>
+        <li><span class="m">/kocsmák/kocsma/ár[@melyikSör="Bud"]</span> — szűrés feltétellel: csak a Bud ára.</li>
+        <li><span class="m">/kocsmák/sör[@név="Bud"]</span> — a Bud sör eleme.</li>
+      </ul>
+    </div></details>
+  </div>
+  <div class="fex">
+    <h4>7/b · XQuery FLWR-kifejezés</h4>
+    <details class="sol"><summary>Példa</summary><div class="solbody">
+      <p>A 3 forintnál olcsóbb sörök kiírása kocsmánként, ár szerint rendezve:</p>
+      <p class="m blk">for $k in doc("kocsmák.xml")/kocsmák/kocsma
+for $a in $k/ár
+where $a &lt; 3.00
+order by $a
+return &lt;olcsó kocsma="{ data($k/@név) }"
+              sör="{ data($a/@melyikSör) }"&gt;{ data($a) }&lt;/olcsó&gt;</p>
+      <p>Megjegyzés: a <span class="m">$a &lt; 3.00</span> „létezik olyan" jellegű (laza) összehasonlítás; a <span class="m">data()</span> az elem/attribútum értékét adja; <span class="m">&lt;&lt;</span> és <span class="m">&gt;&gt;</span> dokumentumsorrendet hasonlít, a szigorú <span class="m">eq/ne/lt</span> pontosan egy-egy értéket vár.</p>
+    </div></details>
+  </div>
+
+</section>
 </main>
 
 <footer>
@@ -2616,9 +3105,9 @@ function assignQids(){
 /* ---------- Store ---------- */
 const Store={
   user:null,data:null,
-  emptyData(name){return{displayName:name,updated:Date.now(),guesses:{},marks:{},lessons:{}};},
+  emptyData(name){return{displayName:name,updated:Date.now(),guesses:{},marks:{},lessons:{},srs:{}};},
   key(){return APP+':progress:'+this.user;},
-  loadLocal(){try{const r=localStorage.getItem(this.key());this.data=r?JSON.parse(r):this.emptyData(this.user);}catch(e){this.data=this.emptyData(this.user);}},
+  loadLocal(){try{const r=localStorage.getItem(this.key());this.data=r?JSON.parse(r):this.emptyData(this.user);}catch(e){this.data=this.emptyData(this.user);}if(this.data&&!this.data.srs)this.data.srs={};},
   saveLocal(){try{localStorage.setItem(this.key(),JSON.stringify(this.data));}catch(e){}},
   set(kind,id,val){if(!this.data)return;if(val===null)delete this.data[kind][id];else this.data[kind][id]=val;this.data.updated=Date.now();this.saveLocal();/* Firebase: ide jönne a queueRemoteSave() */}
 };
@@ -2632,7 +3121,7 @@ function initUser(){
   $('#login-go').onclick=()=>{
     const name=$('#login-name').value.trim()||'vendég';
     Store.user=normUserKey(name);localStorage.setItem(APP+':user',Store.user);
-    Store.loadLocal();if(name && !Store.data.displayName)Store.data.displayName=name;
+    Store.loadLocal();if(name!=='vendég')Store.data.displayName=name;
     $('#login-overlay').style.display='none';showUser();applyState();
   };
   $('#login-name').addEventListener('keydown',e=>{if(e.key==='Enter')$('#login-go').click();});
@@ -2858,9 +3347,280 @@ function applyState(){
     const a=$('#ltoc a[data-lid="'+ls.dataset.lid+'"]');if(a)a.classList.toggle('done',done);
   });
   updateBars();
+  if(POOL&&$('#gyak-home'))renderGyakHome();
 }
 
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'&&Store.data)Store.saveLocal();});
+
+/* ====================== GYAKORLÁS: próbavizsga · szódolgozat · okos ismétlés ====================== */
+let POOL=null, S=null;
+const SRS_IV=[18e5, 864e5, 3*864e5, 7*864e5, 16*864e5, 35*864e5]; /* box→intervallum (ms): 30 perc, 1, 3, 7, 16, 35 nap */
+
+/* --- segédek --- */
+function escapeHtml(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function deAccent(s){return (s||'').normalize('NFD').replace(/[̀-ͯ]/g,'');}
+function normTxt(s){return deAccent((s||'').toLowerCase()).replace(/[^a-z0-9 ]+/g,' ').replace(/\s+/g,' ').trim();}
+function lev(a,b){const m=a.length,n=b.length;if(!m)return n;if(!n)return m;const d=Array.from({length:n+1},(_,i)=>i);for(let i=1;i<=m;i++){let prev=d[0];d[0]=i;for(let j=1;j<=n;j++){const t=d[j];d[j]=Math.min(d[j]+1,d[j-1]+1,prev+(a[i-1]===b[j-1]?0:1));prev=t;}}return d[n];}
+function vocabAccepts(target){return (target||'').split(/[,;]/).map(x=>x.replace(/\([^)]*\)/g,' ')).map(normTxt).filter(Boolean);}
+function vocabMatch(user,target){const u=normTxt(user);if(!u)return false;for(const a of vocabAccepts(target)){if(u===a)return true;if(a.length>=5&&lev(u,a)<=1)return true;}return false;}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function fmtTime(s){const m=Math.floor(s/60);return m+':'+String(s%60).padStart(2,'0');}
+
+/* --- elemkészletek (tételek) --- */
+function buildQuizItems(){
+  const items=[];
+  $$('#kviz .card').forEach(card=>{
+    const qid=card.dataset.qid;if(!qid)return;
+    const topic=card.closest('.topic');
+    const topicId=topic?topic.id:'';const topicName=topic&&$('h2',topic)?$('h2',topic).textContent:'';
+    if(card.classList.contains('tf')){
+      const ansEl=$('.hide.ans',card)||$('.hide',card);
+      items.push({kind:'tf',qid,topicId,topicName,prompt:($('.stmt',card)||{}).textContent||'',answer:card.dataset.answer,expl:ansEl?ansEl.innerHTML:''});
+    }else if(card.classList.contains('qa')){
+      const hide=$('.hide',card);let ansHtml='';
+      if(hide){const c=hide.cloneNode(true);$$('.mbtns',c).forEach(x=>x.remove());ansHtml=c.innerHTML;}
+      items.push({kind:'qa',qid,topicId,topicName,prompt:($('.q',card)||{}).textContent||'',answerHtml:ansHtml});
+    }
+  });
+  return items;
+}
+function buildVocabItems(dir){
+  const out=[];
+  VOCAB.forEach(([hu,en])=>{
+    const qid='szojegyzek-'+qhash(hu);
+    let d=dir==='mix'?(Math.random()<0.5?'huen':'enhu'):dir;
+    if(d==='huen')out.push({kind:'vocab',qid,prompt:hu,correctText:en,accept:en,dir:'huen'});
+    else out.push({kind:'vocab',qid,prompt:en,correctText:hu,accept:hu,dir:'enhu'});
+  });
+  return out;
+}
+
+/* --- SRS (Leitner) --- */
+function srsUpdate(qid,correct){
+  if(!Store.data)return;const s=Store.data.srs||(Store.data.srs={});
+  let e=s[qid]||{box:0,due:0,seen:0};
+  e.box=correct?Math.min(e.box+1,SRS_IV.length-1):0;
+  e.due=Date.now()+SRS_IV[e.box];e.seen=(e.seen||0)+1;e.last=Date.now();
+  Store.set('srs',qid,e);
+}
+function buildDailyQueue(maxNew,cap){
+  const now=Date.now();const s=(Store.data&&Store.data.srs)||{};
+  const all=POOL.quiz.concat(POOL.vocabHuen);
+  const due=[],fresh=[];
+  all.forEach(it=>{const e=s[it.qid];if(e){if(e.due<=now)due.push({it,due:e.due});}else fresh.push(it);});
+  due.sort((a,b)=>a.due-b.due);
+  let q=due.map(x=>x.it);
+  shuffle(fresh);q=q.concat(fresh.slice(0,maxNew));
+  shuffle(q);
+  return q.slice(0,cap);
+}
+function dailyCounts(){
+  const now=Date.now();const s=(Store.data&&Store.data.srs)||{};
+  const all=POOL.quiz.concat(POOL.vocabHuen);let due=0,fresh=0,learned=0;
+  all.forEach(it=>{const e=s[it.qid];if(!e)fresh++;else{if(e.due<=now)due++;else learned++;}});
+  return {due,fresh,learned,total:all.length};
+}
+
+/* --- állapot rögzítése (a böngészős nézettel közös) --- */
+function examState(it){if(it.kind==='tf'){const g=Store.data.guesses[it.qid];return g==='ok'?'ok':g?'bad':null;}const m=Store.data.marks[it.qid];return m||null;}
+function recordGrade(it,outcome){
+  if(it.kind==='tf')Store.set('guesses',it.qid,outcome==='ok'?'ok':'bad');
+  else Store.set('marks',it.qid,outcome);
+  srsUpdate(it.qid,outcome==='ok');
+}
+
+/* --- session motor --- */
+function startSession(cfg){
+  S={cfg,items:cfg.items,idx:0,results:[],start:Date.now(),timerInt:null};
+  $('#gyak-home').hidden=true;$('#gyak-end').hidden=true;$('#gyak-sess').hidden=false;
+  if(cfg.timer)S.timerInt=setInterval(updTimer,1000);
+  renderItem();
+}
+function updTimer(){const t=$('#gtimer');if(t)t.textContent=fmtTime(Math.round((Date.now()-S.start)/1000));}
+function renderItem(){
+  const it=S.items[S.idx];const box=$('#gyak-card');
+  const head='<div class="gtop"><div class="gprog"><i style="width:'+(S.idx/S.items.length*100)+'%"></i></div>'
+    +'<span class="gcount">'+(S.idx+1)+' / '+S.items.length+'</span>'
+    +(S.cfg.timer?'<span class="gtimer" id="gtimer">0:00</span>':'')
+    +'<button class="gquit" id="gquit">Kilépés</button></div>';
+  const badge=it.kind==='vocab'?(it.dir==='huen'?'magyar → angol':'angol → magyar'):(it.kind==='tf'?'Igaz / Hamis':(it.topicName||'Kérdés'));
+  let body='<div class="gbadge">'+escapeHtml(badge)+'</div><div class="gprompt">'+escapeHtml(it.prompt)+'</div>';
+  if(it.kind==='vocab')body+='<input class="ginput" id="ginput" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="írd be a fordítást, majd Enter…"><div class="gactions"><button class="gstart" id="gsubmit">Ellenőrzés</button></div>';
+  else if(it.kind==='tf')body+='<div class="gactions"><button class="gbtn2" data-v="I">Igaz</button><button class="gbtn2" data-v="H">Hamis</button></div>';
+  else body+='<div class="gactions"><button class="gstart" id="greveal">Mutasd a választ</button></div>';
+  body+='<div class="gfeedback" id="gfb" hidden></div>';
+  box.innerHTML=head+body;
+  $('#gquit').onclick=quitSession;
+  if(it.kind==='vocab'){const inp=$('#ginput');inp.focus();$('#gsubmit').onclick=checkVocab;}
+  else if(it.kind==='tf')$$('.gbtn2',box).forEach(b=>b.onclick=()=>answerTf(b.dataset.v));
+  else $('#greveal').onclick=revealQa;
+}
+function checkVocab(){
+  const it=S.items[S.idx];const inp=$('#ginput');if(!inp)return;
+  const ok=vocabMatch(inp.value,it.accept);
+  finishItem(ok?'ok':'bad','<div class="gline">A te válaszod: <b>'+escapeHtml(inp.value||'—')+'</b></div><div class="gline">Helyes: <b class="gok">'+escapeHtml(it.correctText)+'</b></div>');
+}
+function answerTf(v){
+  const it=S.items[S.idx];const ok=it.answer===v;
+  finishItem(ok?'ok':'bad','<div class="gline">Helyes válasz: <b class="'+(ok?'gok':'gbad')+'">'+(it.answer==='I'?'Igaz':'Hamis')+'</b></div><div class="gexpl">'+(it.expl||'')+'</div>');
+}
+function revealQa(){
+  const it=S.items[S.idx];const card=$('#gyak-card');const fb=$('#gfb');
+  const act=$('.gactions',card);if(act)act.remove();
+  fb.hidden=false;
+  fb.innerHTML='<div class="gexpl">'+(it.answerHtml||'')+'</div><div class="gself"><span>Hogy ment?</span>'
+    +'<button class="mbtn" data-m="ok">Tudtam</button><button class="mbtn" data-m="part">Részben</button><button class="mbtn" data-m="bad">Nem tudtam</button></div>';
+  $$('.gself .mbtn',fb).forEach(b=>b.onclick=()=>finishItem(b.dataset.m,null,true));
+}
+function finishItem(outcome,extraHtml,selfGraded){
+  const it=S.items[S.idx];
+  recordGrade(it,outcome);
+  S.results.push({it,outcome});
+  const card=$('#gyak-card');const fb=$('#gfb');
+  $$('.gactions button, .gbtn2',card).forEach(b=>b.disabled=true);
+  if(selfGraded){
+    $$('.gself .mbtn',fb).forEach(b=>{b.disabled=true;b.classList.toggle('sel',b.dataset.m===outcome);});
+  }else{
+    fb.hidden=false;
+    fb.innerHTML=(outcome==='ok'?'<div class="gres2 gok">✓ Helyes</div>':'<div class="gres2 gbad">✗ Nem talált</div>')+(extraHtml||'');
+  }
+  const last=S.idx+1>=S.items.length;
+  const nb=document.createElement('div');nb.className='gactions';
+  nb.innerHTML='<button class="gstart" id="gnext">'+(last?'Befejezés':'Tovább →')+'</button>';
+  fb.appendChild(nb);
+  const gn=$('#gnext');gn.onclick=nextItem;gn.focus();
+}
+function nextItem(){S.idx++;if(S.idx>=S.items.length)finishSession();else renderItem();}
+function finishSession(){
+  if(S.timerInt)clearInterval(S.timerInt);
+  const total=S.results.length;
+  const ok=S.results.filter(r=>r.outcome==='ok').length;
+  const part=S.results.filter(r=>r.outcome==='part').length;
+  const elapsed=Math.round((Date.now()-S.start)/1000);
+  const miss=S.results.filter(r=>r.outcome!=='ok');
+  $('#gyak-sess').hidden=true;$('#gyak-end').hidden=false;
+  let html='<h2>Kész!</h2><div class="gscore">'+ok+' / '+total+'</div>'
+    +'<div class="gsub2">'+(Math.round(ok/total*100)||0)+'% helyes'+(part?' · '+part+' részben':'')+' · idő: '+fmtTime(elapsed)+'</div>';
+  if(miss.length){
+    html+='<h3>Amit érdemes átnézni ('+miss.length+')</h3><div class="gmisslist">'+miss.map(r=>{
+      const it=r.it;const p=escapeHtml(it.prompt).slice(0,110);
+      const a=it.kind==='vocab'?escapeHtml(it.correctText):(it.kind==='tf'?(it.answer==='I'?'Igaz':'Hamis'):'lásd a kártyán');
+      return '<div class="gmiss"><span class="gmq">'+p+'</span><span class="gma">'+a+'</span></div>';
+    }).join('')+'</div>';
+  }else html+='<div class="gperfect">Hibátlan! 🎉</div>';
+  html+='<div class="gactions">'+(miss.length?'<button class="gstart" id="gretry">Hibásak újra ('+miss.length+')</button>':'')+'<button class="gbtn2" id="gback">Vissza a gyakorláshoz</button></div>';
+  $('#gyak-end').innerHTML=html;
+  if(miss.length)$('#gretry').onclick=()=>startSession(Object.assign({},S.cfg,{items:miss.map(r=>r.it),timer:false}));
+  $('#gback').onclick=backHome;
+  applyState();
+}
+function backHome(){$('#gyak-sess').hidden=true;$('#gyak-end').hidden=true;renderGyakHome();$('#gyak-home').hidden=false;}
+function quitSession(){if(S&&S.timerInt)clearInterval(S.timerInt);backHome();applyState();}
+
+/* --- indítók --- */
+function startSzo(){
+  const dir=$('#szo-dir').value,cnt=$('#szo-cnt').value,src=$('#szo-src').value;
+  let items=buildVocabItems(dir);
+  if(src==='bad')items=items.filter(it=>{const m=Store.data.marks[it.qid];return m&&m!=='ok';});
+  shuffle(items);if(cnt!=='all')items=items.slice(0,+cnt);
+  if(!items.length){alert('Nincs szó ezzel a szűréssel — válts a „minden szó” forrásra.');return;}
+  startSession({mode:'szo',items,timer:false});
+}
+function startExam(){
+  const cnt=$('#ex-cnt').value,topic=$('#ex-topic').value,ob=$('#ex-bad').checked;
+  let items=POOL.quiz.slice();
+  if(topic!=='all')items=items.filter(it=>it.topicId===topic);
+  if(ob)items=items.filter(it=>examState(it)!=='ok');
+  shuffle(items);if(cnt!=='all')items=items.slice(0,+cnt);
+  if(!items.length){alert('Nincs kérdés ezzel a szűréssel.');return;}
+  startSession({mode:'exam',items,timer:true});
+}
+function startDaily(){
+  const items=buildDailyQueue(15,40);
+  if(!items.length){alert('Ma nincs esedékes kártya. 🎉 Indíts inkább egy szódolgozatot vagy próbavizsgát!');return;}
+  startSession({mode:'srs',items,timer:false});
+}
+
+/* --- export / import --- */
+function exportProgress(){
+  if(!Store.data)return;
+  const blob=new Blob([JSON.stringify(Store.data,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='adatb1-haladas-'+(Store.user||'vendeg')+'.json';
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+}
+function importProgress(file){
+  const fr=new FileReader();
+  fr.onload=()=>{try{
+    const d=JSON.parse(fr.result);
+    ['guesses','marks','lessons','srs'].forEach(k=>{if(d[k]&&typeof d[k]==='object'){Store.data[k]=Store.data[k]||{};Object.assign(Store.data[k],d[k]);}});
+    if(d.displayName&&!Store.data.displayName)Store.data.displayName=d.displayName;
+    Store.saveLocal();applyState();renderGyakHome();showUser();
+    alert('Haladás importálva és összefésülve a mostanival.');
+  }catch(e){alert('Nem sikerült beolvasni: '+e.message);}};
+  fr.readAsText(file);
+}
+
+/* --- gyakorló kezdőlap --- */
+function renderGyakHome(){
+  const home=$('#gyak-home');if(!home||!POOL)return;
+  const c=dailyCounts();
+  const topicOpts='<option value="all">Minden témakör</option>'+
+    $$('#kviz .topic').filter(t=>t.id&&t.id.indexOf('k-')===0).map(t=>'<option value="'+t.id+'">'+escapeHtml($('h2',t)?$('h2',t).textContent:t.id)+'</option>').join('');
+  home.innerHTML=
+   '<h1 class="ph">Gyakorlás</h1>'
+   +'<p class="gintro">Itt nem böngészel, hanem <b>tesztelsz</b>: vizsgaszerűen kérdezünk, és a válaszaid visszahatnak a Kvíz/Szójegyzék fülek haladására is. Az „okos ismétlés” a Leitner-elv szerint pont azt hozza vissza, ami épp esedékes.</p>'
+   +'<div class="gmodes">'
+   +/* MAI ADAG */ '<div class="gmode featured"><span class="gpill">ajánlott</span><h3>Mai adag — okos ismétlés</h3>'
+     +'<div class="gdesc">Vegyes (kvíz + szó) sor abból, ami ma esedékes, plusz pár új tétel. Napi pár perc, maximális megtérülés.</div>'
+     +'<div class="gcounts"><div class="gcount-b"><b>'+c.due+'</b><span>esedékes</span></div><div class="gcount-b"><b>'+c.fresh+'</b><span>új</span></div><div class="gcount-b"><b>'+c.learned+'</b><span>ütemezve</span></div></div>'
+     +'<button class="gstart" id="go-daily">Mai adag indítása</button></div>'
+   +/* SZÓDOLGOZAT */ '<div class="gmode"><h3>Szódolgozat-tréner</h3>'
+     +'<div class="gdesc">Beírós fordítás, mint a vizsgán. Ékezet- és elgépelés-toleráns, a vesszős szinonimákat elfogadja.</div>'
+     +'<div class="gmrow">'
+       +'<label>Irány<select class="gsel" id="szo-dir"><option value="huen">magyar → angol</option><option value="enhu">angol → magyar</option><option value="mix">kevert</option></select></label>'
+       +'<label>Mennyiség<select class="gsel" id="szo-cnt"><option value="10">10</option><option value="20" selected>20</option><option value="50">50</option><option value="all">mind (227)</option></select></label>'
+       +'<label>Forrás<select class="gsel" id="szo-src"><option value="all">minden szó</option><option value="bad">amit nem tudok</option></select></label>'
+     +'</div><button class="gstart" id="go-szo">Szódolgozat indítása</button></div>'
+   +/* PRÓBAVIZSGA */ '<div class="gmode"><h3>Próbavizsga (időre)</h3>'
+     +'<div class="gdesc">Véletlen kvízkérdések egyesével, visszaszámlálóval. Igaz/hamis automatikusan, a kérdés-válaszok önértékeléssel.</div>'
+     +'<div class="gmrow">'
+       +'<label>Kérdésszám<select class="gsel" id="ex-cnt"><option value="10">10</option><option value="20" selected>20</option><option value="40">40</option><option value="all">mind (131)</option></select></label>'
+       +'<label>Témakör<select class="gsel" id="ex-topic">'+topicOpts+'</select></label>'
+       +'<label class="gchk"><input type="checkbox" id="ex-bad"> csak amit nem tudok</label>'
+     +'</div><button class="gstart" id="go-exam">Próbavizsga indítása</button></div>'
+   +'</div>'
+   +'<div class="gtools"><span style="color:var(--dim);font-size:.82rem;font-family:var(--fh)">Haladás másik eszközre:</span>'
+     +'<button class="glink" id="go-export">⬇ Exportálás (.json)</button>'
+     +'<button class="glink" id="go-import">⬆ Importálás</button>'
+     +'<input type="file" id="imp-file" accept="application/json,.json" style="display:none">'
+   +'</div>';
+  $('#go-daily').onclick=startDaily;
+  $('#go-szo').onclick=startSzo;
+  $('#go-exam').onclick=startExam;
+  $('#go-export').onclick=exportProgress;
+  $('#go-import').onclick=()=>$('#imp-file').click();
+  $('#imp-file').onchange=e=>{if(e.target.files[0])importProgress(e.target.files[0]);e.target.value='';};
+}
+function initGyak(){
+  const sec=document.createElement('section');sec.className='part';sec.id='gyak';
+  sec.innerHTML='<div id="gyak-home"></div><div id="gyak-sess" hidden><div id="gyak-card"></div></div><div id="gyak-end" hidden></div>';
+  $('main').appendChild(sec);
+  POOL={quiz:buildQuizItems(),vocabHuen:buildVocabItems('huen')};
+  renderGyakHome();
+}
+
+/* --- billentyű-navigáció a session-ben --- */
+document.addEventListener('keydown',e=>{
+  const gy=$('#gyak');if(!gy||!gy.classList.contains('active'))return;
+  if(!S||$('#gyak-sess').hidden)return;
+  const gn=$('#gnext');
+  if(gn){if(e.key==='Enter'||e.key===' '||e.key==='ArrowRight'){e.preventDefault();gn.click();}return;}
+  const it=S.items[S.idx];
+  if(it.kind==='tf'){if(e.key==='i'||e.key==='I'||e.key==='1')answerTf('I');else if(e.key==='h'||e.key==='H'||e.key==='2')answerTf('H');}
+  else if(it.kind==='qa'){const rv=$('#greveal');if(rv&&(e.key===' '||e.key==='Enter')){e.preventDefault();rv.click();return;}const self=$$('.gself .mbtn');if(self.length){if(e.key==='1')self[0].click();else if(e.key==='2')self[1].click();else if(e.key==='3')self[2].click();}}
+  else if(it.kind==='vocab'){if(e.key==='Enter'){const sb=$('#gsubmit');if(sb&&!sb.disabled){e.preventDefault();checkVocab();}}}
+});
 
 /* ---------- indítás ---------- */
 renderVocab();
@@ -2869,10 +3629,10 @@ renderCbars();
 assignQids();
 renderInteractions();
 renderLessons();
+initGyak();
 initUser();
 if(Store.data)applyState();else updateBars();
 })();
 </script>
 </body>
 </html>
-
