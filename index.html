@@ -226,6 +226,41 @@ select.gsel{background:var(--card2);border:1px solid var(--line2);color:var(--tx
 .gma{color:var(--acc2);font-family:var(--fm);font-size:.85rem;white-space:nowrap}
 #gyak-end .gactions{justify-content:center}
 @media(max-width:480px){.gma{white-space:normal}.gscore{font-size:2.4rem}}
+
+/* ---- feleletválasztós (MC) opciók a kvízben ---- */
+.mcopts{display:flex;flex-direction:column;gap:7px;margin:8px 0 4px}
+body.study .mcopts{display:none}
+.mcopt{display:flex;gap:10px;align-items:flex-start;text-align:left;width:100%;background:var(--card2);border:1px solid var(--line2);color:var(--read);border-radius:9px;padding:9px 13px;font-family:var(--fb);font-size:.92rem;line-height:1.4;cursor:pointer;transition:border-color .12s,background .12s}
+.mcopt:hover{border-color:var(--acc)}
+.mcopt .mctext{flex:1}
+.mcopt .mcmark{flex:0 0 auto;width:19px;height:19px;border:1.5px solid var(--line2);border-radius:5px;margin-top:1px;display:inline-flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;color:transparent}
+.mcopts:not(.multi) .mcopt .mcmark{border-radius:50%}
+.mcopt.sel{border-color:var(--acc)}
+.mcopt.sel .mcmark{background:var(--acc);border-color:var(--acc);color:#1a1206}
+.mcopt.sel .mcmark::after{content:"✓"}
+.mcopts.answered .mcopt{cursor:default}
+.mcopts.answered .mcopt:hover{border-color:var(--line2)}
+.mcopt.correct{border-color:var(--ok);background:#10301d;color:var(--white)}
+.mcopt.correct .mcmark{background:var(--ok);border-color:var(--ok);color:#06140c}
+.mcopt.correct .mcmark::after{content:"✓"}
+.mcopt.wrong{border-color:var(--bad);background:#331515;color:var(--white)}
+.mcopt.wrong .mcmark{background:var(--bad);border-color:var(--bad);color:#fff}
+.mcopt.wrong .mcmark::after{content:"✕"}
+.mcopt.missed{border-style:dashed;border-color:var(--ok)}
+.mcopt.missed .mcmark{border-color:var(--ok)}
+.mcopt.missed .mcmark::after{content:"·";color:var(--ok)}
+.mchint{font-size:.8rem;color:var(--dim);margin:1px 2px 3px}
+.mcopts.answered .mchint{display:none}
+.mccheck{align-self:flex-start;background:var(--accbg);border:1px solid var(--acc);color:var(--acc);border-radius:8px;padding:6px 16px;font-family:var(--fh);font-size:.85rem;cursor:pointer;margin-top:2px}
+.mccheck:hover{background:var(--acc);color:#1a1206}
+.mcopts.answered .mccheck{display:none}
+
+/* ---- témakör-eszközök (keverés / törlés) ---- */
+.topicbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tbtn{background:var(--card2);border:1px solid var(--line2);color:var(--acc2);font-family:var(--fh);font-size:.8rem;border-radius:8px;padding:4px 13px;cursor:pointer}
+.tbtn:hover{border-color:var(--acc);color:var(--acc)}
+.tbtn-danger{border-color:#5a2a2a;color:var(--bad)}
+.tbtn-danger:hover{border-color:var(--bad);background:#331515;color:var(--bad)}
 </style>
 </head>
 <body>
@@ -608,6 +643,8 @@ WHERE  feltétel;</p>
     <button class="showbtn">Mutasd a választ</button>
     <div class="hide">
       <ul class="anslist"><li>halmaz</li><li>tömb</li></ul>
+      <p class="wrongttl">Nem jó (ezek atomiak):</p>
+      <ul class="anslist wrong"><li>szám</li><li>sztring (karakterlánc)</li><li>dátum</li></ul>
       <p class="expl">A relációs modellben a mezők értékei <strong>atomiak</strong>: szám, sztring, dátum stb. Összetett szerkezet (halmaz, tömb, rekord, reláció) nem lehet mezőérték — ezt majd az objektum-relációs modell oldja fel.</p>
     </div>
   </div>
@@ -739,6 +776,8 @@ WHERE  feltétel;</p>
     <button class="showbtn">Mutasd a választ</button>
     <div class="hide">
       <ul class="anslist"><li><strong>UNKNOWN</strong></li></ul>
+      <p class="wrongttl">Nem jó:</p>
+      <ul class="anslist wrong"><li>TRUE</li><li>FALSE</li><li>NULL</li></ul>
       <p class="expl">Még a <span class="m">NULL = NULL</span> is UNKNOWN! Ezért NULL-t csak <span class="m">IS NULL / IS NOT NULL</span>-lal lehet tesztelni.</p>
     </div>
   </div>
@@ -749,6 +788,8 @@ WHERE  feltétel;</p>
     <button class="showbtn">Mutasd a választ</button>
     <div class="hide">
       <ul class="anslist"><li><span class="m">SELECT * FROM Hallgatók WHERE név LIKE 'R%z_';</span></li></ul>
+      <p class="wrongttl">Nem jó:</p>
+      <ul class="anslist wrong"><li><span class="m">SELECT * FROM Hallgatók WHERE név LIKE 'R%z%';</span></li><li><span class="m">SELECT * FROM Hallgatók WHERE név = 'R%z_';</span></li></ul>
       <p class="expl"><span class="m">%</span> = akárhány karakter, <span class="m">_</span> = pontosan egy. Az 'R%z_' minta: R-rel kezdődik, majd valahol z, utána <em>pontosan egy</em> karakter — tehát a z az utolsó előtti. Az 'R%z%' rossz (a z után akárhány karakter állhat), az '=' pedig nem mintaillesztés.</p>
     </div>
   </div>
@@ -759,6 +800,8 @@ WHERE  feltétel;</p>
     <button class="showbtn">Mutasd a választ</button>
     <div class="hide">
       <ul class="anslist"><li><strong>TRUE, FALSE, UNKNOWN</strong></li></ul>
+      <p class="wrongttl">Nem jó:</p>
+      <ul class="anslist wrong"><li>csak TRUE és FALSE</li><li>TRUE, FALSE, UNKNOWN, NULL</li><li>0 és 1</li></ul>
       <p class="expl">Az SQL háromértékű logikát használ: TRUE=1, FALSE=0, UNKNOWN=½, és AND=MIN, OR=MAX, NOT(x)=1−x.</p>
     </div>
   </div>
@@ -1203,6 +1246,8 @@ WHERE  feltétel;</p>
     <button class="showbtn">Mutasd a választ</button>
     <div class="hide">
       <ul class="anslist"><li><strong>4</strong> — általánosan <span class="m">2ⁿ⁻¹</span>, itt n = 3.</li></ul>
+      <p class="wrongttl">Nem jó:</p>
+      <ul class="anslist wrong"><li>1</li><li>3</li><li>8</li></ul>
       <p class="expl">Szuperkulcs minden halmaz, ami tartalmazza A-t: {A}, {A,B}, {A,C}, {A,B,C}. A maradék n−1 attribútum mindegyike szabadon benne lehet vagy nem: 2ⁿ⁻¹ lehetőség.</p>
     </div>
   </div>
@@ -2113,6 +2158,8 @@ WHERE  feltétel;</p>
     <button class="showbtn">Mutasd a választ</button>
     <div class="hide">
       <ul class="anslist"><li><strong>XPath</strong></li><li><strong>XQuery</strong></li></ul>
+      <p class="wrongttl">Nem jó (ezek nem lekérdezőnyelvek):</p>
+      <ul class="anslist wrong"><li>DTD</li><li>XML Schema (XSD)</li><li>SQL</li></ul>
       <p class="expl">Az XPath az útkifejezések nyelve, az XQuery a teljes (FLWR) lekérdezőnyelv, amely XPath-t használ.</p>
     </div>
   </div>
@@ -3210,6 +3257,110 @@ function renderCbars(){
 
 /* ---------- interakciók: tf + qa + önértékelés ---------- */
 function setMarkClass(card,m){card.classList.remove('mok','mpart','mbad');if(m)card.classList.add('m'+m);}
+
+/* ---------- feleletválasztós (MC) a kvíz .qa kártyáin ---------- */
+function gradeCardMc(card,outcome){
+  card.classList.add('open');
+  Store.set('marks',card.dataset.qid,outcome);
+  srsUpdate(card.dataset.qid,outcome==='ok');
+  setMarkClass(card,outcome);
+  $$('.mbtn',card).forEach(x=>x.classList.toggle('sel',x.dataset.m===outcome));
+  updateBars();
+}
+function setupMc(card){
+  const hide=$('.hide',card);if(!hide)return false;
+  const cUl=hide.querySelector('ul.anslist:not(.wrong)');
+  const wUl=hide.querySelector('ul.anslist.wrong');
+  if(!cUl||!wUl)return false;
+  const liHtml=ul=>$$('li',ul).map(li=>li.innerHTML.trim()).filter(Boolean);
+  const correct=liHtml(cUl), wrong=liHtml(wUl);
+  if(!correct.length||!wrong.length)return false;
+  const multi=correct.length>1;
+  const opts=shuffle(correct.map(h=>({h,ok:1})).concat(wrong.map(h=>({h,ok:0}))));
+  const wrap=document.createElement('div');wrap.className='mcopts'+(multi?' multi':'');
+  opts.forEach(o=>{
+    const b=document.createElement('button');b.type='button';b.className='mcopt';b.dataset.ok=o.ok;
+    b.innerHTML='<span class="mcmark"></span><span class="mctext">'+o.h+'</span>';
+    b.onclick=()=>{
+      if(wrap.classList.contains('answered'))return;
+      if(multi)b.classList.toggle('sel');
+      else resolveMc(card,wrap,b);
+    };
+    wrap.appendChild(b);
+  });
+  if(multi){
+    const hint=document.createElement('div');hint.className='mchint';hint.textContent='Több válasz is helyes lehet — jelöld be mind, majd Ellenőrzés.';wrap.appendChild(hint);
+    const chk=document.createElement('button');chk.type='button';chk.className='mccheck';chk.textContent='Ellenőrzés';
+    chk.onclick=()=>resolveMc(card,wrap,null);wrap.appendChild(chk);
+  }
+  card.insertBefore(wrap,$('.showbtn',card)||hide);
+  card.classList.add('ismc');
+  return true;
+}
+function resolveMc(card,wrap,chosen){
+  if(wrap.classList.contains('answered'))return;
+  const multi=wrap.classList.contains('multi');
+  if(multi&&!$$('.mcopt.sel',wrap).length)return; /* üresen ne lehessen ellenőrizni */
+  wrap.classList.add('answered');
+  let good=true;
+  $$('.mcopt',wrap).forEach(b=>{
+    const isC=b.dataset.ok==='1';
+    const sel=multi?b.classList.contains('sel'):(b===chosen);
+    if(isC)b.classList.add('correct');
+    if(sel&&!isC){b.classList.add('wrong');good=false;}
+    if(!sel&&isC){if(multi)b.classList.add('missed');good=false;}
+  });
+  gradeCardMc(card,good?'ok':'bad');
+}
+
+/* ---------- témakör-eszközök: keverés / törlés ---------- */
+function resetCardUI(card){
+  card.classList.remove('open','mok','mpart','mbad');
+  const w=$('.mcopts',card);
+  if(w){w.classList.remove('answered');$$('.mcopt',w).forEach(o=>o.classList.remove('sel','correct','wrong','missed'));}
+  const gr=$('.gres',card);if(gr)gr.remove();
+  $$('.mbtn',card).forEach(x=>x.classList.remove('sel'));
+}
+function clearQids(qids){
+  if(!Store.data)return;
+  qids.forEach(qid=>{delete Store.data.guesses[qid];delete Store.data.marks[qid];if(Store.data.srs)delete Store.data.srs[qid];});
+  Store.data.updated=Date.now();Store.saveLocal();
+}
+function clearTopic(topic){
+  const cards=topicCards(topic);
+  clearQids(cards.map(c=>c.dataset.qid).filter(Boolean));
+  cards.forEach(resetCardUI);updateBars();
+}
+function clearAllKviz(){
+  const cards=$$('#kviz .card');
+  clearQids(cards.map(c=>c.dataset.qid).filter(Boolean));
+  cards.forEach(resetCardUI);updateBars();
+}
+function shuffleTopic(topic){
+  const cards=topicCards(topic).filter(c=>c.classList.contains('card'));
+  if(cards.length<2)return;
+  const anchor=cards[0].previousElementSibling;
+  shuffle(cards);
+  let prev=anchor;
+  cards.forEach(c=>{prev.after(c);prev=c;});
+}
+function renderTopicTools(){
+  $$('#kviz .topic').forEach(t=>{
+    const wrap=document.createElement('div');wrap.className='topicbtns';
+    if(t.id==='t-kviz'){
+      const b=document.createElement('button');b.className='tbtn tbtn-danger';b.textContent='🗑 Összes válasz törlése';
+      b.onclick=()=>{if(confirm('Biztosan törlöd az ÖSSZES kvízkérdésnél a válaszaidat? Ez nem vonható vissza.'))clearAllKviz();};
+      wrap.appendChild(b);t.appendChild(wrap);return;
+    }
+    if(!t.id||t.id.indexOf('k-')!==0)return;
+    const sh=document.createElement('button');sh.className='tbtn';sh.textContent='🔀 Keverés';
+    sh.onclick=()=>shuffleTopic(t);
+    const cl=document.createElement('button');cl.className='tbtn';cl.textContent='🗑 Törlés';
+    cl.onclick=()=>{if(confirm('Törlöd ennek a témakörnek a válaszait?'))clearTopic(t);};
+    wrap.appendChild(sh);wrap.appendChild(cl);t.appendChild(wrap);
+  });
+}
+
 function renderInteractions(){
   $$('.card.tf').forEach(card=>{
     const box=$('.gbtns',card);if(!box)return;
@@ -3228,8 +3379,9 @@ function renderInteractions(){
     });
   });
   $$('.card.qa, .vcard.qa').forEach(card=>{
+    const mc=card.closest('#kviz')?setupMc(card):false;
     const sb=$('.showbtn',card);
-    if(sb)sb.onclick=()=>card.classList.add('open');
+    if(sb){if(mc)sb.style.display='none';else sb.onclick=()=>card.classList.add('open');}
     const hide=$('.hide',card);if(!hide)return;
     const mb=document.createElement('div');mb.className='mbtns';
     [['ok','Tudtam'],['part','Részben'],['bad','Nem tudtam']].forEach(([m,t])=>{
@@ -3628,6 +3780,7 @@ renderGlossary();
 renderCbars();
 assignQids();
 renderInteractions();
+renderTopicTools();
 renderLessons();
 initGyak();
 initUser();
