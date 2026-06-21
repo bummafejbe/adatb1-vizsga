@@ -3741,12 +3741,21 @@ function gradeCardMc(card,outcome){
   $$('.mbtn',card).forEach(x=>x.classList.toggle('sel',x.dataset.m===outcome));
   updateBars();
 }
+function cleanOpt(html){
+  /* az opció-felirat egységesítése: a (jellemzően a rossz válaszokon lévő) idézőjeles
+     csomagolás és a „— cáfolat” utótag eltávolítása, hogy ne árulja el a helyes választ.
+     A záró idézőjel a dash előtt feltétel védi a helyes opciókat (azokban nincs ilyen minta). */
+  let s=html.trim();
+  s=s.replace(/[”“"»]\s*[—–]\s[\s\S]*$/,'');   /* záró idézőjel utáni „— magyarázat” utótag */
+  s=s.replace(/[„“”«»]/g,'');                   /* minden tipográfiai idézőjel (a "0"-féle egyenes értékek maradnak) */
+  return s.trim();
+}
 function setupMc(card){
   const hide=$('.hide',card);if(!hide)return false;
   const cUl=hide.querySelector('ul.anslist:not(.wrong)');
   const wUl=hide.querySelector('ul.anslist.wrong');
   if(!cUl||!wUl)return false;
-  const liHtml=ul=>$$('li',ul).map(li=>li.innerHTML.trim()).filter(Boolean);
+  const liHtml=ul=>$$('li',ul).map(li=>cleanOpt(li.innerHTML)).filter(Boolean);
   const correct=liHtml(cUl), wrong=liHtml(wUl);
   if(!correct.length||!wrong.length)return false;
   const multi=correct.length>1;
