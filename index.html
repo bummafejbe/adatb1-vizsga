@@ -233,6 +233,9 @@ body.study .mcopts{display:none}
 .mcopt{display:flex;gap:10px;align-items:flex-start;text-align:left;width:100%;background:var(--card2);border:1px solid var(--line2);color:var(--read);border-radius:9px;padding:9px 13px;font-family:var(--fb);font-size:.92rem;line-height:1.4;cursor:pointer;transition:border-color .12s,background .12s}
 .mcopt:hover{border-color:var(--acc)}
 .mcopt .mctext{flex:1}
+/* az opciók egységes megjelenése: a helyes válaszból örökölt kiemelés ne árulkodjon */
+.mcopt .mctext strong,.mcopt .mctext b{font-weight:inherit}
+.mcopt .mctext em,.mcopt .mctext i{font-style:normal}
 .mcopt .mcmark{flex:0 0 auto;width:19px;height:19px;border:1.5px solid var(--line2);border-radius:5px;margin-top:1px;display:inline-flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;color:transparent}
 .mcopts:not(.multi) .mcopt .mcmark{border-radius:50%}
 .mcopt.sel{border-color:var(--acc)}
