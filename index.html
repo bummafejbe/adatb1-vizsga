@@ -236,6 +236,9 @@ body.study .mcopts{display:none}
 /* az opciók egységes megjelenése: a helyes válaszból örökölt kiemelés ne árulkodjon */
 .mcopt .mctext strong,.mcopt .mctext b{font-weight:inherit}
 .mcopt .mctext em,.mcopt .mctext i{font-style:normal}
+/* jelvény: ahol a válaszlehetőségeket én állítottam össze (mcgen) */
+#kviz .card.mcgen .q{padding-right:100px}
+.mcgenbadge{position:absolute;top:10px;right:12px;background:var(--accbg);border:1px solid var(--acc);color:var(--acc2);font-family:var(--fh);font-size:.64rem;padding:2px 9px;border-radius:999px;cursor:help;white-space:nowrap;z-index:2}
 .mcopt .mcmark{flex:0 0 auto;width:19px;height:19px;border:1.5px solid var(--line2);border-radius:5px;margin-top:1px;display:inline-flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;color:transparent}
 .mcopts:not(.multi) .mcopt .mcmark{border-radius:50%}
 .mcopt.sel{border-color:var(--acc)}
@@ -641,7 +644,7 @@ WHERE  feltétel;</p>
     </div>
   </div>
 
-  <div class="card qa">
+  <div class="card qa mcgen">
     <span class="qno">K120</span>
     <p class="q">A relációs adatmodell kapcsán mi NEM számít atomi értéknek?</p>
     <button class="showbtn">Mutasd a választ</button>
@@ -774,7 +777,7 @@ WHERE  feltétel;</p>
     </div>
   </div>
 
-  <div class="card qa">
+  <div class="card qa mcgen">
     <span class="qno">K7</span>
     <p class="q">Ha egy értéket (NULL értéket is beleértve) NULL-lal hasonlítunk, milyen logikai értéket kapunk?</p>
     <button class="showbtn">Mutasd a választ</button>
@@ -786,7 +789,7 @@ WHERE  feltétel;</p>
     </div>
   </div>
 
-  <div class="card qa">
+  <div class="card qa mcgen">
     <span class="qno">K8</span>
     <p class="q">Hallgatók(név, cím) relációséma. Melyik lekérdezés adja vissza biztosan azokat és csak azokat a hallgatókat, akiknek a neve ‘R’ betűvel kezdődik, és a nevük utolsó előtti karaktere ‘z’?</p>
     <button class="showbtn">Mutasd a választ</button>
@@ -798,7 +801,7 @@ WHERE  feltétel;</p>
     </div>
   </div>
 
-  <div class="card qa">
+  <div class="card qa mcgen">
     <span class="qno">K10</span>
     <p class="q">Milyen logikai értékek vannak megengedve az SQL-ben?</p>
     <button class="showbtn">Mutasd a választ</button>
@@ -1244,7 +1247,7 @@ WHERE  feltétel;</p>
     </div>
   </div>
 
-  <div class="card qa">
+  <div class="card qa mcgen">
     <span class="qno">K30</span>
     <p class="q">R-nek A, B és C az attribútumai. Ha csak A kulcs, hány szuperkulcsa van R-nek?</p>
     <button class="showbtn">Mutasd a választ</button>
@@ -2156,7 +2159,7 @@ WHERE  feltétel;</p>
     </div>
   </div>
 
-  <div class="card qa">
+  <div class="card qa mcgen">
     <span class="qno">K132</span>
     <p class="q">Az alábbiak közül mire igaz az, hogy XML lekérdező nyelv?</p>
     <button class="showbtn">Mutasd a választ</button>
@@ -3748,6 +3751,10 @@ function cleanOpt(html){
   let s=html.trim();
   s=s.replace(/[”“"»]\s*[—–]\s[\s\S]*$/,'');   /* záró idézőjel utáni „— magyarázat” utótag */
   s=s.replace(/[„“”«»]/g,'');                   /* minden tipográfiai idézőjel (a "0"-féle egyenes értékek maradnak) */
+  s=s.trim();
+  /* egységes kezdőbetű: ha sima kisbetűvel kezdődik (tehát nem jelölés/kód/mozaikszó/szám), nagybetűsítjük,
+     hogy a kis/nagybetűből ne lehessen kitalálni a helyes választ */
+  if(/^[a-záéíóöőúüű]/.test(s)) s=s.charAt(0).toLocaleUpperCase('hu')+s.slice(1);
   return s.trim();
 }
 function setupMc(card){
@@ -3778,6 +3785,11 @@ function setupMc(card){
   }
   card.insertBefore(wrap,$('.showbtn',card)||hide);
   card.classList.add('ismc');
+  if(card.classList.contains('mcgen')&&!$('.mcgenbadge',card)){
+    const g=document.createElement('span');g.className='mcgenbadge';g.textContent='✎ saját opciók';
+    g.title='A válaszlehetőségeket (a hibás opciókat) én állítottam össze, nem az eredeti kérdésbankból. A helyesnek jelölt válasz a hivatalos kulcs szerinti.';
+    card.appendChild(g);
+  }
   return true;
 }
 function resolveMc(card,wrap,chosen){
