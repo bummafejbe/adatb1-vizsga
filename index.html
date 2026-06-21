@@ -288,6 +288,7 @@ body.study .mcopts{display:none}
   <div class="hrow2">
     <nav id="tabs">
       <button data-t="tananyag" class="active">Tananyag</button>
+      <button data-t="napos">1 napos felkészítő</button>
       <button data-t="attekintes">Áttekintés</button>
       <button data-t="gyak">Gyakorlás</button>
       <button data-t="kviz">Kvízkérdések</button>
@@ -2301,6 +2302,476 @@ WHERE  feltétel;</p>
       <p class="expl">Roll-up: napi adatok → havi összesítés. A drill-down ellentéte.</p>
     </div>
   </div>
+</section>
+
+<!-- ============================= 1 NAPOS FELKÉSZÍTŐ ============================= -->
+<style>
+#napos{max-width:880px}
+#napos .nlead{color:var(--read);font-size:1rem;line-height:1.6;margin:2px 0 18px}
+#napos .nsched{width:100%;border-collapse:collapse;margin:6px 0 8px;font-size:.92rem}
+#napos .nsched th,#napos .nsched td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+#napos .nsched th{background:var(--card2);color:var(--acc2);font-family:var(--fh)}
+#napos .nsched td:first-child{white-space:nowrap;color:var(--acc);font-family:var(--fm);font-size:.85rem}
+#napos .nphase{margin:26px 0 10px;font-family:var(--fh);font-size:1.15rem;color:var(--white);border-bottom:2px solid var(--line2);padding-bottom:6px}
+#napos details.nb{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:10px;margin:9px 0;padding:0 14px}
+#napos details.nb[open]{border-left-color:var(--acc2)}
+#napos details.nb>summary{cursor:pointer;list-style:none;padding:12px 0;font-family:var(--fh);font-size:1.02rem;color:var(--white);display:flex;align-items:center;gap:9px}
+#napos details.nb>summary::-webkit-details-marker{display:none}
+#napos details.nb>summary::before{content:"▸";color:var(--acc);font-size:.9rem;transition:transform .15s}
+#napos details.nb[open]>summary::before{transform:rotate(90deg)}
+#napos details.nb>summary .ntag{margin-left:auto;font-family:var(--fm);font-size:.72rem;color:var(--dim);font-weight:400}
+#napos .nbody{padding:2px 0 14px;border-top:1px solid var(--line);margin-top:-1px}
+#napos .nbody>*:first-child{margin-top:10px}
+#napos h4{font-family:var(--fh);color:var(--acc2);font-size:.95rem;margin:15px 0 5px}
+#napos p,#napos li{color:var(--read);line-height:1.6;font-size:.95rem}
+#napos ul,#napos ol{margin:5px 0 5px 4px;padding-left:20px}
+#napos li{margin:3px 0}
+#napos .gotcha{background:#241a10;border:1px solid #5a4520;border-radius:8px;padding:9px 12px;margin:10px 0;font-size:.92rem}
+#napos .gotcha b{color:var(--part)}
+#napos .ex{background:var(--bg2);border:1px solid var(--line2);border-radius:8px;padding:10px 13px;margin:10px 0}
+#napos .ex .exh{font-family:var(--fh);color:var(--info);font-size:.85rem;margin-bottom:5px}
+#napos .quizref{font-size:.85rem;color:var(--dim);margin-top:12px;border-top:1px dashed var(--line2);padding-top:8px}
+#napos .quizref b{color:var(--acc2)}
+#napos .tool{background:var(--card);border:1px solid var(--line2);border-radius:9px;padding:11px 14px;margin:11px 0}
+#napos .tool h5{font-family:var(--fh);color:var(--acc);font-size:.95rem;margin:0 0 6px}
+#napos .steps{counter-reset:st;list-style:none;padding-left:0}
+#napos .steps>li{counter-increment:st;position:relative;padding-left:30px;margin:7px 0}
+#napos .steps>li::before{content:counter(st);position:absolute;left:0;top:0;width:21px;height:21px;background:var(--accbg);border:1px solid var(--acc);color:var(--acc);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-family:var(--fm)}
+#napos code,#napos .m{font-family:var(--fm)}
+#napos .note{background:#10222e;border:1px solid #2a4a5e;border-left:3px solid var(--info);border-radius:8px;padding:9px 12px;margin:10px 0;font-size:.9rem}
+</style>
+
+<section class="part" id="napos">
+  <div class="topic" id="t-napos">
+    <h2>1 napos felkészítő</h2>
+    <div class="tsub">Az egész félév intenzív, de teljes átvétele egy nap alatt — minden témakör levezetve annyira, hogy a kvízkérdéseket meg tudd válaszolni, a végén a <strong>3. feladat</strong> (gyakorlati feladatok) teljes eszköztára és levezetett példái.</div>
+  </div>
+
+  <p class="nlead">Ez egy önálló, felülről lefelé olvasható összefoglaló. Minden témakör egy <strong>lenyitható blokk</strong>: a lényeg, a képletek, a tipikus buktatók és egy mini-példa, plusz hogy <em>a kvízben ezt melyik kérdések kérik</em>. A 3. feladat (gyakorlati rész) a legalján kapott külön, részletesen levezetett szakaszt.</p>
+
+  <h3 class="nphase">⏱ 1 napos menetrend (≈ 8–9 óra)</h3>
+  <table class="nsched">
+    <tr><th>Idő</th><th>Blokk</th><th>Mit veszel át</th></tr>
+    <tr><td>0:00–0:20</td><td>Bemelegítés</td><td>A vizsga felépítése (lásd Áttekintés fül): 4 rész, küszöbök. Itt a célok rögzítése.</td></tr>
+    <tr><td>0:20–2:50</td><td>A — Lekérdezés</td><td>Relációs alapok · Relációs algebra + optimalizálás · SQL és NULL · Összesítés · Összekapcsolások</td></tr>
+    <tr><td>2:50–4:30</td><td>B — Integritás &amp; üzemeltetés</td><td>Megszorítások/triggerek · Tranzakciók · Nézetek/indexek/hangolás · Jogosultságok</td></tr>
+    <tr><td>4:30–6:15</td><td>C — Tervezéselmélet</td><td>Funkcionális függőségek · Felbontások/normálformák (BCNF, 3NF) · Többértékű függőségek + 4NF</td></tr>
+    <tr><td>6:15–7:45</td><td>D — Modellek &amp; XML</td><td>E/K modell · Objektum-relációs · XML/DTD/séma · XPath/XQuery · OLAP/adattárház</td></tr>
+    <tr><td>7:45–9:00</td><td>E — 3. feladat</td><td>A gyakorlati feladatok eszköztára + a levezetett példák átgyakorlása (alább)</td></tr>
+    <tr><td>záró</td><td>Önteszt</td><td>Gyakorlás fül → Próbavizsga; a gyengéket „Csak amit nem értek” szűrővel ismételd.</td></tr>
+  </table>
+  <div class="note">Tipp: olvasás közben minden blokk alján ott a <b>„Ezt kérdezi a kvíz”</b> — ugorj a Kvízkérdések fül adott témakörére, és próbáld megválaszolni a felsorolt kérdéseket fejből. Amit nem tudsz, oda térj vissza.</div>
+
+  <!-- ===================== BLOKK A ===================== -->
+  <h3 class="nphase">A · Lekérdezés</h3>
+
+  <details class="nb"><summary>1. Relációs modell alapok<span class="ntag">k-alap</span></summary>
+  <div class="nbody">
+    <h4>A lényeg</h4>
+    <p>Az <strong>adatbázis</strong> a valóság egy részét modellező, <strong>rendezett, visszakereshető</strong> adatgyűjtemény; a <strong>DBMS</strong> (adatbázis-kezelő) kezeli. A relációs modellben az adat <strong>táblákban</strong> (relációkban) van.</p>
+    <ul>
+      <li><strong>Séma</strong>: a tábla neve + attribútumai (típusokkal) — <em>állandó</em>. Pl. <span class="m">Dolgozó(név, város, fizetés)</span>.</li>
+      <li><strong>Előfordulás</strong>: a tábla aktuális <em>sorhalmaza</em> — a módosításokkal <em>változik</em>.</li>
+      <li><strong>Sor</strong> = rekord (vízszintes), <strong>attribútum</strong> = oszlop, <strong>mező</strong> = egy sor egy oszlopértéke.</li>
+    </ul>
+    <h4>Atomi érték</h4>
+    <p>A mezők értéke <strong>atomi</strong>: szám, sztring, dátum… <strong>Nem atomi</strong> (tehát tilos a tiszta relációs modellben): <span class="m">halmaz</span>, <span class="m">tömb</span>, rekord, beágyazott reláció. Ezt majd az objektum-relációs modell oldja fel.</p>
+    <h4>Kulcs, szuperkulcs</h4>
+    <p><strong>Kulcs</strong>: olyan attribútumhalmaz, amelyen <strong>nem egyezhet meg két sor</strong>, és minimális (egyetlen attribútumát elhagyva már nem kulcs). <strong>Szuperkulcs</strong>: kulcsot tartalmazó halmaz (nem feltétlen minimális).</p>
+    <div class="gotcha"><b>Buktató:</b> az aktuális előfordulás csak <strong>cáfolni</strong> tudja a kulcsságot (ha két sor megegyezik a halmazon → nem kulcs), <strong>bizonyítani nem</strong> — hogy valami valóban kulcs, az a modellezéstől (valóvilágtól) függ.</p></div>
+    <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K114–K121 (iratkupac ≠ adatbázis; két Excel-fájl = hétköznapi adatbázis; mező/sor/oszlop fogalmak; mi nem atomi; kulcs-cáfolat előfordulásból).</p>
+  </div></details>
+
+  <details class="nb"><summary>2. Relációs algebra és optimalizálás<span class="ntag">k-relalg</span></summary>
+  <div class="nbody">
+    <h4>A műveletek</h4>
+    <ul>
+      <li><span class="m">σ&lt;feltétel&gt;(R)</span> — <strong>szelekció</strong>: sorok szűrése.</li>
+      <li><span class="m">Π&lt;attribútumok&gt;(R)</span> — <strong>projekció</strong>: oszlopok kiválasztása + <em>duplikátumok eltüntetése</em> (halmaz!).</li>
+      <li><span class="m">R × S</span> — Descartes-szorzat; <span class="m">R ⋈ S</span> — <strong>természetes összekapcsolás</strong> (azonos nevű attribútumokon egyenlőség); <span class="m">R ⋈θ S</span> — théta-join tetszőleges θ feltétellel.</li>
+      <li><span class="m">∪ ∩ −</span> — unió/metszet/különbség, csak <strong>uniókompatibilis</strong> (azonos sémájú) relációkon. <span class="m">ρ</span> — átnevezés.</li>
+    </ul>
+    <h4>Monotonitás</h4>
+    <p>Egy művelet <strong>monoton</strong>, ha bármely bemenetéhez sort adva az eredmény nem csökken. <strong>Monoton:</strong> σ, Π, ×, ⋈, ∪, ∩. <strong>NEM monoton:</strong> a <strong>különbség</strong> (R − S): ha S-hez adunk sort, az eredmény <em>csökkenhet</em>.</p>
+    <h4>Eredmény sorszáma (n = |R|, m = |S|)</h4>
+    <ul>
+      <li>σ: 0…n · Π: 1…n · ∪: max(n,m)…n+m · ∩: 0…min(n,m) · −: 0…n · ×: n·m · ⋈: 0…n·m</li>
+    </ul>
+    <h4>Optimalizálás (lekérdezésfa)</h4>
+    <p>A lekérdezés fává alakítható: a <strong>csúcsok a műveletek</strong>, az <strong>élek a köztes relációkat</strong> vezetik a szülő-művelethez. Fő szabály: a <strong>szelekciót és projekciót minél lejjebb</strong> told (a levelek felé) → korán szűrsz, kisebb köztes eredmények. A monoton műveletek sorrendje szabadon cserélhető a helyességet megtartva.</p>
+    <div class="gotcha"><b>Buktató:</b> egy reláció-előfordulás mint <strong>halmaz</strong> egyféleképp áll elő (a sorok és attribútumok sorrendje nem számít). A „hányféleképp reprezentálható” kérdéseknél erre figyelj.</p></div>
+    <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K109–K119 (metszet monoton; reprezentációk száma; eredmény sorszáma; lekérdezésfa élei).</p>
+  </div></details>
+
+  <details class="nb"><summary>3. SQL alapok és a NULL<span class="ntag">k-sql</span></summary>
+  <div class="nbody">
+    <h4>SELECT–FROM–WHERE</h4>
+    <p>A <span class="m">FROM</span> adja a (szorzott) sorokat, a <span class="m">WHERE</span> szűr, a <span class="m">SELECT</span> vetít. Egy sor csak akkor kerül az eredménybe, ha a WHERE értéke <strong>TRUE</strong> (nem elég az UNKNOWN!).</p>
+    <h4>Háromértékű logika</h4>
+    <p>SQL-ben az igazságértékek: <strong>TRUE, FALSE, UNKNOWN</strong>. (TRUE=1, FALSE=0, UNKNOWN=½; <span class="m">AND = MIN</span>, <span class="m">OR = MAX</span>, <span class="m">NOT(x)=1−x</span>.)</p>
+    <h4>NULL</h4>
+    <ul>
+      <li>A NULL jelentése lehet: <strong>hiányzó</strong> (van értéke, nem ismerjük) vagy <strong>értelmetlen</strong> (nincs is).</li>
+      <li>Bármilyen összehasonlítás NULL-lal → <strong>UNKNOWN</strong>, még a <span class="m">NULL = NULL</span> is! NULL-t csak <span class="m">IS NULL</span> / <span class="m">IS NOT NULL</span> tesztel.</li>
+    </ul>
+    <h4>Mintaillesztés &amp; DDL</h4>
+    <p><span class="m">LIKE</span>: <span class="m">%</span> = akárhány karakter, <span class="m">_</span> = pontosan egy. Pl. „R-rel kezdődik, az utolsó előtti betű z” → <span class="m">'R%z_'</span>. Táblát a <strong>DDL</strong> (CREATE/ALTER/DROP) hoz létre; az adatmódosítás a <strong>DML</strong> (INSERT/UPDATE/DELETE). Attribútumtípusok: INTEGER, REAL/FLOAT, CHAR(n), VARCHAR(n), DATE, …</p>
+    <div class="gotcha"><b>Buktató:</b> a „mindig igaznak tűnő” feltétel (<span class="m">year &lt; 1992 OR year &gt;= 1992</span>) NULL-os soron UNKNOWN → a sor <strong>kimarad</strong>.</p></div>
+    <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K1, K2, K5, K7, K8, K10, K16, K17.</p>
+  </div></details>
+
+  <details class="nb"><summary>4. Összesítés és csoportosítás<span class="ntag">k-aggr</span></summary>
+  <div class="nbody">
+    <h4>Aggregáló függvények</h4>
+    <p><span class="m">COUNT, SUM, AVG, MIN, MAX</span>. A <strong>NULL-okat figyelmen kívül hagyják</strong> (kivéve <span class="m">COUNT(*)</span>, ami a sorokat számolja). <span class="m">DISTINCT</span> egy aggregáláson belül a <strong>duplikátumokat</strong> szűri ki összesítés előtt (pl. <span class="m">COUNT(DISTINCT x)</span>).</p>
+    <h4>GROUP BY / HAVING</h4>
+    <ul>
+      <li>Aggregálás a <span class="m">SELECT</span> és a <span class="m">HAVING</span> záradékban szerepelhet (az ORDER BY-on kívül és alkérdéseket leszámítva).</li>
+      <li>Ha van összesítés/GROUP BY, a SELECT-ben <strong>csak</strong> a csoportosító attribútumok és aggregátumok állhatnak.</li>
+      <li>A <span class="m">WHERE</span> a csoportosítás <em>előtt</em> szűr (soronként), a <span class="m">HAVING</span> a csoportosítás <em>után</em> (csoportonként, jellemzően aggregátumra). A HAVING eredménye: csoportok közül a feltételt teljesítők.</li>
+    </ul>
+    <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K3, K6, K9, K11, K12, K13.</p>
+  </div></details>
+
+  <details class="nb"><summary>5. Összekapcsolások<span class="ntag">k-join</span></summary>
+  <div class="nbody">
+    <h4>Belső vs külső join</h4>
+    <p><strong>Belső</strong> (INNER) join: csak az illeszkedő sorpárok. A <strong>külső</strong> (OUTER) összekapcsolás <strong>megőrzi a párosítatlan sorokat is</strong>, a hiányzó oldalt NULL-lal töltve: LEFT (bal megőrzve), RIGHT (jobb), FULL (mindkettő).</p>
+    <h4>Természetes vs théta</h4>
+    <p><span class="m">R ⋈ S</span> az azonos nevű attribútumokon egyenlőséget köt és <em>egyszer</em> tartja meg a közös oszlopot; <span class="m">R ⋈θ S</span> tetszőleges feltétel, minden oszlop megmarad. A természetes join eredménye ⊆ a megfelelő théta-join projekciójával képzett halmaznak.</p>
+    <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K4, K122.</p>
+  </div></details>
+
+  <!-- ===================== BLOKK B ===================== -->
+  <h3 class="nphase">B · Integritás és üzemeltetés</h3>
+
+  <details class="nb"><summary>6. Megszorítások és triggerek<span class="ntag">k-constr</span></summary>
+  <div class="nbody">
+    <h4>Megszorítás-típusok</h4>
+    <ul>
+      <li><strong>Kulcs</strong>: PRIMARY KEY (egy, nem lehet NULL) és UNIQUE (több is lehet, megengedhet NULL-t).</li>
+      <li><strong>Idegen kulcs</strong> (FOREIGN KEY): hivatkozási épség — a hivatkozott értéknek léteznie kell. Reakciók törlés/módosításra: <span class="m">CASCADE</span>, <span class="m">SET NULL</span>, <span class="m">RESTRICT/NO ACTION</span>.</li>
+      <li><strong>Attribútum-alapú</strong> (CHECK egy oszlopon) · <strong>sor-alapú</strong> (CHECK egy soron, több oszlopra) · <strong>globális</strong>: <span class="m">ASSERTION</span> (több táblára vonatkozó), illetve nézetekhez kötött.</li>
+    </ul>
+    <h4>Triggerek (ECA)</h4>
+    <p><strong>Esemény–Feltétel–Akció</strong>: INSERT/UPDATE/DELETE <em>előtt/után</em> (BEFORE/AFTER), FOR EACH ROW / STATEMENT. Hasznosak: olyan szabályok kikényszerítése, amit deklaratív megszorítással nehéz; naplózás, származtatott adat karbantartása, összetett épségi feltételek.</p>
+    <div class="gotcha"><b>Buktató:</b> PRIMARY KEY ⇒ egyedi <em>és</em> NOT NULL; UNIQUE ⇒ egyedi, de (jellemzően) megenged egy NULL-t, és több UNIQUE is lehet egy táblán.</p></div>
+    <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K14, K19, K20, K21, K22, K23.</p>
+  </div></details>
+
+  <details class="nb"><summary>7. Tranzakciók<span class="ntag">k-trans</span></summary>
+  <div class="nbody">
+    <h4>ACID</h4>
+    <p><strong>Atomicitás</strong> (mind vagy semmi), <strong>Konzisztencia</strong> (épség megmarad), <strong>Izoláció</strong> (mintha sorban futnának), <strong>Tartósság</strong> (commit után megmarad).</p>
+    <h4>Befejezés</h4>
+    <p>Standard SQL-ben a tranzakciót a <span class="m">COMMIT</span> (véglegesít) vagy a <span class="m">ROLLBACK</span> (visszagörget) zárja. Izolációs szintek pl. READ UNCOMMITTED → SERIALIZABLE; alacsonyabb szinten piszkos olvasás / nem-ismételhető olvasás / fantomsorok jelenhetnek meg.</p>
+    <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K15, K18.</p>
+  </div></details>
+
+  <details class="nb"><summary>8. Nézettáblák, indexek, hangolás<span class="ntag">k-view</span></summary>
+  <div class="nbody">
+    <h4>Nézet (VIEW)</h4>
+    <p>Tárolt lekérdezés = <strong>virtuális tábla</strong> (nem tárolja az adatot, futáskor számolódik). Egyszerűsít, jogosultságot szűkít. Korlátozottan módosítható (egyszerű, egytáblás nézet igen; aggregált/összetett általában nem). A <strong>materializált</strong> nézet tárolja az eredményt (frissíteni kell).</p>
+    <h4>Index</h4>
+    <p>Gyorsítja a keresést/összekapcsolást (jellemzően B-fa vagy hash), de <strong>lassítja a módosítást</strong> és helyet foglal. Egy táblán több index lehet. Tipikusan a WHERE/JOIN/ORDER BY-ban gyakran használt oszlopokra érdemes.</p>
+    <h4>Hangolás (tuning)</h4>
+    <p>A hangolási szakértő a <strong>tipikus lekérdezés-terhelés</strong> alapján javasol indexeket/sémát: mit éri meg indexelni, mit nem (a módosítási költség miatt), denormalizálás megfontolása.</p>
+    <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K31, K32, K33.</p>
+  </div></details>
+
+  <details class="nb"><summary>9. Jogosultságok<span class="ntag">k-jog</span></summary>
+  <div class="nbody">
+    <h4>GRANT / REVOKE</h4>
+    <p><span class="m">GRANT &lt;jog&gt; ON &lt;elem&gt; TO &lt;felhasználó&gt; [WITH GRANT OPTION]</span> — jog adása; a GRANT OPTION-nel a kapott jog <strong>továbbadható</strong>. <span class="m">REVOKE</span> — jog visszavonása (kaszkádolva a tőle származó jogokat is).</p>
+    <p>Jogok adhatók pl. <strong>táblákra, nézetekre, oszlopokra</strong> (SELECT/INSERT/UPDATE/DELETE/REFERENCES…). A jogok terjedését <strong>grant-diagram</strong> követi: csúcsok = (felhasználó, jog) párok, élek = ki kitől kapta; visszavonáskor ez mutatja, mely jogok maradnak megalapozottak (van-e másik forrásuk).</p>
+    <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K102, K105, K106, K108.</p>
+  </div></details>
+
+  <!-- ===================== BLOKK C ===================== -->
+  <h3 class="nphase">C · Tervezéselmélet</h3>
+
+  <details class="nb"><summary>10. Funkcionális függőségek (FF)<span class="ntag">k-ff</span></summary>
+  <div class="nbody">
+    <h4>Definíció</h4>
+    <p><span class="m">X → Y</span> (X meghatározza Y-t): ha két sor megegyezik X-en, akkor Y-on is. <strong>Armstrong-axiómák</strong>: reflexivitás (<span class="m">Y⊆X ⇒ X→Y</span>), bővítés (<span class="m">X→Y ⇒ XZ→YZ</span>), tranzitivitás (<span class="m">X→Y, Y→Z ⇒ X→Z</span>). Levezetett: egyesítés, dekompozíció (a <strong>jobboldal szétvágható</strong>: <span class="m">X→YZ ⇔ X→Y és X→Z</span> — a baloldal NEM!).</p>
+    <h4>Attribútumhalmaz lezárása (X⁺)</h4>
+    <p>Mit határoz meg X az F függőséghalmaz mellett: indulj <span class="m">X⁺ = X</span>-ből, és amíg van olyan <span class="m">A→B</span> FF, hogy <span class="m">A ⊆ X⁺</span>, vedd hozzá B-t. <strong>X kulcs ⇔ X⁺ = az összes attribútum</strong> (és minimális).</p>
+    <h4>Kulcs &amp; szuperkulcs</h4>
+    <p>K kulcs: <span class="m">K⁺</span> = minden attribútum, és K minimális ilyen. Ha csak <span class="m">{A}</span> kulcs egy n-attribútumú sémán, akkor a szuperkulcsok: minden A-t tartalmazó halmaz → <span class="m">2ⁿ⁻¹</span> db.</p>
+    <div class="gotcha"><b>Buktató:</b> a lezárás <em>geometriailag</em>: az összes lehetséges előfordulás közül azok, amelyek kielégítik F-et. A jobboldal szétvágható, a baloldal nem.</p></div>
+    <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K24–K30. (A lezárás/projekció <strong>levezetése</strong> a 3. feladatban!)</p>
+  </div></details>
+
+  <details class="nb"><summary>11. Felbontások és normálformák (BCNF, 3NF)<span class="ntag">k-nf</span></summary>
+  <div class="nbody">
+    <h4>Miért bontunk?</h4>
+    <p>A <strong>redundancia</strong> (ugyanaz az adat többször) <strong>anomáliákat</strong> okoz: módosítási (egy helyen frissül), beszúrási (nem tudunk felvinni adatot kiegészítő nélkül), törlési (adat elveszik). A felbontás ezt szünteti meg.</p>
+    <h4>Két jó tulajdonság</h4>
+    <ul>
+      <li><strong>Veszteségmentes</strong> (lossless join): <span class="m">r = ΠR₁(r) ⋈ … ⋈ ΠRₖ(r)</span>, azaz visszajoinolva pont az eredetit kapjuk. Kétfelé bontásnál elég, ha a közös attribútumok <strong>kulcsai legalább az egyik résznek</strong>.</li>
+      <li><strong>Függőségőrző</strong>: a vetített FF-ek együttese implikálja az eredeti F-et (nem veszik el ellenőrzési képesség).</li>
+    </ul>
+    <h4>Normálformák</h4>
+    <ul>
+      <li><strong>BCNF</strong>: minden nemtriviális <span class="m">X→A</span> FF-ben X <strong>szuperkulcs</strong>. Mindig elérhető <em>veszteségmentesen</em>, de néha a függőségőrzés rovására.</li>
+      <li><strong>3NF</strong>: minden nemtriviális <span class="m">X→A</span>-ra X szuperkulcs <em>vagy</em> A <strong>elsődleges attribútum</strong> (valamely kulcs része). Mindig elérhető veszteségmentesen <em>és</em> függőségőrzően.</li>
+    </ul>
+    <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K34–K43, K123. (A <strong>BCNF-felbontás</strong> és a <strong>Chase-teszt</strong> a 3. feladatban!)</p>
+  </div></details>
+
+  <details class="nb"><summary>12. Többértékű függőségek és 4NF<span class="ntag">k-tef</span></summary>
+  <div class="nbody">
+    <h4>TÉF (→→)</h4>
+    <p><span class="m">X →→ Y</span> (X többértékűen meghatározza Y-t): adott X-értékhez tartozó Y-halmaz <strong>független</strong> a többi attribútumtól. Pontosan: ha két sor megegyezik X-en, akkor Y-értékeiket „felcserélve” kapott sorok is benne vannak. Minden FF egyben TÉF (<span class="m">X→Y ⇒ X→→Y</span>).</p>
+    <h4>4NF</h4>
+    <p>Minden nemtriviális <span class="m">X→→Y</span> TÉF-re X <strong>szuperkulcs</strong>. A 4NF erősebb a BCNF-nél; a TÉF okozta redundanciát (független többértékű attribútumok „keresztszorzata”) szünteti meg. Felbontási szabály: <span class="m">X→→Y</span> mentén bontsd <span class="m">XY</span>-ra és <span class="m">X∪(R−Y)</span>-ra (veszteségmentes).</p>
+    <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K44–K50, K124–K126, K129.</p>
+  </div></details>
+
+  <!-- ===================== BLOKK D ===================== -->
+  <h3 class="nphase">D · Modellek és XML</h3>
+
+  <details class="nb"><summary>13. Egyed-kapcsolat (E/K) modell<span class="ntag">k-ek</span></summary>
+  <div class="nbody">
+    <h4>Alapfogalmak</h4>
+    <p><strong>Egyedhalmaz</strong> (téglalap), <strong>attribútum</strong> ( ellipszis; a kulcs aláhúzva), <strong>kapcsolat</strong> (rombusz). A kapcsolat <strong>multiplicitása</strong>: egy-egy, egy-sok, sok-sok (nyíl/jelölés a „felé egy” oldalra). <strong>Szerepkör</strong> és <strong>ternáris</strong> (3 egyedhalmaz közti) kapcsolat is lehet.</p>
+    <h4>Speciálisak</h4>
+    <ul>
+      <li><strong>Gyenge egyedhalmaz</strong>: nincs saját teljes kulcsa, egy másik egyedhalmaztól (azonosító kapcsolaton át) kölcsönöz kulcsattribútumot.</li>
+      <li><strong>Alosztály/ISA</strong>: öröklődés (alosztály örökli az ősosztály attribútumait), „isa” háromszög.</li>
+    </ul>
+    <p>A relációsémává írás és az alosztály-stratégiák részletesen + levezetve a <strong>3. feladatban</strong>.</p>
+    <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K45–K61, K127–K130.</p>
+  </div></details>
+
+  <details class="nb"><summary>14. Objektum-relációs adatbázisok<span class="ntag">k-objrel</span></summary>
+  <div class="nbody">
+    <h4>Eszközök</h4>
+    <ul>
+      <li><strong>UDT / sortípus</strong>: <span class="m">CREATE TYPE BarType AS (name CHAR(20), addr CHAR(20));</span> majd tábla belőle: <span class="m">CREATE TABLE Bars OF BarType;</span> (Oracle) ill. oszloptípusként.</li>
+      <li><strong>REF</strong>: objektumhivatkozás (mutató egy sor-objektumra); a „<span class="m">.</span>” (pont) az attribútum-/REF-bejárásra (dereferálás, beágyazott mező elérése).</li>
+      <li><strong>Beágyazott tábla</strong> (nested table) és a <span class="m">TABLE(...)</span> függvény: kollekció „kibontása” sorokká; <span class="m">CAST</span> típuskonverzióhoz/kollekció átalakításához.</li>
+      <li><strong>Metódus</strong>: típushoz tartozó művelet; deklaráció a típusban, törzs külön (Oracle: CREATE TYPE BODY). <span class="m">PRAGMA RESTRICT_REFERENCES</span> jelzi, mihez nyúlhat a metódus (tisztaság).</li>
+    </ul>
+    <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K62–K73, K131. (OR-SQL példa a 3. feladatban.)</p>
+  </div></details>
+
+  <details class="nb"><summary>15. XML, DTD és XML séma<span class="ntag">k-xml</span></summary>
+  <div class="nbody">
+    <h4>Jól formált vs érvényes</h4>
+    <p><strong>Jól formált</strong> (well-formed): helyes XML szintaxis (egy gyökér, helyesen zárt/egymásba ágyazott elemek, idézőjeles attribútumok). <strong>Érvényes</strong> (valid): ezen felül megfelel egy sémának (DTD/XSD).</p>
+    <h4>DTD</h4>
+    <ul>
+      <li>Elem: <span class="m">&lt;!ELEMENT a (b, c*)&gt;</span> — sorrend, <span class="m">*</span>=0 vagy több, <span class="m">+</span>=1 vagy több, <span class="m">?</span>=0 vagy 1, <span class="m">|</span>=választás.</li>
+      <li>Attribútum: <span class="m">&lt;!ATTLIST a id ID #REQUIRED ref IDREF #IMPLIED&gt;</span>. Típusok: CDATA, ID, IDREF(S), enumeráció…</li>
+      <li><strong>ID</strong> = egyedi azonosító; <strong>IDREF</strong> = hivatkozás egy ID-ra (a DTD-beli „mutató”).</li>
+    </ul>
+    <h4>XML séma (XSD)</h4>
+    <p>Erősebb: <strong>adattípusok</strong>, számosság <span class="m">minOccurs</span>/<span class="m">maxOccurs</span> (a DTD <span class="m">+</span> ↔ minOccurs=1 maxOccurs=unbounded; <span class="m">*</span> ↔ minOccurs=0 maxOccurs=unbounded), <strong>key/keyref</strong> (ID/IDREF erősebb megfelelője), névterek. Egy útkifejezés eredménye elem- vagy attribútum-csomópontok sorozata.</p>
+    <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K74–K83. (DTD↔XSD megfeleltetés a 3. feladatban.)</p>
+  </div></details>
+
+  <details class="nb"><summary>16. XPath és XQuery<span class="ntag">k-xpath</span></summary>
+  <div class="nbody">
+    <h4>XPath</h4>
+    <p>Az XML fában <strong>navigál</strong> útkifejezéssel. <span class="m">/</span> = gyökérről, <span class="m">//</span> = tetszőleges mélységben, <span class="m">.</span> = aktuális, <span class="m">..</span> = szülő, <span class="m">@attr</span> = attribútum. <strong>Predikátum</strong> <span class="m">[...]</span>: szűrés, pl. <span class="m">//könyv[ár &lt; 10000]</span>. Alapértelmezett tengely a <strong>child</strong> (gyermek). A <span class="m">data(E)</span> az E csomópont szöveges/atomi értékét adja; <span class="m">&lt;&lt;</span> / <span class="m">&gt;&gt;</span> a dokumentum-sorrend szerinti összehasonlítás.</p>
+    <h4>XQuery — FLWOR</h4>
+    <p><span class="m">FOR</span> (iterál egy sorozaton, változónként egy elem), <span class="m">LET</span> (egyszer köt egy <em>teljes</em> sorozatot egy változóhoz), <span class="m">WHERE</span> (szűr), <span class="m">ORDER BY</span>, <span class="m">RETURN</span> (eredményt épít). Kvantorok: <span class="m">some $x in E satisfies F</span> / <span class="m">every $x in E satisfies F</span>.</p>
+    <div class="gotcha"><b>Buktató (K92):</b> üres E-re az <span class="m">every</span> igaz (üresen igaz), a <span class="m">some</span> hamis — szigorúan tehát létezik ilyen pár. A kulcs „Nem létezik” választ vár (nemüres E-t feltételezve); a vizsgán a kulcs szerint válaszolj, de tudd az üres eset kivételét.</p></div>
+    <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K84–K95, K113, K92, K132. (XPath/XQuery levezetés a 3. feladatban.)</p>
+  </div></details>
+
+  <details class="nb"><summary>17. OLTP, OLAP és adattárházak<span class="ntag">k-olap</span></summary>
+  <div class="nbody">
+    <h4>OLTP vs OLAP</h4>
+    <p><strong>OLTP</strong> (tranzakciófeldolgozás): sok rövid, író-olvasó művelet, aktuális adat, normalizált séma (pl. webshop rendelései). <strong>OLAP</strong> (elemzés): kevés, nagy, olvasó lekérdezés, történeti adat, aggregálás, denormalizált.</p>
+    <h4>Adattárház &amp; kocka</h4>
+    <ul>
+      <li><strong>Adattárház</strong>: integrált, történeti, elemzésre optimalizált; tipikus szervezés a <strong>csillagséma</strong>: középen <strong>ténytábla</strong> (mérőszámok + idegen kulcsok), körülötte <strong>dimenziótáblák</strong>.</li>
+      <li><strong>Adatkocka</strong> (MOLAP): a dimenziók a kocka tengelyei, a tények a belső pontokban; minden dimenziót kiegészítünk egy <span class="m">*</span> („összesítés”) értékkel.</li>
+      <li><strong>Drill-down</strong> = összesítés lebontása részletekre; <strong>roll-up</strong> = aggregálás (feljebb) egy/több dimenzió mentén.</li>
+    </ul>
+    <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K96–K104, K107.</p>
+  </div></details>
+
+  <!-- ===================== 3. FELADAT ===================== -->
+  <h3 class="nphase">★ 3. feladat — Gyakorlati feladatok (minden, ami kell)</h3>
+  <p class="nlead">A vizsga 3. része (50 perc, 2×10 pont) „az előadáson látottakhoz hasonló” gyakorlati feladat. Itt van <strong>minden eszköz</strong> (algoritmusok, szintaxis) és mindegyik típushoz egy <strong>lépésről lépésre levezetett</strong> példa. (Bővebb tárház a <em>Feladattípusok</em> fülön.)</p>
+
+  <!-- 3a FF -->
+  <details class="nb" open><summary>A) FF: lezárás, kulcs, projekció<span class="ntag">levezetés</span></summary>
+  <div class="nbody">
+    <div class="tool"><h5>Eszköztár — X⁺ lezárás algoritmus</h5>
+      <ol class="steps">
+        <li>Indulj: <span class="m">X⁺ := X</span>.</li>
+        <li>Keress olyan <span class="m">A→B ∈ F</span> FF-et, amelyre <span class="m">A ⊆ X⁺</span> de <span class="m">B ⊄ X⁺</span>.</li>
+        <li>Add hozzá: <span class="m">X⁺ := X⁺ ∪ B</span>. Ismételd, amíg nincs új attribútum.</li>
+        <li><span class="m">X</span> kulcs ⇔ <span class="m">X⁺</span> = az összes attribútum, és minimális.</li>
+      </ol>
+    </div>
+    <div class="ex"><div class="exh">Példa</div>
+      <p>Séma: <span class="m">R(A,B,C,D,E)</span>, <span class="m">F = { A→B, B→C, CD→E }</span>. Mi <span class="m">{A,D}⁺</span>, és kulcs-e?</p>
+      <ol class="steps">
+        <li><span class="m">{A,D}⁺ = {A,D}</span>.</li>
+        <li><span class="m">A→B</span>, és A∈X⁺ → <span class="m">{A,D,B}</span>.</li>
+        <li><span class="m">B→C</span> → <span class="m">{A,D,B,C}</span>.</li>
+        <li><span class="m">CD→E</span>: C,D ∈ X⁺ → <span class="m">{A,B,C,D,E}</span> = minden attribútum.</li>
+        <li>Tehát <span class="m">{A,D}</span> <strong>szuperkulcs</strong>. Minimális? <span class="m">A⁺={A,B,C}</span> ≠ minden, <span class="m">D⁺={D}</span> ≠ minden → egyik sem elég → <span class="m">{A,D}</span> <strong>kulcs</strong>. ✓</li>
+      </ol>
+    </div>
+    <div class="tool"><h5>Eszköztár — FF vetítése részsémára (projekció)</h5>
+      <p>Ha R-t S ⊆ R-re vetíted: minden <span class="m">Y ⊆ S</span> részhalmazra számítsd ki <span class="m">Y⁺</span>-t (a teljes F-ben), és vedd az <span class="m">Y → (Y⁺ ∩ S)</span> nemtriviális FF-eket. Ezek S vetített függőségei.</p>
+    </div>
+  </div></details>
+
+  <!-- 3b BCNF -->
+  <details class="nb"><summary>B) BCNF-felbontás<span class="ntag">levezetés</span></summary>
+  <div class="nbody">
+    <div class="tool"><h5>Eszköztár — BCNF algoritmus</h5>
+      <ol class="steps">
+        <li>Keress egy nemtriviális <span class="m">X→A</span> FF-et R-ben, ahol <span class="m">X</span> <strong>nem szuperkulcs</strong> (azaz <span class="m">X⁺ ≠</span> minden attribútum) — ez a <em>sértő</em> FF.</li>
+        <li>Számítsd ki <span class="m">X⁺</span>-t. Bontsd R-t: <span class="m">R₁ = X⁺</span> és <span class="m">R₂ = X ∪ (R − X⁺)</span> (a közös rész <span class="m">X</span>).</li>
+        <li>A felbontás veszteségmentes (a közös <span class="m">X</span> kulcsa R₁-nek). Vetítsd az FF-eket R₁-re és R₂-re.</li>
+        <li>Ismételd, amíg minden részséma BCNF. (BCNF mindig elérhető, de néha nem függőségőrző.)</li>
+      </ol>
+    </div>
+    <div class="ex"><div class="exh">Példa</div>
+      <p><span class="m">R(A,B,C,D)</span>, <span class="m">F = { A→B, B→C }</span>. Kulcs: <span class="m">{A,D}</span> (mert <span class="m">{A,D}⁺ = ABCD</span>).</p>
+      <ol class="steps">
+        <li>Sértő FF: <span class="m">B→C</span>? <span class="m">B⁺ = {B,C}</span> ≠ ABCD → B nem szuperkulcs → sértő.</li>
+        <li><span class="m">B⁺ = {B,C}</span>. Bontás: <span class="m">R₁ = {B,C}</span>, <span class="m">R₂ = B ∪ (R−{B,C}) = {A,B,D}</span>.</li>
+        <li><span class="m">R₁(B,C)</span>: csak <span class="m">B→C</span>, B kulcs → <strong>BCNF</strong>. ✓</li>
+        <li><span class="m">R₂(A,B,D)</span>: itt <span class="m">A→B</span> él; <span class="m">A⁺</span> R₂-ben = {A,B} ≠ ABD → A nem szuperkulcs → sértő. Bontsd: <span class="m">R₂₁={A,B}</span>, <span class="m">R₂₂={A,D}</span>.</li>
+        <li>Eredmény: <span class="m">{B,C}, {A,B}, {A,D}</span> — mind BCNF. ✓</li>
+      </ol>
+    </div>
+  </div></details>
+
+  <!-- 3c Chase -->
+  <details class="nb"><summary>C) Chase-teszt: veszteségmentesség<span class="ntag">levezetés</span></summary>
+  <div class="nbody">
+    <div class="tool"><h5>Eszköztár — Chase</h5>
+      <ol class="steps">
+        <li>Készíts tablót: soronként egy részséma, oszloponként egy attribútum. Ha az attribútum benne van a részsémában, írj „<span class="m">a</span>” (megkülönböztetett), különben „<span class="m">b</span>” (indexelt) szimbólumot.</li>
+        <li>Alkalmazd az FF-eket: ha két sor megegyezik egy <span class="m">X→Y</span> baloldalán (X), akkor egyenlősítsd őket Y-on is (ha az egyik „a”, mindkettő „a” lesz; különben azonos b).</li>
+        <li>Ismételd, amíg van változás. <strong>Veszteségmentes ⇔ keletkezik csupa-„a” sor.</strong></li>
+      </ol>
+    </div>
+    <div class="ex"><div class="exh">Példa</div>
+      <p><span class="m">R(A,B,C)</span>, felbontás <span class="m">R₁(A,B)</span>, <span class="m">R₂(B,C)</span>, <span class="m">F={B→C}</span>.</p>
+      <p>Tabló (oszlopok A,B,C):</p>
+      <ul>
+        <li>R₁ sor: <span class="m">a₁ a₂ b₁₃</span></li>
+        <li>R₂ sor: <span class="m">b₂₁ a₂ a₃</span></li>
+      </ul>
+      <ol class="steps">
+        <li>A két sor megegyezik B-n (<span class="m">a₂</span>). Az <span class="m">B→C</span> miatt egyenlősítsd C-t: az egyik C = <span class="m">a₃</span>, tehát mindkettő <span class="m">a₃</span> lesz.</li>
+        <li>Most az R₁ sor: <span class="m">a₁ a₂ a₃</span> — <strong>csupa „a”</strong> → a felbontás <strong>veszteségmentes</strong>. ✓</li>
+      </ol>
+      <div class="note">Megfelel a kétfelé-bontási szabálynak is: a közös attribútum <span class="m">B</span>, és <span class="m">B→C</span> miatt B kulcsa R₂-nek.</div>
+    </div>
+  </div></details>
+
+  <!-- 3d EK -->
+  <details class="nb"><summary>D) E/K → relációséma átírás<span class="ntag">levezetés</span></summary>
+  <div class="nbody">
+    <div class="tool"><h5>Eszköztár — átírási szabályok</h5>
+      <ul>
+        <li><strong>Egyedhalmaz</strong> → tábla, attribútumaival; kulcsa a tábla kulcsa.</li>
+        <li><strong>Sok-sok kapcsolat</strong> → külön tábla: a két oldal kulcsainak egyesítése (+ a kapcsolat saját attribútumai), kulcs = a két kulcs együtt.</li>
+        <li><strong>Egy-sok kapcsolat</strong> → a „sok” oldal táblájába olvaszd be a „egy” oldal kulcsát idegen kulcsként (nem kell külön tábla).</li>
+        <li><strong>Gyenge egyedhalmaz</strong> → táblájába bekerül az azonosító egyedhalmaz kulcsa is, és együtt alkotják a kulcsot.</li>
+        <li><strong>Alosztály (ISA)</strong>, 3 stratégia: (1) <em>E/K-stílus</em>: minden osztály külön tábla, csak a saját attribútumaival + az ősosztály kulcsával; (2) <em>OO</em>: minden alfajhoz egy teljes tábla (örökölt + saját attribútumok); (3) <em>NULL-os</em>: egyetlen tábla minden attribútummal, a nem-releváns mezők NULL-ok.</li>
+      </ul>
+    </div>
+    <div class="ex"><div class="exh">Példa</div>
+      <p>Egyedhalmazok: <span class="m">Szerző(név, szülév)</span>, <span class="m">Könyv(ISBN, cím)</span>; köztük <strong>sok-sok</strong> „írta” kapcsolat.</p>
+      <ol class="steps">
+        <li><span class="m">Szerző(<u>név</u>, szülév)</span></li>
+        <li><span class="m">Könyv(<u>ISBN</u>, cím)</span></li>
+        <li>A sok-sok „írta” → kapcsolótábla: <span class="m">Írta(<u>név, ISBN</u>)</span>, ahol <span class="m">név</span> → Szerző, <span class="m">ISBN</span> → Könyv idegen kulcs.</li>
+      </ol>
+      <p>Ha „egy szerző – sok könyv” lenne (egy-sok), akkor nem kell Írta tábla: a <span class="m">Könyv</span>-be kerül egy <span class="m">szerzőNév</span> idegen kulcs.</p>
+    </div>
+  </div></details>
+
+  <!-- 3e OR-SQL -->
+  <details class="nb"><summary>E) Objektum-relációs SQL<span class="ntag">levezetés</span></summary>
+  <div class="nbody">
+    <div class="tool"><h5>Eszköztár — szintaxis</h5>
+      <ul>
+        <li>Sortípus: <span class="m">CREATE TYPE BarType AS (name CHAR(20), addr CHAR(20));</span></li>
+        <li>Tábla típusból: <span class="m">CREATE TABLE Bars OF BarType;</span></li>
+        <li>REF oszlop: <span class="m">bar REF(BarType)</span>; bejárás a „<span class="m">.</span>” ponttal / DEREF-fel.</li>
+        <li>Kollekció kibontása: <span class="m">SELECT … FROM TABLE(x.nested) …</span>; típuskonverzió: <span class="m">CAST(... AS ...)</span>.</li>
+      </ul>
+    </div>
+    <div class="ex"><div class="exh">Példa</div>
+      <p><span class="m">Sells(bar REF(BarType), beer REF(BeerType), price REAL)</span>. Add meg azon sörök nevét, amelyeket a „Joe’s Bar” árul.</p>
+      <pre class="m" style="white-space:pre-wrap">SELECT s.beer-&gt;name
+FROM   Sells s
+WHERE  s.bar-&gt;name = 'Joe''s Bar';</pre>
+      <p>A <span class="m">-&gt;</span> (vagy pont) a REF-en keresztül éri el a hivatkozott objektum mezőjét — nincs explicit join, a hivatkozás „bejárható”.</p>
+    </div>
+  </div></details>
+
+  <!-- 3f DTD/XSD -->
+  <details class="nb"><summary>F) DTD ↔ XML séma<span class="ntag">levezetés</span></summary>
+  <div class="nbody">
+    <div class="tool"><h5>Eszköztár — megfeleltetés</h5>
+      <ul>
+        <li>DTD <span class="m">(a, b)</span> sorrend ↔ XSD <span class="m">&lt;xs:sequence&gt;</span>; DTD <span class="m">|</span> ↔ <span class="m">&lt;xs:choice&gt;</span>.</li>
+        <li>DTD <span class="m">b*</span> ↔ <span class="m">minOccurs="0" maxOccurs="unbounded"</span>; <span class="m">b+</span> ↔ <span class="m">minOccurs="1" maxOccurs="unbounded"</span>; <span class="m">b?</span> ↔ <span class="m">minOccurs="0" maxOccurs="1"</span>.</li>
+        <li>DTD <span class="m">ID/IDREF</span> ↔ XSD <span class="m">key/keyref</span> (vagy <span class="m">xs:ID/xs:IDREF</span>).</li>
+      </ul>
+    </div>
+    <div class="ex"><div class="exh">Példa</div>
+      <p>DTD:</p>
+      <pre class="m" style="white-space:pre-wrap">&lt;!ELEMENT könyvtár (könyv*)&gt;
+&lt;!ELEMENT könyv (cím, szerző+)&gt;
+&lt;!ATTLIST könyv isbn ID #REQUIRED&gt;</pre>
+      <p>XSD-megfelelő (vázlat):</p>
+      <pre class="m" style="white-space:pre-wrap">&lt;xs:element name="könyvtár"&gt;
+ &lt;xs:complexType&gt;&lt;xs:sequence&gt;
+   &lt;xs:element name="könyv" minOccurs="0" maxOccurs="unbounded"&gt;
+    &lt;xs:complexType&gt;&lt;xs:sequence&gt;
+      &lt;xs:element name="cím" type="xs:string"/&gt;
+      &lt;xs:element name="szerző" type="xs:string"
+                  minOccurs="1" maxOccurs="unbounded"/&gt;
+    &lt;/xs:sequence&gt;
+    &lt;xs:attribute name="isbn" type="xs:ID" use="required"/&gt;
+    &lt;/xs:complexType&gt;
+   &lt;/xs:element&gt;
+ &lt;/xs:sequence&gt;&lt;/xs:complexType&gt;
+&lt;/xs:element&gt;</pre>
+    </div>
+  </div></details>
+
+  <!-- 3g XPath/XQuery -->
+  <details class="nb"><summary>G) XPath / XQuery<span class="ntag">levezetés</span></summary>
+  <div class="nbody">
+    <div class="tool"><h5>Eszköztár — sablonok</h5>
+      <ul>
+        <li>XPath: <span class="m">//könyv[ár&lt;3000]/cím</span> — minden 3000 alatti könyv címe; <span class="m">/könyvtár/könyv[1]/@isbn</span> — első könyv isbn-je.</li>
+        <li>XQuery FLWOR: <span class="m">for $k in //könyv where $k/ár&lt;3000 order by $k/cím return $k/cím</span></li>
+      </ul>
+    </div>
+    <div class="ex"><div class="exh">Példa</div>
+      <p>Add meg az olcsó (&lt; 3000) könyvek címét ábécében, <span class="m">&lt;olcsó&gt;</span> elemekbe csomagolva.</p>
+      <pre class="m" style="white-space:pre-wrap">for $k in doc("konyvek.xml")//könyv
+where $k/ár &lt; 3000
+order by $k/cím
+return &lt;olcsó&gt;{ data($k/cím) }&lt;/olcsó&gt;</pre>
+      <ol class="steps">
+        <li><span class="m">for</span>: végigmegy minden <span class="m">könyv</span> elemen ($k egyesével).</li>
+        <li><span class="m">where</span>: csak ahol az <span class="m">ár</span> &lt; 3000.</li>
+        <li><span class="m">order by</span>: cím szerint rendez; <span class="m">return</span>: új elemet épít, a <span class="m">data()</span> a cím szöveges értékét teszi be.</li>
+      </ol>
+    </div>
+  </div></details>
+
+  <div class="note" style="margin-top:22px">Kész vagy? Ugorj a <strong>Gyakorlás → Próbavizsga</strong> módra egy időzített körre, majd a Kvíz „Csak amit nem értek” szűrőjével ismételd a gyengéket. Sok sikert! 🎓</div>
+
 </section>
 
 <!-- ============================= SZÓJEGYZÉK ============================= -->
