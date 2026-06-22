@@ -2349,6 +2349,12 @@ WHERE  feltétel;</p>
 #napos .fjump:hover{background:var(--acc);color:#1a1206}
 #napos .fjump::before{content:"▶";font-size:.7rem}
 #napos .fjumphint{display:block;font-size:.78rem;color:var(--dim);margin-top:6px}
+#napos .kvjump{margin:20px 0 6px;padding:13px 15px;background:var(--card2);border:1px solid var(--line2);border-left:3px solid var(--acc2);border-radius:10px}
+#napos .kvjump .kvh{font-family:var(--fh);color:var(--acc2);font-size:.92rem;margin:0 0 10px}
+#napos .kvjump .kvbtns{display:flex;flex-wrap:wrap;gap:8px}
+#napos .kvjump a{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;background:var(--accbg);border:1px solid var(--acc);border-radius:7px;color:var(--acc);font-family:var(--fm);font-size:.82rem;text-decoration:none;cursor:pointer;transition:background .15s,color .15s}
+#napos .kvjump a::before{content:"▸";font-size:.7rem}
+#napos .kvjump a:hover{background:var(--acc);color:#1a1206}
 </style>
 
 <section class="part" id="napos">
@@ -2452,6 +2458,17 @@ WHERE  feltétel;</p>
     <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K4, K122.</p>
   </div></details>
 
+  <div class="kvjump">
+    <div class="kvh">▶ Ugrás a kvízkérdésekhez — A · Lekérdezés (Vissza gombbal visszajössz ide)</div>
+    <div class="kvbtns">
+      <a data-go="kviz" href="#k-alap">Relációs alapok</a>
+      <a data-go="kviz" href="#k-relalg">Relációs algebra</a>
+      <a data-go="kviz" href="#k-sql">SQL és NULL</a>
+      <a data-go="kviz" href="#k-aggr">Összesítés</a>
+      <a data-go="kviz" href="#k-join">Összekapcsolások</a>
+    </div>
+  </div>
+
   <!-- ===================== BLOKK B ===================== -->
   <h3 class="nphase">B · Integritás és üzemeltetés</h3>
 
@@ -2497,6 +2514,16 @@ WHERE  feltétel;</p>
     <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K102, K105, K106, K108.</p>
   </div></details>
 
+  <div class="kvjump">
+    <div class="kvh">▶ Ugrás a kvízkérdésekhez — B · Integritás és üzemeltetés (Vissza gombbal visszajössz ide)</div>
+    <div class="kvbtns">
+      <a data-go="kviz" href="#k-constr">Megszorítások, triggerek</a>
+      <a data-go="kviz" href="#k-trans">Tranzakciók</a>
+      <a data-go="kviz" href="#k-view">Nézetek, indexek, hangolás</a>
+      <a data-go="kviz" href="#k-jog">Jogosultságok</a>
+    </div>
+  </div>
+
   <!-- ===================== BLOKK C ===================== -->
   <h3 class="nphase">C · Tervezéselmélet</h3>
 
@@ -2537,6 +2564,15 @@ WHERE  feltétel;</p>
     <p>Minden nemtriviális <span class="m">X→→Y</span> TÉF-re X <strong>szuperkulcs</strong>. A 4NF erősebb a BCNF-nél; a TÉF okozta redundanciát (független többértékű attribútumok „keresztszorzata”) szünteti meg. Felbontási szabály: <span class="m">X→→Y</span> mentén bontsd <span class="m">XY</span>-ra és <span class="m">X∪(R−Y)</span>-ra (veszteségmentes).</p>
     <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K44–K50, K124–K126, K129.</p>
   </div></details>
+
+  <div class="kvjump">
+    <div class="kvh">▶ Ugrás a kvízkérdésekhez — C · Tervezéselmélet (Vissza gombbal visszajössz ide)</div>
+    <div class="kvbtns">
+      <a data-go="kviz" href="#k-ff">Funkcionális függőségek</a>
+      <a data-go="kviz" href="#k-nf">Felbontások, normálformák</a>
+      <a data-go="kviz" href="#k-tef">Többértékű függőségek, 4NF</a>
+    </div>
+  </div>
 
   <!-- ===================== BLOKK D ===================== -->
   <h3 class="nphase">D · Modellek és XML</h3>
@@ -2603,6 +2639,17 @@ WHERE  feltétel;</p>
     </ul>
     <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K96–K104, K107.</p>
   </div></details>
+
+  <div class="kvjump">
+    <div class="kvh">▶ Ugrás a kvízkérdésekhez — D · Modellek és XML (Vissza gombbal visszajössz ide)</div>
+    <div class="kvbtns">
+      <a data-go="kviz" href="#k-ek">E/K modell</a>
+      <a data-go="kviz" href="#k-objrel">Objektum-relációs</a>
+      <a data-go="kviz" href="#k-xml">XML, DTD, séma</a>
+      <a data-go="kviz" href="#k-xpath">XPath, XQuery</a>
+      <a data-go="kviz" href="#k-olap">OLAP, adattárház</a>
+    </div>
+  </div>
 
   <!-- ===================== 3. FELADAT ===================== -->
   <h3 class="nphase">★ 3. feladat — Gyakorlati feladatok (minden, ami kell)</h3>
@@ -2840,7 +2887,7 @@ details.sol .solbody{padding:12px 16px}
 .chasewrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:8px 0}
 .chasearrow{font-family:var(--fh);color:var(--acc);font-size:.85rem;padding:0 4px}
 sub{font-size:.75em}
-#feladatok .topic.flash{box-shadow:0 0 0 2px var(--acc),0 0 14px var(--accbg);border-radius:8px;transition:box-shadow .25s}
+.topic.flash{box-shadow:0 0 0 2px var(--acc),0 0 14px var(--accbg);border-radius:8px;transition:box-shadow .25s}
 </style>
 
 <!-- ============================= FELADATTÍPUSOK ============================= -->
