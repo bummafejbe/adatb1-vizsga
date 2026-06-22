@@ -289,7 +289,7 @@ body.study .mcopts{display:none}
 <header>
   <div class="hrow">
     <h1>Adatbázisok I. <span class="sub">· vizsgafelkészítő</span></h1>
-    <span class="build" id="build" title="Verzió (frissítéskor változik) — ha nem ezt látod, frissítsd az oldalt">v2026-06-22d</span>
+    <span class="build" id="build" title="Verzió (frissítéskor változik) — ha nem ezt látod, frissítsd az oldalt">v2026-06-22e</span>
     <div class="hspace"></div>
     <div class="userbox">
       <span id="syncdot" title="Mentés: helyben (localStorage)"></span>
@@ -3238,7 +3238,7 @@ sub{font-size:.75em}
   <!-- ===== 3. Chase ===== -->
   <div class="topic" id="f-chase"><h2>Chase-teszt: veszteségmentesség ellenőrzése</h2><div class="tsub">tabló · szimbólumok egyenlősítése FF-ek mentén</div></div>
   <div class="callout">
-    A felbontás <strong>veszteségmentes</strong>, ha <span class="m">r = Π<sub>R1</sub>(r) ⋈ … ⋈ Π<sub>Rk</sub>(r)</span>. Mivel <span class="m">r ⊆ join</span> mindig igaz, csak a fordított irányt kell vizsgálni. <strong>Tabló:</strong> résrelációnként egy sor; a kérdéses sor attribútumai <span class="dist">index nélküli</span> (megkülönböztetett) szimbólumok, a többi indexelt. Az F-beli FF-ek mentén <strong>egyenlősítünk</strong>: ha az egyik szimbólum index nélküli, a másik is azt kapja; két indexes közül a <em>kisebb indexű</em> nyer; minden előfordulást cserélünk. <strong>Vége:</strong> ha egy sor csupa index nélkülivé válik → <span style="color:var(--ok)">veszteségmentes</span>; ha nem tudunk több egyenlősítést → nem az.
+    A felbontás <strong>veszteségmentes</strong>, ha <span class="m">r = Π<sub>R1</sub>(r) ⋈ … ⋈ Π<sub>Rk</sub>(r)</span>. Mivel <span class="m">r ⊆ join</span> mindig igaz, csak a fordított irányt kell vizsgálni. <strong>Tabló:</strong> résrelációnként egy sor; a kérdéses sor attribútumai <span class="dist">index nélküli</span> (megkülönböztetett) szimbólumok, a többi indexelt. Az F-beli FF-ek mentén <strong>egyenlősítünk</strong>: ha az egyik szimbólum index nélküli, a másik is azt kapja; két indexes közül a <em>kisebb indexű</em> nyer; minden előfordulást cserélünk. <strong>Vége:</strong> ha egy sor csupa index nélkülivé válik → <span style="color:var(--ok)">veszteségmentes</span>; ha nem tudunk több egyenlősítést → nem az.<br><strong>Gyorsteszt 2 táblára</strong> (chase nélkül): a felbontás veszteségmentes ⇔ a <strong>közös attribútumok</strong> (<span class="m">R1 ∩ R2</span>) kulcsai <strong>legalább az egyik</strong> résznek (<span class="m">R1∩R2 → R1</span> vagy <span class="m">→ R2</span>). A chase a 3+ táblás, általános eset eszköze.
   </div>
 
   <div class="fex">
