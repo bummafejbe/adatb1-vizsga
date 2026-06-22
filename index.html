@@ -3970,8 +3970,18 @@ function clearAllKviz(){
   clearQids(cards.map(c=>c.dataset.qid).filter(Boolean));
   cards.forEach(resetCardUI);updateBars();
 }
+/* a feleletválasztós opciók sorrendjének újrakeverése (ugyanazok a válaszok, más sorrend) */
+function shuffleMcOptions(card){
+  const wrap=$('.mcopts',card);if(!wrap)return;
+  const opts=$$('.mcopt',wrap);
+  if(opts.length<2)return;
+  shuffle(opts);
+  const ref=wrap.querySelector('.mchint,.mccheck'); /* az opciók a hint/Ellenőrzés elé kerülnek vissza */
+  opts.forEach(o=>wrap.insertBefore(o,ref));
+}
 function shuffleTopic(topic){
   const cards=topicCards(topic).filter(c=>c.classList.contains('card'));
+  cards.forEach(shuffleMcOptions);              /* az MC-kártyák válaszsorrendjét is keverjük */
   if(cards.length<2)return;
   const anchor=cards[0].previousElementSibling;
   shuffle(cards);
