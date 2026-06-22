@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>Adatbázisok I. — vizsgafelkészítő</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%97%84%EF%B8%8F%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,6 +58,8 @@ section.part.active{display:block}
 .topic{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 18px;margin:34px 0 16px;position:relative}
 .topic h2{margin:0 0 4px;font-size:1.25rem}
 .topic .tsub{color:var(--dim);font-size:.88rem}
+.btcount{display:inline-block;vertical-align:middle;margin-left:8px;background:var(--accbg);border:1px solid var(--acc);color:var(--acc);font-family:var(--fm);font-size:.7rem;padding:1px 9px;border-radius:999px}
+.build{align-self:center;margin-left:10px;font-family:var(--fm);font-size:.62rem;color:var(--dim);opacity:.7;white-space:nowrap}
 .pbar{height:6px;background:#0a0e13;border-radius:4px;margin-top:10px;overflow:hidden;display:flex}
 .pbar i{display:block;height:100%}
 .pbar .pok{background:var(--ok)} .pbar .ppart{background:var(--part)} .pbar .pbad{background:var(--bad)}
@@ -284,6 +289,7 @@ body.study .mcopts{display:none}
 <header>
   <div class="hrow">
     <h1>Adatbázisok I. <span class="sub">· vizsgafelkészítő</span></h1>
+    <span class="build" id="build" title="Verzió (frissítéskor változik) — ha nem ezt látod, frissítsd az oldalt">v2026-06-22b</span>
     <div class="hspace"></div>
     <div class="userbox">
       <span id="syncdot" title="Mentés: helyben (localStorage)"></span>
@@ -299,6 +305,7 @@ body.study .mcopts{display:none}
       <button data-t="attekintes">Áttekintés</button>
       <button data-t="gyak">Gyakorlás</button>
       <button data-t="kviz">Kvízkérdések</button>
+      <button data-t="bytype">Kvíz típus szerint</button>
       <button data-t="szojegyzek">Szójegyzék</button>
       <button data-t="glossary">Fogalomtár</button>
       <button data-t="feladatok">Feladattípusok</button>
@@ -4211,7 +4218,7 @@ function renderInteractions(){
     });
   });
   $$('.card.qa, .vcard.qa').forEach(card=>{
-    const mc=card.closest('#kviz')?setupMc(card):false;
+    const mc=card.closest('#kviz,#bytype')?setupMc(card):false;
     const sb=$('.showbtn',card);
     if(sb){if(mc)sb.style.display='none';else sb.onclick=()=>card.classList.add('open');}
     const hide=$('.hide',card);if(!hide)return;
@@ -4586,6 +4593,32 @@ function renderGyakHome(){
   $('#go-import').onclick=()=>$('#imp-file').click();
   $('#imp-file').onchange=e=>{if(e.target.files[0])importProgress(e.target.files[0]);e.target.value='';};
 }
+/* ---------- „Kvíz típus szerint” fül: a #kviz kártyák klónjai, kérdéstípusonként ----------
+   A klónok megőrzik az eredeti data-qid-et, így a haladás KÖZÖS a Kvízkérdések füllel.
+   (assignQids UTÁN, renderInteractions ELŐTT fut, hogy a klónok is kapjanak interakciót.) */
+function buildByType(){
+  const kvizCards=$$('#kviz .card');
+  if(!kvizCards.length)return;
+  const num=c=>{const t=(($('.qno',c)||{}).textContent||'');const d=t.match(/\d+/);return d?+d[0]:9999;};
+  const tf=[],qa=[];
+  kvizCards.forEach(c=>{(c.classList.contains('tf')?tf:qa).push(c);});
+  tf.sort((a,b)=>num(a)-num(b));qa.sort((a,b)=>num(a)-num(b));
+  const sec=document.createElement('section');sec.className='part';sec.id='bytype';
+  sec.innerHTML=
+    '<div class="topic" id="t-bytype"><h2>Kvíz típus szerint</h2>'+
+      '<div class="tsub">Ugyanazok a kvízkérdések, mint a <em>Kvízkérdések</em> fülön, de nem témakör, hanem <strong>kérdéstípus</strong> szerint csoportosítva — egyben az igaz/hamis állítások, egyben a többi. A haladás és a válaszaid közösek a két nézet között.</div></div>'+
+    '<div class="topic" id="bt-h-tf"><h2>Igaz / Hamis kérdések <span class="btcount">'+tf.length+'</span></h2>'+
+      '<div class="tsub">Döntsd el minden állításról, hogy igaz vagy hamis.</div><div class="pbar"></div><div class="ptxt"></div></div>';
+  $('main').appendChild(sec);
+  const append=arr=>arr.forEach(c=>sec.appendChild(c.cloneNode(true)));
+  append(tf);
+  const qaH=document.createElement('div');qaH.className='topic';qaH.id='bt-h-qa';
+  qaH.innerHTML='<h2>Feleletválasztós és egyéb kérdések <span class="btcount">'+qa.length+'</span></h2>'+
+    '<div class="tsub">Feleletválasztós, kiegészítendő és kifejtős kérdések.</div><div class="pbar"></div><div class="ptxt"></div>';
+  sec.appendChild(qaH);
+  append(qa);
+}
+
 function initGyak(){
   const sec=document.createElement('section');sec.className='part';sec.id='gyak';
   sec.innerHTML='<div id="gyak-home"></div><div id="gyak-sess" hidden><div id="gyak-card"></div></div><div id="gyak-end" hidden></div>';
@@ -4611,6 +4644,7 @@ renderVocab();
 renderGlossary();
 renderCbars();
 assignQids();
+buildByType();
 renderInteractions();
 renderTopicTools();
 renderLessons();
