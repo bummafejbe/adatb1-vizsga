@@ -289,7 +289,7 @@ body.study .mcopts{display:none}
 <header>
   <div class="hrow">
     <h1>Adatbázisok I. <span class="sub">· vizsgafelkészítő</span></h1>
-    <span class="build" id="build" title="Verzió (frissítéskor változik) — ha nem ezt látod, frissítsd az oldalt">v2026-06-22b</span>
+    <span class="build" id="build" title="Verzió (frissítéskor változik) — ha nem ezt látod, frissítsd az oldalt">v2026-06-22c</span>
     <div class="hspace"></div>
     <div class="userbox">
       <span id="syncdot" title="Mentés: helyben (localStorage)"></span>
@@ -3200,15 +3200,14 @@ sub{font-size:.75em}
 
   <div class="fex">
     <h4>1/c · Exponenciális (vetítő) algoritmus</h4>
-    <p>FF-ek <strong>vetítése</strong> egy résrelációra: (1) minden <span class="m">X</span> attribútumhalmazra számítsuk ki <span class="m">X⁺</span>-t; (2) vegyük fel az <span class="m">X → A</span> FF-eket minden <span class="m">A ∈ X⁺ − X</span>-re; (3) dobjuk ki az <span class="m">XY → A</span>-t, ha már <span class="m">X → A</span> is megvan; (4) tartsuk meg csak a projektált attribútumokat tartalmazó FF-eket. <em>Trükk:</em> az üreshalmaznak és a teljes halmaznak nem kell lezárt; ha <span class="m">X⁺</span> = minden, akkor <span class="m">X</span> egyik bővítését sem kell nézni.</p>
+    <p>FF-ek <strong>vetítése</strong> egy <span class="m">S</span> részsémára (= a megtartott attribútumok): <span class="m">S</span> <strong>minden <span class="m">X</span> részhalmazára</strong> számítsd ki <span class="m">X⁺</span>-t a <strong>teljes F-ben</strong> (kerülő úton, <span class="m">S</span>-en kívüli attribútumon át is mehetsz!) — a vetített függőség <span class="m">X → (X⁺ ∩ S)</span>. A triviálisat (<span class="m">X→X</span>) és a fölöslegest (bővebb bal oldal) eldobod. <em>Trükk:</em> ha <span class="m">X⁺</span> = minden (<span class="m">X</span> szuperkulcs), <span class="m">X</span> bővítéseit már ne nézd.</p>
     <p class="task">Reláció <span class="m">ABC</span>, FF-ek <span class="m">A → B</span> és <span class="m">B → C</span>. Projektáljunk <span class="m">AC</span>-re!</p>
     <details class="sol"><summary>Megoldás lépésről lépésre</summary><div class="solbody">
+      <p><span class="m">S = {A, C}</span> — végigmegyünk <span class="m">S</span> részhalmazain:</p>
       <ol class="steps">
-        <li><span class="m">A⁺ = ABC</span> ⟹ <span class="m">A → B</span>, <span class="m">A → C</span>. (Mivel <span class="m">A⁺</span> = minden, az <span class="m">AB</span> és <span class="m">AC</span> lezártját nem kell számolni.)</li>
-        <li><span class="m">B⁺ = BC</span> ⟹ <span class="m">B → C</span>.</li>
-        <li><span class="m">C⁺ = C</span> és <span class="m">BC⁺ = BC</span> — semmi újat nem adnak.</li>
-        <li>Kapott FF-ek: <span class="m">A → B</span>, <span class="m">A → C</span>, <span class="m">B → C</span>.</li>
-        <li>Vetítés <span class="m">AC</span>-re (csak A és C szerepelhet): <strong><span class="m">A → C</span></strong>.</li>
+        <li><span class="m">{A}⁺ = ABC</span> (<span class="m">A→B→C</span>). Metszet <span class="m">S</span>-sel: <span class="m">{A,C}</span> → <strong><span class="m">A → C</span></strong>.</li>
+        <li><span class="m">{C}⁺ = C</span> → csak triviális, semmi új.</li>
+        <li><strong>Eredmény: <span class="m">A → C</span></strong>. (Az eredetiben <span class="m">A→B→C</span>, így tranzitivitással <span class="m">A→C</span> — ez „éli túl”, ha <span class="m">B</span>-t elhagyjuk.)</li>
       </ol>
     </div></details>
   </div>
