@@ -236,6 +236,7 @@ body.study .mcopts{display:none}
 /* az opciók egységes megjelenése: a helyes válaszból örökölt kiemelés ne árulkodjon */
 .mcopt .mctext strong,.mcopt .mctext b{font-weight:inherit}
 .mcopt .mctext em,.mcopt .mctext i{font-style:normal}
+.mcopt .mctext .m{font-family:inherit;font-size:inherit;color:inherit;background:none;padding:0;border-radius:0;white-space:normal}
 /* jelvény: ahol a válaszlehetőségeket én állítottam össze (mcgen) */
 #kviz .card.mcgen .q{padding-right:100px}
 .mcgenbadge{position:absolute;top:10px;right:12px;background:var(--accbg);border:1px solid var(--acc);color:var(--acc2);font-family:var(--fh);font-size:.64rem;padding:2px 9px;border-radius:999px;cursor:help;white-space:nowrap;z-index:2}
@@ -3887,7 +3888,7 @@ function cleanOpt(html){
      csomagolás és a „— cáfolat” utótag eltávolítása, hogy ne árulja el a helyes választ.
      A záró idézőjel a dash előtt feltétel védi a helyes opciókat (azokban nincs ilyen minta). */
   let s=html.trim();
-  s=s.replace(/[”“"»]\s*[—–]\s[\s\S]*$/,'');   /* záró idézőjel utáni „— magyarázat” utótag */
+  s=s.replace(/\s+[—–]\s+[\s\S]*$/,'');         /* trailing kötőjeles utótag levágása (— magyarázat/cáfolat): span, strong, idézőjel vagy sima szöveg után is, hogy ne árulja el a választ */
   s=s.replace(/[„“”«»]/g,'');                   /* minden tipográfiai idézőjel (a "0"-féle egyenes értékek maradnak) */
   s=s.trim();
   /* egységes kezdőbetű: ha sima kisbetűvel kezdődik (tehát nem jelölés/kód/mozaikszó/szám), nagybetűsítjük,
