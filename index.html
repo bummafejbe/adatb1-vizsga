@@ -2735,6 +2735,27 @@ WHERE  feltétel;</p>
     <div class="tool"><h5>Eszköztár — FF vetítése részsémára (projekció)</h5>
       <p>Ha R-t S ⊆ R-re vetíted: minden <span class="m">Y ⊆ S</span> részhalmazra számítsd ki <span class="m">Y⁺</span>-t (a teljes F-ben), és vedd az <span class="m">Y → (Y⁺ ∩ S)</span> nemtriviális FF-eket. Ezek S vetített függőségei.</p>
     </div>
+    <div class="ex"><div class="exh">Mintafeladat (vizsgaszintű) — lezárás, összes kulcs, projekció</div>
+      <p>Séma: <span class="m">R(A,B,C,D,E)</span>, <span class="m">F = { AB→C, C→D, D→E, E→A }</span>.
+      <strong>(a)</strong> Add meg az összes kulcsot. <strong>(b)</strong> Vetítsd az FF-eket az <span class="m">S = {A,C,E}</span> részsémára, és add meg S kulcsát.</p>
+      <h4>(a) Az összes kulcs</h4>
+      <p><span class="m">B</span> egyetlen FF jobb oldalán sem áll → <strong>B minden kulcsnak része</strong>. Próbáljuk B-t egy-egy másik attribútummal:</p>
+      <ol class="steps">
+        <li><span class="m">{A,B}⁺</span>: <span class="m">{A,B}</span> –(AB→C)→ <span class="m">C</span> –(C→D)→ <span class="m">D</span> –(D→E)→ <span class="m">E</span> = <span class="m">ABCDE</span> ✓ kulcs.</li>
+        <li><span class="m">{B,C}⁺</span>: –(C→D)→D –(D→E)→E –(E→A)→A = <span class="m">ABCDE</span> ✓ kulcs.</li>
+        <li><span class="m">{B,D}⁺</span>: –(D→E)→E –(E→A)→A –(AB→C)→C = <span class="m">ABCDE</span> ✓ kulcs.</li>
+        <li><span class="m">{B,E}⁺</span>: –(E→A)→A –(AB→C)→C –(C→D)→D = <span class="m">ABCDE</span> ✓ kulcs.</li>
+      </ol>
+      <p>B önmagában nem kulcs (<span class="m">B⁺={B}</span>). Kulcsok: <span class="m">{A,B}, {B,C}, {B,D}, {B,E}</span>. (A <span class="m">C→D→E→A→(AB)→C</span> ciklus miatt A, C, D, E bármelyike + B kulcs.)</p>
+      <h4>(b) Vetítés S = {A,C,E}-re</h4>
+      <p>Minden nemtriviális <span class="m">Y ⊆ S</span>-re számítsd <span class="m">Y⁺</span>-t a <em>teljes</em> F-ben, és metszd S-sel:</p>
+      <ol class="steps">
+        <li><span class="m">C⁺ = {C,D,E,A}</span>; <span class="m">∩S = {A,C,E}</span> → <span class="m">C→A</span>, <span class="m">C→E</span>.</li>
+        <li><span class="m">E⁺ = {E,A}</span>; <span class="m">∩S = {A,E}</span> → <span class="m">E→A</span>.</li>
+        <li><span class="m">A⁺ = {A}</span> → nincs új FF. (A többi részhalmaz, pl. {A,C}, {C,E}, csak a fentiek következménye.)</li>
+      </ol>
+      <p>Vetített függőségek: <span class="m">C→A</span>, <span class="m">C→E</span>, <span class="m">E→A</span>. S kulcsa: <span class="m">C⁺∩S = {A,C,E}</span> = egész S, és C minimális → <strong>S kulcsa: {C}</strong>.</p>
+    </div>
     <a class="fjump" data-go="feladatok" href="#f-ff">Gyakorold a Feladattípusok között — FF: levezetés, lezárás, projekció</a>
   </div></details>
 
@@ -2758,6 +2779,19 @@ WHERE  feltétel;</p>
         <li><span class="m">R₂(A,B,D)</span>: itt <span class="m">A→B</span> él; <span class="m">A⁺</span> R₂-ben = {A,B} ≠ ABD → A nem szuperkulcs → sértő. Bontsd: <span class="m">R₂₁={A,B}</span>, <span class="m">R₂₂={A,D}</span>.</li>
         <li>Eredmény: <span class="m">{B,C}, {A,B}, {A,D}</span> — mind BCNF. ✓</li>
       </ol>
+    </div>
+    <div class="ex"><div class="exh">Mintafeladat (vizsgaszintű) — több körös BCNF-felbontás</div>
+      <p><span class="m">R(A,B,C,D)</span>, <span class="m">F = { A→B, B→C, C→D }</span> (egy „lánc”). Bontsd BCNF-re.</p>
+      <ol class="steps">
+        <li><strong>Kulcs:</strong> <span class="m">A⁺ = ABCD</span> (A→B→C→D), és A az egyetlen attribútum, ami nem áll FF jobb oldalán → <strong>kulcs: {A}</strong>.</li>
+        <li><strong>Sértő FF:</strong> <span class="m">A→B</span> rendben (A kulcs). <span class="m">B→C</span>: <span class="m">B⁺={B,C,D}</span> ≠ ABCD → B nem szuperkulcs → <strong>sértő</strong>.</li>
+        <li><strong>Bontás B→C mentén:</strong> <span class="m">B⁺={B,C,D}</span> → <span class="m">R₁=(B,C,D)</span>, <span class="m">R₂ = B ∪ (R−B⁺) = (A,B)</span>.</li>
+        <li><span class="m">R₂(A,B)</span>: csak <span class="m">A→B</span>, A kulcs → <strong>BCNF</strong> ✓.</li>
+        <li><span class="m">R₁(B,C,D)</span>: itt <span class="m">B→C, C→D</span>. B kulcs (<span class="m">B⁺=BCD</span>), de <span class="m">C→D</span>: <span class="m">C⁺ R₁-ben = {C,D}</span> ≠ BCD → C nem szuperkulcs → <strong>sértő</strong>. Bontás <span class="m">C→D</span> mentén: <span class="m">R₁₁=(C,D)</span>, <span class="m">R₁₂=(B,C)</span>.</li>
+        <li><span class="m">R₁₁(C,D)</span>: <span class="m">C→D</span>, C kulcs → BCNF ✓. &nbsp; <span class="m">R₁₂(B,C)</span>: <span class="m">B→C</span>, B kulcs → BCNF ✓.</li>
+      </ol>
+      <p><strong>Eredmény:</strong> <span class="m">(A,B), (B,C), (C,D)</span> — mind BCNF, veszteségmentes, és itt történetesen <strong>függőségőrző</strong> is (mindhárom FF egy-egy részsémán ellenőrizhető).</p>
+      <div class="note"><b>Ellenpélda a függőségőrzésre:</b> <span class="m">R(A,B,C)</span>, <span class="m">F={AB→C, C→B}</span> (kulcsok: {A,B}, {A,C}). A <span class="m">C→B</span> sérti a BCNF-et; a <span class="m">C⁺={B,C}</span> menti bontás <span class="m">(B,C)</span> és <span class="m">(A,C)</span> — veszteségmentes, de az <span class="m">AB→C</span> egyik részsémán sem ellenőrizhető → <strong>nem függőségőrző</strong>. Ilyenkor a 3NF a kompromisszum (megőrzi az FF-eket).</div>
     </div>
     <a class="fjump" data-go="feladatok" href="#f-bcnf">Gyakorold a Feladattípusok között — BCNF-felbontás</a>
   </div></details>
@@ -2785,6 +2819,23 @@ WHERE  feltétel;</p>
       </ol>
       <div class="note">Megfelel a kétfelé-bontási szabálynak is: a közös attribútum <span class="m">B</span>, és <span class="m">B→C</span> miatt B kulcsa R₂-nek.</div>
     </div>
+    <div class="ex"><div class="exh">Mintafeladat (vizsgaszintű) — Chase 3 részsémára, 2 FF</div>
+      <p><span class="m">R(A,B,C,D,E)</span>, felbontás <span class="m">R₁(A,B,C)</span>, <span class="m">R₂(C,D)</span>, <span class="m">R₃(D,E)</span>, <span class="m">F = { C→D, D→E }</span>. Veszteségmentes-e?</p>
+      <p>Tabló (oszlopok A,B,C,D,E): soronként egy részséma, a benne lévő attribútumokba „a”, a többibe indexelt „b”:</p>
+      <table class="nsched">
+        <tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th></tr>
+        <tr><td>R₁</td><td>a₁</td><td>a₂</td><td>a₃</td><td>b₁₄</td><td>b₁₅</td></tr>
+        <tr><td>R₂</td><td>b₂₁</td><td>b₂₂</td><td>a₃</td><td>a₄</td><td>b₂₅</td></tr>
+        <tr><td>R₃</td><td>b₃₁</td><td>b₃₂</td><td>b₃₃</td><td>a₄</td><td>a₅</td></tr>
+      </table>
+      <ol class="steps">
+        <li><span class="m">C→D</span>: R₁ és R₂ megegyezik C-n (<span class="m">a₃</span>) → egyenlősítsd D-t. R₁ D-je <span class="m">b₁₄</span>, R₂ D-je <span class="m">a₄</span> → mindkettő <span class="m">a₄</span>. Most R₁: <span class="m">a₁ a₂ a₃ a₄ b₁₅</span>.</li>
+        <li><span class="m">D→E</span>: most R₁, R₂, R₃ mind <span class="m">a₄</span> D-n → egyenlősítsd E-t. Értékek <span class="m">b₁₅, b₂₅, a₅</span> → mind <span class="m">a₅</span>.</li>
+        <li>R₁ sora: <span class="m">a₁ a₂ a₃ a₄ a₅</span> — <strong>csupa „a”</strong> → a felbontás <strong>veszteségmentes</strong> ✓.</li>
+      </ol>
+      <div class="note">Ellenőrzés a kétfelé-bontási szabállyal: <span class="m">R₁⋈R₂</span> közös attribútuma C, és <span class="m">C→D</span> miatt C kulcsa R₂-nek → lossless; az így kapott <span class="m">(A,B,C,D)</span>-t R₃-mal a közös D mentén kötjük, <span class="m">D→E</span> miatt D kulcsa R₃-nak → szintén lossless.</div>
+      <p>Ha viszont <span class="m">F</span>-ből elhagynánk a <span class="m">D→E</span>-t, a 2. lépés elmaradna: R₁ E-je <span class="m">b₁₅</span> maradna, nem keletkezne csupa-„a” sor → a felbontás <strong>veszteséges</strong> lenne.</p>
+    </div>
     <a class="fjump" data-go="feladatok" href="#f-chase">Gyakorold a Feladattípusok között — Chase-teszt (veszteségmentesség)</a>
   </div></details>
 
@@ -2809,6 +2860,26 @@ WHERE  feltétel;</p>
       </ol>
       <p>Ha „egy szerző – sok könyv” lenne (egy-sok), akkor nem kell Írta tábla: a <span class="m">Könyv</span>-be kerül egy <span class="m">szerzőNév</span> idegen kulcs.</p>
     </div>
+    <div class="ex"><div class="exh">Mintafeladat (vizsgaszintű) — teljes E/K → relációsémák</div>
+      <p><strong>Az E/K-diagram szövegesen:</strong></p>
+      <ul>
+        <li>Egyedhalmaz <span class="m">Stúdió(<u>név</u>, cím)</span>.</li>
+        <li>Egyedhalmaz <span class="m">Film(<u>cím</u>, <u>év</u>, hossz)</span> — a kulcs a (cím, év) <em>pár</em>.</li>
+        <li>Egyedhalmaz <span class="m">Színész(<u>sznév</u>)</span>.</li>
+        <li><strong>gyártja</strong>: Film–Stúdió kapcsolat, a Film oldaláról <strong>kerek nyíl</strong> Stúdió felé (minden film <em>pontosan egy</em> stúdióé) = egy-sok.</li>
+        <li><strong>szerepel</strong>: Film–Színész <strong>sok-sok</strong> kapcsolat, saját attribútuma <span class="m">fizetés</span>.</li>
+        <li><span class="m">Jelenet(<u>sorszám</u>, hossz)</span> <strong>gyenge egyedhalmaz</strong>, a <strong>része</strong> támogató kapcsolaton át a Filmhez (kerek nyíl Film felé).</li>
+      </ul>
+      <p><strong>Átírás relációsémákká:</strong></p>
+      <ol class="steps">
+        <li><span class="m">Stúdió(<u>név</u>, cím)</span> — egyedhalmaz közvetlenül.</li>
+        <li><span class="m">Film(<u>cím</u>, <u>év</u>, hossz, stúdióNév)</span> — az <strong>egy-sok</strong> „gyártja” beolvad a <em>sok</em> (Film) oldalra: a Stúdió kulcsa idegen kulcsként; nincs külön tábla.</li>
+        <li><span class="m">Színész(<u>sznév</u>)</span>.</li>
+        <li><span class="m">Szerepel(<u>cím</u>, <u>év</u>, <u>sznév</u>, fizetés)</span> — a <strong>sok-sok</strong> kapcsolat külön tábla: a két oldal kulcsainak egyesítése a kulcs + a kapcsolat-attribútum (fizetés).</li>
+        <li><span class="m">Jelenet(<u>cím</u>, <u>év</u>, <u>sorszám</u>, hossz)</span> — a <strong>gyenge egyedhalmaz</strong> táblájába bekerül a támogató Film kulcsa (cím, év); a kulcs = a saját <span class="m">sorszám</span> + a Film kulcsa.</li>
+      </ol>
+      <div class="note">Figyeld a három viselkedést: az egy-sok kapcsolat <strong>nem</strong> kapott külön táblát (beolvadt a sok oldalra), a sok-sok <strong>kapott</strong> külön táblát, a gyenge egyedhalmaz pedig <strong>örökölte</strong> a támogató kulcsát. Ha alosztályt is kérnének (pl. <span class="m">Rendező ISA Színész</span>), a 3 stratégia (E/K-stílus / OO / NULL-os) közül választanál.</div>
+    </div>
     <a class="fjump" data-go="feladatok" href="#f-ek">Gyakorold a Feladattípusok között — Egyed-kapcsolat modell (könyvesbolt, kalózok)</a>
   </div></details>
 
@@ -2829,6 +2900,34 @@ WHERE  feltétel;</p>
 FROM   Sells s
 WHERE  s.bar-&gt;name = 'Joe''s Bar';</pre>
       <p>A <span class="m">-&gt;</span> (vagy pont) a REF-en keresztül éri el a hivatkozott objektum mezőjét — nincs explicit join, a hivatkozás „bejárható”.</p>
+    </div>
+    <div class="ex"><div class="exh">Mintafeladat (vizsgaszintű) — sortípusok, beszúrás, REF, DEREF</div>
+      <p><strong>Séma (sortípusok + REF):</strong></p>
+      <pre class="m" style="white-space:pre-wrap">CREATE TYPE BarType  AS (name CHAR(20), addr CHAR(20));
+CREATE TYPE BeerType AS (name CHAR(20), manf CHAR(20));
+CREATE TABLE Bars  OF BarType;
+CREATE TABLE Beers OF BeerType;
+CREATE TABLE Sells (
+  bar   REF(BarType),
+  beer  REF(BeerType),
+  price REAL );</pre>
+      <p><strong>(a) Beszúrás konstruktorral és REF-fel</strong> — a Joe's Bar 2.50-ért árulja a Bud-ot:</p>
+      <pre class="m" style="white-space:pre-wrap">INSERT INTO Sells VALUES (
+  (SELECT REF(b)  FROM Bars  b  WHERE b.name  = 'Joe''s Bar'),
+  (SELECT REF(be) FROM Beers be WHERE be.name = 'Bud'),
+  2.50 );</pre>
+      <p><strong>(b) REF bejárása ponttal</strong> — mely sörök nevét és milyen áron árulja a Joe's Bar?</p>
+      <pre class="m" style="white-space:pre-wrap">SELECT s.beer-&gt;name, s.price
+FROM   Sells s
+WHERE  s.bar-&gt;name = 'Joe''s Bar';</pre>
+      <ol class="steps">
+        <li>Az <span class="m">s.bar</span> egy REF(BarType); a <span class="m">-&gt;</span> (vagy pont) <strong>dereferál</strong>: követi a hivatkozást a Bars-beli objektumhoz, és kiveszi a <span class="m">name</span> mezőt — <em>explicit join nélkül</em>.</li>
+        <li>Ugyanígy <span class="m">s.beer-&gt;name</span> a hivatkozott sör neve.</li>
+      </ol>
+      <p><strong>(c) DEREF</strong> — add vissza a teljes sör-objektumokat, amelyeket a Joe's Bar 3 alatt árul (a puszta REF kiírva értelmezhetetlen, a <span class="m">DEREF</span> teszi olvashatóvá):</p>
+      <pre class="m" style="white-space:pre-wrap">SELECT DEREF(s.beer)
+FROM   Sells s
+WHERE  s.bar-&gt;name = 'Joe''s Bar' AND s.price &lt; 3.00;</pre>
     </div>
     <a class="fjump" data-go="feladatok" href="#f-or">Gyakorold a Feladattípusok között — Objektum-relációs SQL</a>
   </div></details>
@@ -2863,6 +2962,45 @@ WHERE  s.bar-&gt;name = 'Joe''s Bar';</pre>
  &lt;/xs:sequence&gt;&lt;/xs:complexType&gt;
 &lt;/xs:element&gt;</pre>
     </div>
+    <div class="ex"><div class="exh">Mintafeladat (vizsgaszintű) — DTD → XSD + érvényes példány</div>
+      <p><strong>Adott DTD</strong> (bolt vevőkkel és rendelésekkel, IDREF-fel hivatkozva):</p>
+      <pre class="m" style="white-space:pre-wrap">&lt;!ELEMENT bolt (vevő*, rendelés*)&gt;
+&lt;!ELEMENT vevő (név)&gt;
+&lt;!ATTLIST vevő vid ID #REQUIRED&gt;
+&lt;!ELEMENT rendelés (termék+)&gt;
+&lt;!ATTLIST rendelés rid ID #REQUIRED kit IDREF #REQUIRED&gt;
+&lt;!ELEMENT név (#PCDATA)&gt;
+&lt;!ELEMENT termék (#PCDATA)&gt;</pre>
+      <p><strong>XSD-megfelelő</strong> — <span class="m">*</span> ↔ <span class="m">minOccurs=0, maxOccurs=unbounded</span>; <span class="m">+</span> ↔ <span class="m">minOccurs=1, maxOccurs=unbounded</span>; <span class="m">ID/IDREF</span> ↔ <span class="m">xs:ID/xs:IDREF</span>:</p>
+      <pre class="m" style="white-space:pre-wrap">&lt;xs:element name="bolt"&gt;
+ &lt;xs:complexType&gt;&lt;xs:sequence&gt;
+   &lt;xs:element name="vevő" minOccurs="0" maxOccurs="unbounded"&gt;
+     &lt;xs:complexType&gt;
+       &lt;xs:sequence&gt;&lt;xs:element name="név" type="xs:string"/&gt;&lt;/xs:sequence&gt;
+       &lt;xs:attribute name="vid" type="xs:ID" use="required"/&gt;
+     &lt;/xs:complexType&gt;
+   &lt;/xs:element&gt;
+   &lt;xs:element name="rendelés" minOccurs="0" maxOccurs="unbounded"&gt;
+     &lt;xs:complexType&gt;
+       &lt;xs:sequence&gt;
+         &lt;xs:element name="termék" type="xs:string"
+                     minOccurs="1" maxOccurs="unbounded"/&gt;
+       &lt;/xs:sequence&gt;
+       &lt;xs:attribute name="rid" type="xs:ID"    use="required"/&gt;
+       &lt;xs:attribute name="kit" type="xs:IDREF" use="required"/&gt;
+     &lt;/xs:complexType&gt;
+   &lt;/xs:element&gt;
+ &lt;/xs:sequence&gt;&lt;/xs:complexType&gt;
+&lt;/xs:element&gt;</pre>
+      <p><strong>Egy érvényes (valid) példány</strong> — a <span class="m">kit</span> IDREF a vevő <span class="m">vid</span>-jére mutat:</p>
+      <pre class="m" style="white-space:pre-wrap">&lt;bolt&gt;
+  &lt;vevő vid="v1"&gt;&lt;név&gt;Kovács&lt;/név&gt;&lt;/vevő&gt;
+  &lt;rendelés rid="r1" kit="v1"&gt;
+    &lt;termék&gt;toll&lt;/termék&gt;
+    &lt;termék&gt;füzet&lt;/termék&gt;
+  &lt;/rendelés&gt;
+&lt;/bolt&gt;</pre>
+    </div>
     <a class="fjump" data-go="feladatok" href="#f-xml">Gyakorold a Feladattípusok között — DTD ↔ XML séma</a>
   </div></details>
 
@@ -2886,6 +3024,30 @@ return &lt;olcsó&gt;{ data($k/cím) }&lt;/olcsó&gt;</pre>
         <li><span class="m">where</span>: csak ahol az <span class="m">ár</span> &lt; 3000.</li>
         <li><span class="m">order by</span>: cím szerint rendez; <span class="m">return</span>: új elemet épít, a <span class="m">data()</span> a cím szöveges értékét teszi be.</li>
       </ol>
+    </div>
+    <div class="ex"><div class="exh">Mintafeladat (vizsgaszintű) — XPath + XQuery (csoportosítás, kvantor)</div>
+      <p>Dokumentum <span class="m">konyvek.xml</span>: <span class="m">/könyvtár/könyv</span>, minden könyvnek van <span class="m">@kiadó</span> attribútuma, <span class="m">cím</span>, <span class="m">ár</span> és egy vagy több <span class="m">szerző</span> gyermeke.</p>
+      <h4>(a) XPath</h4>
+      <ul>
+        <li>A 2000-nél drágább könyvek szerzői: <span class="m">//könyv[ár&gt;2000]/szerző</span></li>
+        <li>Az első könyv kiadója (attribútum → atomi érték): <span class="m">/könyvtár/könyv[1]/@kiadó</span></li>
+        <li>Könyvek 2-nél több szerzővel: <span class="m">//könyv[count(szerző)&gt;2]</span></li>
+      </ul>
+      <h4>(b) XQuery — kiadónként a könyvek száma</h4>
+      <pre class="m" style="white-space:pre-wrap">for $k in distinct-values(//könyv/@kiadó)
+let $db := //könyv[@kiadó = $k]
+order by $k
+return &lt;kiadó név="{$k}" darab="{count($db)}"/&gt;</pre>
+      <ol class="steps">
+        <li><span class="m">distinct-values</span>: a kiadók duplikátum nélküli listája; a <span class="m">for</span> egyesével végigmegy rajtuk.</li>
+        <li><span class="m">let</span>: <em>egyetlen</em> változóhoz köti az adott kiadó <strong>összes</strong> könyvét (egész sorozat).</li>
+        <li><span class="m">return</span>: kiadónként egy <span class="m">&lt;kiadó&gt;</span> elem, az attribútumokba <span class="m">{…}</span> behelyettesítéssel a név és a <span class="m">count()</span>.</li>
+      </ol>
+      <h4>(c) XQuery — kvantor: mely kiadók kínálnak <em>csak</em> olcsó (&lt; 3000) könyvet?</h4>
+      <pre class="m" style="white-space:pre-wrap">for $k in distinct-values(//könyv/@kiadó)
+where every $b in //könyv[@kiadó = $k] satisfies $b/ár &lt; 3000
+return &lt;olcsóKiadó&gt;{ $k }&lt;/olcsóKiadó&gt;</pre>
+      <p>Az <span class="m">every … satisfies</span> akkor igaz, ha a kiadó <strong>minden</strong> könyve 3000 alatti. (Vigyázz: ha a feltételezett halmaz <em>üres</em>, az <span class="m">every</span> üresen igaz — lásd K92.)</p>
     </div>
     <a class="fjump" data-go="feladatok" href="#f-xpath">Gyakorold a Feladattípusok között — XPath / XQuery</a>
   </div></details>
