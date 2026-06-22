@@ -289,7 +289,7 @@ body.study .mcopts{display:none}
 <header>
   <div class="hrow">
     <h1>Adatbázisok I. <span class="sub">· vizsgafelkészítő</span></h1>
-    <span class="build" id="build" title="Verzió (frissítéskor változik) — ha nem ezt látod, frissítsd az oldalt">v2026-06-22c</span>
+    <span class="build" id="build" title="Verzió (frissítéskor változik) — ha nem ezt látod, frissítsd az oldalt">v2026-06-22d</span>
     <div class="hspace"></div>
     <div class="userbox">
       <span id="syncdot" title="Mentés: helyben (localStorage)"></span>
@@ -3128,6 +3128,8 @@ details.sol .solbody{padding:12px 16px}
 .fex>h4{margin:0 0 6px;font-family:var(--fh);color:var(--white);font-size:1.05rem}
 .fex .task{color:var(--acc2);font-size:.95rem;margin:.2em 0 .4em}
 .fex .task::before{content:"Feladat: ";color:var(--acc);font-family:var(--fh);font-weight:700;font-size:.8rem;letter-spacing:.4px}
+.fex .why{background:var(--bg2);border-left:3px solid var(--acc);border-radius:6px;padding:8px 12px;margin:9px 0 0;color:var(--read);font-size:.9rem;line-height:1.55}
+.fex .why strong{color:var(--white)}
 .diag{font-family:var(--fm);font-size:.82rem;white-space:pre;overflow-x:auto;background:#0a0e13;border:1px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--read);line-height:1.5}
 .chase{border-collapse:collapse;font-family:var(--fm);font-size:.85rem;margin:6px 8px 6px 0;display:inline-table;vertical-align:top}
 .chase th{background:var(--card2);color:var(--white);padding:3px 10px;border:1px solid var(--line2)}
@@ -3228,6 +3230,7 @@ sub{font-size:.75em}
         <li><span class="m">Főnökök2(név, kedveltTeák, gyártó)</span>: egyetlen FF <span class="m">kedveltTeák → gyártó</span>; a kulcs <span class="m">{név, kedveltTeák}</span>, de <span class="m">kedveltTeák</span> nem szuperkulcs → <strong>sért</strong>.</li>
         <li><span class="m">kedveltTeák⁺ = {kedveltTeák, gyártó}</span> → felbontás: <span class="m">Főnökök3(kedveltTeák, gyártó)</span> és <span class="m">Főnökök4(név, kedveltTeák)</span>. Mindkettő BCNF.</li>
       </ol>
+      <p class="why"><strong>A 2. lépés (szétszedés) képe:</strong> a sértő <span class="m">név→…</span> miatt amit a <span class="m">név</span> meghatároz (<span class="m">cím, kedvencTea</span>), az minden sorban fölöslegesen ismétlődik. Ezért <span class="m">{név}⁺</span>-t <strong>kiemeljük egy külön táblába</strong> (<span class="m">R1</span>), ahol a <span class="m">név</span> a kulcs → ott egyszer szerepel; a maradék (<span class="m">kedveltTeák, gyártó</span>) a <span class="m">név</span>-vel együtt marad (<span class="m">R2</span>). Képlettel: <span class="m">R1 = X⁺</span>, <span class="m">R2 = X ∪ (R − X⁺)</span>. A két tábla közös oszlopa a <span class="m">név</span> (= <span class="m">R1</span> kulcsa) → a visszajoin <strong>veszteségmentes</strong>.</p>
       <p><strong>Végeredmény:</strong> <span class="m">Főnökök1(név, cím, kedvencTea)</span>, <span class="m">Főnökök3(kedveltTeák, gyártó)</span>, <span class="m">Főnökök4(név, kedveltTeák)</span>.</p>
     </div></details>
   </div>
