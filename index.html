@@ -2596,14 +2596,35 @@ WHERE  feltétel;</p>
 
   <details class="nb"><summary>13. Egyed-kapcsolat (E/K) modell<span class="ntag">k-ek</span></summary>
   <div class="nbody">
-    <h4>Alapfogalmak</h4>
-    <p><strong>Egyedhalmaz</strong> (téglalap), <strong>attribútum</strong> ( ellipszis; a kulcs aláhúzva), <strong>kapcsolat</strong> (rombusz). A kapcsolat <strong>multiplicitása</strong>: egy-egy, egy-sok, sok-sok (nyíl/jelölés a „felé egy” oldalra). <strong>Szerepkör</strong> és <strong>ternáris</strong> (3 egyedhalmaz közti) kapcsolat is lehet.</p>
-    <h4>Speciálisak</h4>
+    <h4>Mire való?</h4>
+    <p>Az <strong>E/K modell</strong> magas szintű <strong>tervezőeszköz</strong>: vele az <strong>adatbázissémát vázoljuk fel</strong> egy diagramon. Megszorítások megadhatók benne, <em>műveletek nem</em>. A kész diagramot a végén <strong>relációsémákká írjuk át</strong>.</p>
+    <h4>Diagramelemek</h4>
     <ul>
-      <li><strong>Gyenge egyedhalmaz</strong>: nincs saját teljes kulcsa, egy másik egyedhalmaztól (azonosító kapcsolaton át) kölcsönöz kulcsattribútumot.</li>
-      <li><strong>Alosztály/ISA</strong>: öröklődés (alosztály örökli az ősosztály attribútumait), „isa” háromszög.</li>
+      <li><strong>Egyedhalmaz</strong> — téglalap (gyenge egyedhalmaznál dupla téglalap).</li>
+      <li><strong>Attribútum</strong> — ovális/ellipszis; a <strong>kulcs aláhúzva</strong>.</li>
+      <li><strong>Kapcsolat(halmaz)</strong> — rombusz. <strong>A kapcsolatnak is lehet attribútuma</strong> (a résztvevők párjának közös tulajdonsága, pl. a Felszolgál(teázó, tea) melletti <em>ár</em>).</li>
     </ul>
-    <p>A relációsémává írás és az alosztály-stratégiák részletesen + levezetve a <strong>3. feladatban</strong>.</p>
+    <h4>Multiplicitás és nyilak (fontos megkülönböztetés!)</h4>
+    <ul>
+      <li><strong>Sima nyíl</strong> egy oldal felé = <strong>legfeljebb egy</strong> (<span class="m">[0,1]</span>): minden bal oldali egyedhez legfeljebb egy jobb oldali tartozik.</li>
+      <li><strong>Lekerekített (kerek) nyíl</strong> = <strong>pontosan egy</strong> (<span class="m">[1,1]</span>): kötelezően egy párja van.</li>
+      <li>Nyíl nélküli (sok) oldal = <span class="m">[0,n]</span> vagy <span class="m">[1,n]</span>. A nyíl helyett <strong>intervallum-jelölés</strong> is írható az élre (ez a kerek nyíl tanult alternatívája).</li>
+      <li>Ebből áll össze az <strong>egy-egy, egy-sok, sok-sok</strong> kapcsolat. <strong>Ternáris</strong> (3 egyedhalmaz közti) kapcsolatnál a <strong>C-be mutató nyíl</strong> azt jelenti: az A és B egyedek <strong>együttese egyértelműen meghatározza</strong> a hozzájuk tartozó C-t.</li>
+    </ul>
+    <h4>Gyenge egyedhalmaz</h4>
+    <p>Nincs saját teljes kulcsa: egy <strong>támogató (azonosító) kapcsolaton</strong> át kölcsönöz kulcsattribútumot. A támogató kapcsolatnak <strong>kerek nyílban kell végződnie a támogató oldalon</strong> (a gyenge egyed minden eleme <strong>pontosan egy</strong> támogató egyedhez kapcsolódik). A gyenge egyedhalmaz <strong>kulcsa</strong> = a saját aláhúzott attribútumai <strong>+</strong> a támogató egyedhalmaz kulcsa (pl. mezszám + csapatnév). Egy gyenge egyedhalmaz <em>másik gyenge egyedhalmazhoz</em> is kapcsolódhat — ilyenkor az azonosítás láncolódik.</p>
+    <h4>Alosztály (ISA)</h4>
+    <ul>
+      <li><strong>Az-egy (isa) kapcsolat</strong>: háromszög, a csúcsa az <strong>ősosztályra</strong> mutat; az alosztály örökli az ősosztály attribútumait. Az alosztályok <strong>fát alkotnak</strong> (nincs többszörös öröklés).</li>
+      <li>E/K-ban: ha egy egyed szerepel egy alosztályban, akkor <strong>szerepel az összes ősosztályában is</strong> (több helyen van reprezentánsa). Ez a fő különbség az <strong>OO</strong>-hoz képest, ahol egy egyed <em>pontosan egy</em> osztályé.</li>
+    </ul>
+    <h4>Tervezési ökölszabályok (mikor jogos egyedhalmaz?)</h4>
+    <ul>
+      <li><strong>Kerüld a redundanciát</strong> — pl. a klub címét ne tároljuk minden focistánál (módosítási anomália), az a Klub attribútuma.</li>
+      <li><strong>Óvatosan a gyenge egyedhalmazokkal.</strong></li>
+      <li><strong>Ne vegyél fel egyedhalmazt, ha egy attribútum is elég.</strong> Egyedhalmaz csak akkor indokolt, ha van <strong>nem-kulcs attribútuma</strong>, VAGY a <strong>sok</strong> oldalon áll egy sok-egy kapcsolatban.</li>
+    </ul>
+    <div class="note">A relációsémává írás és a 3 alosztály-stratégia (E/K-stílus, OO, NULL-os) <strong>levezetve a 3. feladatban</strong>. Mikor melyik jó: az <strong>OO</strong> (minden alosztálynak teljes, saját táblája az összes attribútummal) az <em>egy alosztályra</em> vonatkozó lekérdezéseknél előnyös (egyetlen táblából, join nélkül); az <strong>E/K-stílus</strong> (az ős-tábla minden egyedet tartalmaz, az alosztály-táblák csak a kulcsot + saját attribútumot) az <em>összes egyedre</em> vonatkozó lekérdezéseknél.</div>
     <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K45–K61, K127–K130.</p>
   </div></details>
 
@@ -2616,21 +2637,33 @@ WHERE  feltétel;</p>
       <li><strong>Beágyazott tábla</strong> (nested table) és a <span class="m">TABLE(...)</span> függvény: kollekció „kibontása” sorokká; <span class="m">CAST</span> típuskonverzióhoz/kollekció átalakításához.</li>
       <li><strong>Metódus</strong>: típushoz tartozó művelet; deklaráció a típusban, törzs külön (Oracle: CREATE TYPE BODY). <span class="m">PRAGMA RESTRICT_REFERENCES</span> jelzi, mihez nyúlhat a metódus (tisztaság).</li>
     </ul>
+    <h4>Lekérdezés és elérés (Oracle)</h4>
+    <ul>
+      <li><strong>Sortípusú tábla sorai objektumok</strong>: a <span class="m">SELECT *</span> a <strong>típuskonstruktorral becsomagolva</strong> mutatja őket, pl. <span class="m">BarType('Joe''s Bar','Maple St.')</span>. Beszúrásnál is kell a konstruktor: <span class="m">INSERT INTO Bars VALUES (BarType('Joe''s Bar','Maple St.'));</span></li>
+      <li><strong>Kötelező az alias</strong> az objektum-mezők eléréséhez: <span class="m">dd.favBeer.name</span> jó, de <span class="m">favBeer.name</span> vagy <span class="m">Drinkers.favBeer.name</span> <em>nem</em>.</li>
+      <li><strong>REF követése</strong>: a pontozott elérés (<span class="m">ss.bar.name</span>) implicit dereferál; a <strong>DEREF</strong> a teljes hivatkozott objektumot adja vissza <em>olvasható</em> formában (a puszta REF kiírva értelmezhetetlen).</li>
+      <li>A <strong>pont</strong> (<span class="m">.</span>) a SELECT-ben kétféle: <strong>mezőelérés</strong>, illetve <strong>metódushívás</strong> az objektum neve után (pl. <span class="m">ff.árYenben(114.0)</span>). SQL-99-ben a mezőelérés generátor-metódussal menne.</li>
+    </ul>
+    <h4>Beágyazott táblák részletei</h4>
+    <ul>
+      <li>Létrehozás: <span class="m">CREATE TABLE … NESTED TABLE &lt;mező&gt; STORE AS &lt;tár&gt;;</span> — feloldja az 1NF atomi-érték korlátját (egy mező értéke maga reláció lehet). FONTOS: <span class="m">TABLE</span>, nem <span class="m">TYPE</span>.</li>
+      <li><span class="m">TABLE(...)</span>: beágyazott tábla → hagyományos reláció a FROM-ban. Fordított irány: <span class="m">CAST(MULTISET(SELECT …) AS &lt;típus&gt;)</span> egy lekérdezés-eredményt csomagol beágyazott táblává.</li>
+    </ul>
     <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K62–K73, K131. (OR-SQL példa a 3. feladatban.)</p>
   </div></details>
 
   <details class="nb"><summary>15. XML, DTD és XML séma<span class="ntag">k-xml</span></summary>
   <div class="nbody">
     <h4>Jól formált vs érvényes</h4>
-    <p><strong>Jól formált</strong> (well-formed): helyes XML szintaxis (egy gyökér, helyesen zárt/egymásba ágyazott elemek, idézőjeles attribútumok). <strong>Érvényes</strong> (valid): ezen felül megfelel egy sémának (DTD/XSD).</p>
+    <p><strong>Jól formált</strong> (well-formed): helyes XML <em>szintaxis</em> — egy gyökérelem, minden nyitó tagnek van záró párja, helyesen (átfedés nélkül) egymásba ágyazott elemek, idézőjeles attribútumértékek, van <span class="m">&lt;?xml … ?&gt;</span> deklaráció, és a tagek <strong>kis-/nagybetű-érzékenyek</strong>; saját tagek szabadon bevezethetők. <strong>Érvényes</strong> (valid): ezen felül <em>megfelel egy sémának</em> (DTD/XSD). Tehát minden érvényes XML jól formált, de nem fordítva.</p>
     <h4>DTD</h4>
     <ul>
-      <li>Elem: <span class="m">&lt;!ELEMENT a (b, c*)&gt;</span> — sorrend, <span class="m">*</span>=0 vagy több, <span class="m">+</span>=1 vagy több, <span class="m">?</span>=0 vagy 1, <span class="m">|</span>=választás.</li>
+      <li>Elem: <span class="m">&lt;!ELEMENT a (b, c*)&gt;</span> — név + zárójelben az alelemek (sorrend és multiplicitás): <span class="m">*</span>=0 vagy több, <span class="m">+</span>=1 vagy több, <span class="m">?</span>=0 vagy 1, <span class="m">|</span>=választás. A <strong>szöveges (levél) elem</strong> típusa <span class="m">#PCDATA</span> (pl. <span class="m">&lt;!ELEMENT cím (#PCDATA)&gt;</span>); üres elem: <span class="m">EMPTY</span>.</li>
       <li>Attribútum: <span class="m">&lt;!ATTLIST a id ID #REQUIRED ref IDREF #IMPLIED&gt;</span>. Típusok: CDATA, ID, IDREF(S), enumeráció…</li>
       <li><strong>ID</strong> = egyedi azonosító; <strong>IDREF</strong> = hivatkozás egy ID-ra (a DTD-beli „mutató”).</li>
     </ul>
     <h4>XML séma (XSD)</h4>
-    <p>Erősebb: <strong>adattípusok</strong>, számosság <span class="m">minOccurs</span>/<span class="m">maxOccurs</span> (a DTD <span class="m">+</span> ↔ minOccurs=1 maxOccurs=unbounded; <span class="m">*</span> ↔ minOccurs=0 maxOccurs=unbounded), <strong>key/keyref</strong> (ID/IDREF erősebb megfelelője), névterek. Egy útkifejezés eredménye elem- vagy attribútum-csomópontok sorozata.</p>
+    <p>Erősebb: <strong>adattípusok</strong>, számosság <span class="m">minOccurs</span>/<span class="m">maxOccurs</span>. A DTD-jelek megfelelői: <span class="m">+</span> ↔ <span class="m">minOccurs=1 maxOccurs=unbounded</span>; <span class="m">*</span> ↔ <span class="m">minOccurs=0 maxOccurs=unbounded</span>; <span class="m">?</span> ↔ <span class="m">minOccurs=0 maxOccurs=1</span> (a minOccurs/maxOccurs <strong>alapértéke 1</strong>). Továbbá <strong>key/keyref</strong> (az ID/IDREF erősebb megfelelője), érték-korlátozás (<span class="m">xs:restriction</span>), névterek — ezért az XML sémával <strong>több megszorítás</strong> írható elő, mint DTD-vel. Egy útkifejezés eredménye csomópontok sorozata; ha <strong>attribútummal végződik</strong>, akkor <strong>atomi értékek</strong> (pl. sztringek) listája.</p>
     <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K74–K83. (DTD↔XSD megfeleltetés a 3. feladatban.)</p>
   </div></details>
 
@@ -2638,8 +2671,11 @@ WHERE  feltétel;</p>
   <div class="nbody">
     <h4>XPath</h4>
     <p>Az XML fában <strong>navigál</strong> útkifejezéssel. <span class="m">/</span> = gyökérről, <span class="m">//</span> = tetszőleges mélységben, <span class="m">.</span> = aktuális, <span class="m">..</span> = szülő, <span class="m">@attr</span> = attribútum. <strong>Predikátum</strong> <span class="m">[...]</span>: szűrés, pl. <span class="m">//könyv[ár &lt; 10000]</span>. Alapértelmezett tengely a <strong>child</strong> (gyermek). A <span class="m">data(E)</span> az E csomópont szöveges/atomi értékét adja; <span class="m">&lt;&lt;</span> / <span class="m">&gt;&gt;</span> a dokumentum-sorrend szerinti összehasonlítás.</p>
+    <h4>Adatmodell (tételek listája)</h4>
+    <p>A relációk megfelelője itt a <strong>tételek (item) listája = sorozat (sequence)</strong>: a bemenet, a köztes lépések és a végeredmény is sequence. Egy <strong>tétel</strong> vagy <strong>egyszerű (atomi) érték</strong>, vagy <strong>csomópont</strong> (dokumentum-, elem- vagy attribútum-csomópont). A <strong>default tengely</strong> a <span class="m">child::</span> (<span class="m">/teázók/tea</span> = <span class="m">/child::teázók/child::tea</span>).</p>
     <h4>XQuery — FLWOR</h4>
-    <p><span class="m">FOR</span> (iterál egy sorozaton, változónként egy elem), <span class="m">LET</span> (egyszer köt egy <em>teljes</em> sorozatot egy változóhoz), <span class="m">WHERE</span> (szűr), <span class="m">ORDER BY</span>, <span class="m">RETURN</span> (eredményt épít). Kvantorok: <span class="m">some $x in E satisfies F</span> / <span class="m">every $x in E satisfies F</span>.</p>
+    <p><span class="m">FOR</span> (iterál egy sorozaton, változónként egy elem), <span class="m">LET</span> (egyszer köt egy <em>teljes</em> sorozatot egy változóhoz), <span class="m">WHERE</span> (szűr), <span class="m">ORDER BY</span>, <span class="m">RETURN</span> (eredményt épít). A <span class="m">return</span> kötelező, a <span class="m">where</span>/<span class="m">order by</span> opcionális. Kvantorok: <span class="m">some $x in E satisfies F</span> (∃: igaz, ha <em>legalább egy</em> értékre teljesül) / <span class="m">every $x in E satisfies F</span> (∀: minden értékre).</p>
+    <p>Az <strong>XQuery</strong> egy <strong>funkcionális</strong>, SQL-hez hasonló lekérdezőnyelv, amely <strong>XPath-kifejezéseket</strong> használ, és a <em>tételek listája</em> adatmodellen dolgozik. Funkcionális: ahol kifejezés állhat, ott <em>bármilyen</em> XQuery kifejezés állhat (az SQL-ben az alkérdés nem állhatott bárhol). <strong>XML lekérdezőnyelv</strong> az <span class="m">XPath</span> (útkifejezések) és az <span class="m">XQuery</span> (teljes FLWR) — a DTD és az XML séma <em>sémaleíró</em>, az SQL pedig relációs nyelv, ezek nem XML lekérdezőnyelvek.</p>
     <div class="gotcha"><b>Buktató (K92):</b> üres E-re az <span class="m">every</span> igaz (üresen igaz), a <span class="m">some</span> hamis — szigorúan tehát létezik ilyen pár. A kulcs „Nem létezik” választ vár (nemüres E-t feltételezve); a vizsgán a kulcs szerint válaszolj, de tudd az üres eset kivételét.</p></div>
     <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K84–K95, K113, K92, K132. (XPath/XQuery levezetés a 3. feladatban.)</p>
   </div></details>
@@ -2650,8 +2686,9 @@ WHERE  feltétel;</p>
     <p><strong>OLTP</strong> (tranzakciófeldolgozás): sok rövid, író-olvasó művelet, aktuális adat, normalizált séma (pl. webshop rendelései). <strong>OLAP</strong> (elemzés): kevés, nagy, olvasó lekérdezés, történeti adat, aggregálás, denormalizált.</p>
     <h4>Adattárház &amp; kocka</h4>
     <ul>
-      <li><strong>Adattárház</strong>: integrált, történeti, elemzésre optimalizált; tipikus szervezés a <strong>csillagséma</strong>: középen <strong>ténytábla</strong> (mérőszámok + idegen kulcsok), körülötte <strong>dimenziótáblák</strong>.</li>
-      <li><strong>Adatkocka</strong> (MOLAP): a dimenziók a kocka tengelyei, a tények a belső pontokban; minden dimenziót kiegészítünk egy <span class="m">*</span> („összesítés”) értékkel.</li>
+      <li><strong>Adattárház</strong>: integrált, történeti, elemzésre optimalizált — az adatokat <strong>egyetlen közös adatbázisba másolják</strong> közös sémával. Tipikus <strong>architektúra</strong>: a helyi egységek (pl. áruházak) nappal <strong>OLTP</strong> szinten dolgoznak, és <strong>éjszakánként (periodikusan) feltöltik</strong> a központi adattárházba, amit az elemzők <strong>OLAP</strong>-ra használnak.</li>
+      <li><strong>Csillagséma</strong>: középen a (hatalmas) <strong>ténytábla</strong>, körülötte a (kis) <strong>dimenziótáblák</strong>. A ténytábla attribútumai: <strong>függő attribútumok</strong> (mérőszámok, amiket a dimenziók meghatároznak) + <strong>dimenzió-attribútumok</strong> (a dimenziótáblák kulcsai = <strong>idegen kulcsok</strong>). A dimenziótáblák kis, statikus leíró adatok.</li>
+      <li><strong>Tárolás kétféle</strong>: <strong>MOLAP</strong> = multidimenzionális <strong>adatkocka</strong> (a dimenziótáblák kulcsai a hiperkocka tengelyei/dimenziói, a függő attribútumok a kocka belső pontjaiban); <strong>ROLAP</strong> = relációs tárolás <strong>csillagsémában</strong>. A kockában minden dimenziót kiegészítünk egy <span class="m">*</span> (összesítés) értékkel: egy <span class="m">*</span> koordinátájú pont az adott dimenzió(k) fölött <strong>összesít</strong>.</li>
       <li><strong>Drill-down</strong> = összesítés lebontása részletekre; <strong>roll-up</strong> = aggregálás (feljebb) egy/több dimenzió mentén.</li>
     </ul>
     <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K96–K104, K107.</p>
