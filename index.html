@@ -708,6 +708,8 @@ WHERE  feltétel;</p>
     <button class="showbtn">Mutasd a választ</button>
     <div class="hide">
       <ul class="anslist"><li><strong>12</strong> <span class="m">(2! · 3! = 2 · 6)</span></li></ul>
+      <p class="wrongttl">Nem jó:</p>
+      <ul class="anslist wrong"><li>8</li><li>9</li><li>5</li><li>6</li></ul>
       <p class="expl">Az előző szabály behelyettesítve: m!·n! = 2!·3! = 12.</p>
     </div>
   </div>
@@ -750,6 +752,8 @@ WHERE  feltétel;</p>
     <button class="showbtn">Mutasd a választ</button>
     <div class="hide">
       <ul class="anslist"><li><strong>Üres eredményhalmaz lesz.</strong></li></ul>
+      <p class="wrongttl">Nem jó:</p>
+      <ul class="anslist wrong"><li>Hibát dob a lekérdezés.</li><li>A <span class="m">(Big Giant, NULL, USA)</span> sor lesz az eredményben.</li></ul>
       <p class="expl">NULL-lal való összehasonlítás eredménye UNKNOWN, és UNKNOWN OR UNKNOWN = UNKNOWN. Egy sor csak akkor kerül be, ha a WHERE <strong>TRUE</strong> — az UNKNOWN nem elég, hiába tűnik a feltétel „mindig igaznak”.</p>
     </div>
   </div>
@@ -862,6 +866,8 @@ WHERE  feltétel;</p>
     <button class="showbtn">Mutasd a választ</button>
     <div class="hide">
       <ul class="anslist"><li>Az összesítés előállítása <strong>előtt</strong> az érintett oszlopból a <strong>duplikátumokat kihagyjuk</strong>.</li></ul>
+      <p class="wrongttl">Nem jó:</p>
+      <ul class="anslist wrong"><li>Mivel az összesítések mindig halmaz-szemantikát használnak, a DISTINCT-nek nincs hatása.</li><li>Rá tudjuk kényszeríteni az összesítéseket, hogy multihalmaz-szemantikát használjanak.</li></ul>
       <p class="expl">Pl. <span class="m">COUNT(DISTINCT ár)</span> = hány <em>különböző</em> ár van. Nem a halmazszemantika általános bekapcsolása — csak az adott összesítés bemenetét szűri.</p>
     </div>
   </div>
@@ -1213,6 +1219,8 @@ WHERE  feltétel;</p>
     <button class="showbtn">Mutasd a választ</button>
     <div class="hide">
       <ul class="anslist"><li>Az <strong>A→C-hez kapcsolódó régió tartalmazni fogja az A→B és B→C régiók metszetét</strong>.</li></ul>
+      <p class="wrongttl">Nem jó:</p>
+      <ul class="anslist wrong"><li>Az A→B-hez és B→C-hez kapcsolódó régiók metszete, valamint az A→C-hez kapcsolódó régió diszjunkt lesz.</li><li>Az A→B és B→C régiók metszete tartalmazni fogja az A→C-hez kapcsolódó régiót.</li></ul>
       <p class="expl">Egy függőség régiója = az őt teljesítő előfordulások halmaza. Ha egy előfordulás A→B-t és B→C-t is teljesíti, akkor tranzitivitással A→C-t is — tehát a metszet része A→C régiójának.</p>
     </div>
   </div>
@@ -1327,6 +1335,8 @@ WHERE  feltétel;</p>
         <li>Azt, hogy a vetületek összekapcsolásakor <strong>nem kapunk-e extra sorokat</strong>, amelyek eredetileg nem voltak az előfordulásban.</li>
         <li>Vagyis: <span class="m">Π<sub>R1</sub>(r) ⋈ … ⋈ Π<sub>Rk</sub>(r) ⊆ r</span> teljesül-e — <strong>a másik irány (r ⊆ join) mindig fennáll</strong>.</li>
       </ul>
+      <p class="wrongttl">Nem jó:</p>
+      <ul class="anslist wrong"><li>Valójában semmit sem kell megvizsgálni, mert minden felbontás veszteségmentes.</li><li>Azt, hogy <span class="m">r ⊆ Π<sub>R1</sub>(r) ⋈ … ⋈ Π<sub>Rk</sub>(r)</span> teljesül-e, mert a másik irány mindig fennáll.</li></ul>
       <p class="expl">Minden eredeti sor visszajön a vetületek joinjából — a kérdés csak az, keletkeznek-e „hamis” többletsorok. Ellenőrzés: chase teszt.</p>
     </div>
   </div>
@@ -1348,6 +1358,8 @@ WHERE  feltétel;</p>
         <li>R 3NF-ben van, ha minden X → Y <strong>nemtriviális</strong> FF-re: <strong>X szuperkulcs, vagy Y minden attribútuma prím</strong> (elsődleges attribútum, azaz valamelyik kulcs eleme).</li>
         <li>Ekvivalensen X → A alakra: X szuperkulcs vagy <strong>A prím</strong>.</li>
       </ul>
+      <p class="wrongttl">Nem jó:</p>
+      <ul class="anslist wrong"><li>X→A megsérti a 3NF-t akkor és csak akkor, ha A nem prím (elsődleges attribútum).</li><li>R 3. normálformában van, ha minden nemtriviális X→Y FF-re R-ben X idegen kulcs.</li><li>A 3. normálforma az a szabványos mód, ahogy az adatbázis-objektumot matematikai kifejezésként leírjuk.</li></ul>
       <p class="expl">A 3NF a BCNF „felpuhítása” a prím attribútumokkal — pont ennyi engedmény kell ahhoz, hogy a függőségmegőrzés mindig teljesíthető legyen.</p>
     </div>
   </div>
@@ -1649,6 +1661,8 @@ WHERE  feltétel;</p>
     <button class="showbtn">Mutasd a választ</button>
     <div class="hide">
       <ul class="anslist"><li>A <strong>„programtervező informatikus MSc szakos demonstrátorok által oktatott tantárgyakat”</strong> visszaadó lekérdezés esetén hasznos.</li></ul>
+      <p class="wrongttl">Nem jó:</p>
+      <ul class="anslist wrong"><li>A „programtervező informatikus MSc szakos összes hallgató nevét” visszaadó lekérdezés esetén hasznos.</li><li>Sohasem hasznos ez a megközelítés.</li></ul>
       <p class="expl">Az OO átírásnál minden (al)osztálynak külön, teljes relációja van az összes attribútummal — az alosztályra vonatkozó kérdés egyetlen táblából megválaszolható, join nélkül.</p>
     </div>
   </div>
@@ -1659,6 +1673,8 @@ WHERE  feltétel;</p>
     <button class="showbtn">Mutasd a választ</button>
     <div class="hide">
       <ul class="anslist"><li>A <strong>„programtervező informatikus MSc szakos összes hallgató nevét”</strong> visszaadó lekérdezés esetén hasznos.</li></ul>
+      <p class="wrongttl">Nem jó:</p>
+      <ul class="anslist wrong"><li>A „programtervező informatikus MSc szakos demonstrátorok által oktatott tantárgyakat” visszaadó lekérdezés esetén hasznos.</li><li>Sohasem hasznos ez a megközelítés.</li></ul>
       <p class="expl">E/K stílusnál az ős-reláció minden egyedet tartalmaz (az alosztály-relációk csak a kulcsot + saját attribútumokat) — az összes egyedre vonatkozó kérdéshez elég az ős-tábla.</p>
     </div>
   </div>
@@ -1882,6 +1898,8 @@ WHERE  feltétel;</p>
         <li>Adjunk meg egy E elemet és egy A attribútumát, aminek <strong>típusa: ID</strong>.</li>
         <li>Amikor az E elemet egy XML dokumentumban használjuk, az ID típusú A attribútumnak egy <strong>máshol nem szereplő (egyedi) értéket</strong> kell adnunk.</li>
       </ul>
+      <p class="wrongttl">Nem jó:</p>
+      <ul class="anslist wrong"><li>Az <span class="m">xs:element</span> elemen belül egy <span class="m">xs:key</span> megadja, hogy az elemen belül bizonyos — szelektorral és mezőkkel kijelölt — értékeknek egy kulcs értékei között kell szerepelniük.</li><li>Az <span class="m">xs:element</span>-hez tartozhat <span class="m">xs:key</span> alelem, amelyen belül minden, egy adott szelektoron át elérhető elem egyedi a megadott mezők (field) kombinációjára nézve.</li></ul>
       <p class="expl">Pl. <span class="m">&lt;!ATTLIST teázó név ID #REQUIRED&gt;</span> → minden teázó név-értéke egyedi a dokumentumban.</p>
     </div>
   </div>
@@ -1919,6 +1937,8 @@ WHERE  feltétel;</p>
     <button class="showbtn">Mutasd a választ</button>
     <div class="hide">
       <ul class="anslist"><li><span class="m">minOccurs = "0"</span> és <span class="m">maxOccurs = "1"</span></li></ul>
+      <p class="wrongttl">Nem jó:</p>
+      <ul class="anslist wrong"><li><span class="m">minOccurs = "0"</span> és <span class="m">maxOccurs = "unbounded"</span></li><li><span class="m">minOccurs = "1"</span> és <span class="m">maxOccurs = "unbounded"</span></li></ul>
       <p class="expl">? = nulla vagy egy előfordulás.</p>
     </div>
   </div>
@@ -1929,6 +1949,8 @@ WHERE  feltétel;</p>
     <button class="showbtn">Mutasd a választ</button>
     <div class="hide">
       <ul class="anslist"><li><span class="m">minOccurs = "1"</span> és <span class="m">maxOccurs = "unbounded"</span></li></ul>
+      <p class="wrongttl">Nem jó:</p>
+      <ul class="anslist wrong"><li><span class="m">minOccurs = "0"</span> és <span class="m">maxOccurs = "unbounded"</span></li><li><span class="m">minOccurs = "0"</span> és <span class="m">maxOccurs = "1"</span></li></ul>
       <p class="expl">+ = legalább egy.</p>
     </div>
   </div>
@@ -1939,6 +1961,8 @@ WHERE  feltétel;</p>
     <button class="showbtn">Mutasd a választ</button>
     <div class="hide">
       <ul class="anslist"><li><span class="m">minOccurs = "0"</span> és <span class="m">maxOccurs = "unbounded"</span></li></ul>
+      <p class="wrongttl">Nem jó:</p>
+      <ul class="anslist wrong"><li><span class="m">minOccurs = "0"</span> és <span class="m">maxOccurs = "1"</span></li><li><span class="m">minOccurs = "1"</span> és <span class="m">maxOccurs = "unbounded"</span></li></ul>
       <p class="expl">* = nulla vagy több. (A minOccurs/maxOccurs alapértéke egyébként 1.)</p>
     </div>
   </div>
@@ -2155,6 +2179,8 @@ WHERE  feltétel;</p>
       <ul class="anslist">
         <li>A kulcs szerint: <strong>Nem létezik ilyen E és F kifejezés</strong> — mert ha E összes értéke kielégíti F-et, akkor biztosan létezik legalább egy érték E-ben, amelyik kielégíti F-et.</li>
       </ul>
+      <p class="wrongttl">Nem jó:</p>
+      <ul class="anslist wrong"><li>Létezik ilyen E és F kifejezés.</li><li>Létezhet, mert ha létezik legalább egy érték E-ben, amely kielégíti F-et, akkor biztosan E minden értéke kielégíti F-et.</li><li>Létezhet, ugyanis az univerzális kvantifikátor értelmezési tartománya része az egzisztenciális kvantifikátor értelmezési tartományának.</li></ul>
       <div class="note">A kulcs indoklása hallgatólagosan felteszi, hogy E nem üres. Ha E az <strong>üres lista</strong>, akkor az every igaz (üresen igaz állítás), a some viszont hamis — ilyenkor tehát elvileg létezne ilyen pár. A vizsgán a kulcs szerinti „Nem” választ várd, de tudd az üres lista esetét!</div>
       <p class="expl">Nem üres E-n valóban: every ⟹ some.</p>
     </div>
