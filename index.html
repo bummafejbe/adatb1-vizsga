@@ -2534,7 +2534,9 @@ WHERE  feltétel;</p>
     <h4>Attribútumhalmaz lezárása (X⁺)</h4>
     <p>Mit határoz meg X az F függőséghalmaz mellett: indulj <span class="m">X⁺ = X</span>-ből, és amíg van olyan <span class="m">A→B</span> FF, hogy <span class="m">A ⊆ X⁺</span>, vedd hozzá B-t. <strong>X kulcs ⇔ X⁺ = az összes attribútum</strong> (és minimális).</p>
     <h4>Kulcs &amp; szuperkulcs</h4>
-    <p>K kulcs: <span class="m">K⁺</span> = minden attribútum, és K minimális ilyen. Ha csak <span class="m">{A}</span> kulcs egy n-attribútumú sémán, akkor a szuperkulcsok: minden A-t tartalmazó halmaz → <span class="m">2ⁿ⁻¹</span> db.</p>
+    <p>K kulcs: <span class="m">K⁺</span> = minden attribútum, és K minimális ilyen. Fontos különbség: ha egy <span class="m">Y</span>-ra a lezárás <span class="m">Y⁺ =</span> az összes attribútum, akkor <span class="m">Y</span> biztosan <strong>szuperkulcs</strong> — de hogy <strong>kulcs</strong>-e, ahhoz a <strong>minimalitást</strong> is ellenőrizni kell (egyetlen valódi részhalmaza se legyen szuperkulcs). Ha csak <span class="m">{A}</span> kulcs egy n-attribútumú sémán, akkor a szuperkulcsok: minden A-t tartalmazó halmaz → <span class="m">2ⁿ⁻¹</span> db (a maradék n−1 attribútum mindegyike szabadon benne lehet vagy sem).</p>
+    <h4>FF-ek geometriailag (régiók)</h4>
+    <p>Képzeld a reláció <em>összes lehetséges előfordulását</em> egy térnek; egy <span class="m">X→Y</span> FF <strong>régiója</strong> az őt teljesítő előfordulások halmaza. A tranzitivitás itt is látszik: ha egy előfordulás teljesíti <span class="m">A→B</span>-t és <span class="m">B→C</span>-t, akkor — tranzitivitással — <span class="m">A→C</span>-t is. Vagyis az <span class="m">A→C</span> régiója <strong>tartalmazza</strong> az <span class="m">A→B</span> és a <span class="m">B→C</span> régiók <strong>metszetét</strong>.</p>
     <div class="gotcha"><b>Buktató:</b> a lezárás <em>geometriailag</em>: az összes lehetséges előfordulás közül azok, amelyek kielégítik F-et. A jobboldal szétvágható, a baloldal nem.</p></div>
     <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K24–K30. (A lezárás/projekció <strong>levezetése</strong> a 3. feladatban!)</p>
   </div></details>
@@ -2542,15 +2544,15 @@ WHERE  feltétel;</p>
   <details class="nb"><summary>11. Felbontások és normálformák (BCNF, 3NF)<span class="ntag">k-nf</span></summary>
   <div class="nbody">
     <h4>Miért bontunk?</h4>
-    <p>A <strong>redundancia</strong> (ugyanaz az adat többször) <strong>anomáliákat</strong> okoz: módosítási (egy helyen frissül), beszúrási (nem tudunk felvinni adatot kiegészítő nélkül), törlési (adat elveszik). A felbontás ezt szünteti meg.</p>
+    <p>A <strong>redundancia</strong> azt jelenti, hogy egy adat <strong>kikövetkeztethető a többi adatból</strong> (jellemzően a funkcionális függőségekből), ezért külön tárolni fölösleges. A redundancia három <strong>anomáliát</strong> okoz: <strong>módosítási</strong> (egy adatot az egyik előfordulásában frissítünk, a többiben nem → inkonzisztencia), <strong>beszúrási</strong> (nem tudunk felvinni egy adatot, mert hiányzik egy hozzá kötődő másik adat), <strong>törlési</strong> (törléskor olyan adat is elvész, amit meg akartunk tartani). A felbontás (normalizálás) ezt szünteti meg.</p>
     <h4>Két jó tulajdonság</h4>
     <ul>
-      <li><strong>Veszteségmentes</strong> (lossless join): <span class="m">r = ΠR₁(r) ⋈ … ⋈ ΠRₖ(r)</span>, azaz visszajoinolva pont az eredetit kapjuk. Kétfelé bontásnál elég, ha a közös attribútumok <strong>kulcsai legalább az egyik résznek</strong>.</li>
+      <li><strong>Veszteségmentes</strong> (lossless join): <span class="m">r = ΠR₁(r) ⋈ … ⋈ ΠRₖ(r)</span>, azaz visszajoinolva pont az eredetit kapjuk. Valójában csak azt kell ellenőrizni, hogy a vetületek összekapcsolása <strong>nem ad-e többletsort</strong> (<span class="m">join ⊆ r</span>) — a másik irány (<span class="m">r ⊆ join</span>) ugyanis <em>mindig</em> fennáll; ezt a <strong>Chase-teszt</strong> dönti el (3. feladat). Kétfelé bontásnál elég, ha a közös attribútumok <strong>kulcsai legalább az egyik résznek</strong>.</li>
       <li><strong>Függőségőrző</strong>: a vetített FF-ek együttese implikálja az eredeti F-et (nem veszik el ellenőrzési képesség).</li>
     </ul>
     <h4>Normálformák</h4>
     <ul>
-      <li><strong>BCNF</strong>: minden nemtriviális <span class="m">X→A</span> FF-ben X <strong>szuperkulcs</strong>. Mindig elérhető <em>veszteségmentesen</em>, de néha a függőségőrzés rovására.</li>
+      <li><strong>BCNF</strong>: minden nemtriviális <span class="m">X→A</span> FF-ben X <strong>szuperkulcs</strong> („minden nyíl bal oldala szuperkulcs”). Ezzel <strong>megszünteti a funkcionális függőségekből eredő redundanciát</strong>. Mindig elérhető <em>veszteségmentesen</em>, de néha a függőségőrzés rovására.</li>
       <li><strong>3NF</strong>: minden nemtriviális <span class="m">X→A</span>-ra X szuperkulcs <em>vagy</em> A <strong>elsődleges attribútum</strong> (valamely kulcs része). Mindig elérhető veszteségmentesen <em>és</em> függőségőrzően.</li>
     </ul>
     <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K34–K43, K123. (A <strong>BCNF-felbontás</strong> és a <strong>Chase-teszt</strong> a 3. feladatban!)</p>
@@ -2560,8 +2562,23 @@ WHERE  feltétel;</p>
   <div class="nbody">
     <h4>TÉF (→→)</h4>
     <p><span class="m">X →→ Y</span> (X többértékűen meghatározza Y-t): adott X-értékhez tartozó Y-halmaz <strong>független</strong> a többi attribútumtól. Pontosan: ha két sor megegyezik X-en, akkor Y-értékeiket „felcserélve” kapott sorok is benne vannak. Minden FF egyben TÉF (<span class="m">X→Y ⇒ X→→Y</span>).</p>
+    <h4>TÉF-szabályok (és miben más, mint az FF)</h4>
+    <ul>
+      <li><strong>Minden FF egyben TÉF</strong> (<span class="m">X→Y ⇒ X→→Y</span>).</li>
+      <li>A TÉF <strong>baloldala nem bontható</strong> fel.</li>
+      <li>A TÉF <strong>jobboldala SEM bontható</strong> fel — ez a legfontosabb különbség az FF-hez képest! Az FF-nél a jobboldal szétvágható volt (<span class="m">X→YZ ⇔ X→Y és X→Z</span>), a TÉF-nél viszont <span class="m">X→→YZ</span>-ból <strong>nem</strong> következik sem <span class="m">X→→Y</span>, sem <span class="m">X→→Z</span>. (Pl. <span class="m">név →→ társaság, tel</span> állhat, miközben <span class="m">név →→ tel</span> külön nem.)</li>
+      <li><strong>Komplementálás:</strong> ha <span class="m">X→→Y</span>, és <span class="m">Z</span> az összes maradék (X-en és Y-on kívüli) attribútum, akkor <span class="m">X→→Z</span> is teljesül.</li>
+    </ul>
     <h4>4NF</h4>
     <p>Minden nemtriviális <span class="m">X→→Y</span> TÉF-re X <strong>szuperkulcs</strong>. A 4NF erősebb a BCNF-nél; a TÉF okozta redundanciát (független többértékű attribútumok „keresztszorzata”) szünteti meg. Felbontási szabály: <span class="m">X→→Y</span> mentén bontsd <span class="m">XY</span>-ra és <span class="m">X∪(R−Y)</span>-ra (veszteségmentes).</p>
+    <h4>Melyik normálforma mit szüntet meg? (a kvíz I/H állításai)</h4>
+    <table class="nsched">
+      <tr><th>Normálforma</th><th>FF-redundancia</th><th>TÉF-redundancia</th></tr>
+      <tr><td>3NF</td><td>nem mindig (a prím attribútumok miatt megenged maradékot)</td><td>nem</td></tr>
+      <tr><td>BCNF</td><td><strong>igen</strong></td><td>nem</td></tr>
+      <tr><td>4NF</td><td><strong>igen</strong> (mert <span class="m">4NF ⟹ BCNF</span>)</td><td><strong>igen</strong></td></tr>
+    </table>
+    <p>Innen jön a kvíz sok igaz/hamis állítása. Sorrend erősség szerint: <span class="m">4NF ⟹ BCNF ⟹ 3NF</span>. A 3NF megőrzi az FF-eket (de nem mindig szünteti meg az FF-redundanciát), a BCNF megszünteti az FF-redundanciát (de a TÉF-ét nem), a 4NF mindkettőt megszünteti. Ezért <strong>létezhet</strong> BCNF-ben lévő, de a 4NF-et sértő reláció: pl. <span class="m">R(név, tel, kedveltTea)</span>, amelyben nincs nemtriviális FF (tehát BCNF), de a <span class="m">név →→ tel</span> TÉF miatt a telefonok és teák minden kombinációja duplikálódik.</p>
     <p class="quizref"><b>Ezt kérdezi a kvíz:</b> K44–K50, K124–K126, K129.</p>
   </div></details>
 
