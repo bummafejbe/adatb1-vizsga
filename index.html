@@ -2345,6 +2345,10 @@ WHERE  feltétel;</p>
 #napos .steps>li::before{content:counter(st);position:absolute;left:0;top:0;width:21px;height:21px;background:var(--accbg);border:1px solid var(--acc);color:var(--acc);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-family:var(--fm)}
 #napos code,#napos .m{font-family:var(--fm)}
 #napos .note{background:#10222e;border:1px solid #2a4a5e;border-left:3px solid var(--info);border-radius:8px;padding:9px 12px;margin:10px 0;font-size:.9rem}
+#napos .fjump{display:inline-flex;align-items:center;gap:8px;margin:14px 0 2px;padding:9px 15px;background:var(--accbg);border:1px solid var(--acc);border-radius:8px;color:var(--acc);font-family:var(--fh);font-size:.9rem;cursor:pointer;text-decoration:none;transition:background .15s,color .15s}
+#napos .fjump:hover{background:var(--acc);color:#1a1206}
+#napos .fjump::before{content:"▶";font-size:.7rem}
+#napos .fjumphint{display:block;font-size:.78rem;color:var(--dim);margin-top:6px}
 </style>
 
 <section class="part" id="napos">
@@ -2603,6 +2607,7 @@ WHERE  feltétel;</p>
   <!-- ===================== 3. FELADAT ===================== -->
   <h3 class="nphase">★ 3. feladat — Gyakorlati feladatok (minden, ami kell)</h3>
   <p class="nlead">A vizsga 3. része (50 perc, 2×10 pont) „az előadáson látottakhoz hasonló” gyakorlati feladat. Itt van <strong>minden eszköz</strong> (algoritmusok, szintaxis) és mindegyik típushoz egy <strong>lépésről lépésre levezetett</strong> példa. (Bővebb tárház a <em>Feladattípusok</em> fülön.)</p>
+  <div class="note">Minden blokk alján egy <strong>▶ gomb</strong> átugrik a <em>Feladattípusok</em> fül megfelelő, bővebb feladataihoz. Ha átugrottál, a böngésző <strong>Vissza</strong> gombja (vagy a telefon vissza gesztusa) visszadob ide, pontosan oda, ahol abbahagytad — így könnyen oda-vissza mozoghatsz a levezetés és a gyakorlófeladatok között.</div>
 
   <!-- 3a FF -->
   <details class="nb" open><summary>A) FF: lezárás, kulcs, projekció<span class="ntag">levezetés</span></summary>
@@ -2628,6 +2633,7 @@ WHERE  feltétel;</p>
     <div class="tool"><h5>Eszköztár — FF vetítése részsémára (projekció)</h5>
       <p>Ha R-t S ⊆ R-re vetíted: minden <span class="m">Y ⊆ S</span> részhalmazra számítsd ki <span class="m">Y⁺</span>-t (a teljes F-ben), és vedd az <span class="m">Y → (Y⁺ ∩ S)</span> nemtriviális FF-eket. Ezek S vetített függőségei.</p>
     </div>
+    <a class="fjump" data-go="feladatok" href="#f-ff">Gyakorold a Feladattípusok között — FF: levezetés, lezárás, projekció</a>
   </div></details>
 
   <!-- 3b BCNF -->
@@ -2651,6 +2657,7 @@ WHERE  feltétel;</p>
         <li>Eredmény: <span class="m">{B,C}, {A,B}, {A,D}</span> — mind BCNF. ✓</li>
       </ol>
     </div>
+    <a class="fjump" data-go="feladatok" href="#f-bcnf">Gyakorold a Feladattípusok között — BCNF-felbontás</a>
   </div></details>
 
   <!-- 3c Chase -->
@@ -2676,6 +2683,7 @@ WHERE  feltétel;</p>
       </ol>
       <div class="note">Megfelel a kétfelé-bontási szabálynak is: a közös attribútum <span class="m">B</span>, és <span class="m">B→C</span> miatt B kulcsa R₂-nek.</div>
     </div>
+    <a class="fjump" data-go="feladatok" href="#f-chase">Gyakorold a Feladattípusok között — Chase-teszt (veszteségmentesség)</a>
   </div></details>
 
   <!-- 3d EK -->
@@ -2699,6 +2707,7 @@ WHERE  feltétel;</p>
       </ol>
       <p>Ha „egy szerző – sok könyv” lenne (egy-sok), akkor nem kell Írta tábla: a <span class="m">Könyv</span>-be kerül egy <span class="m">szerzőNév</span> idegen kulcs.</p>
     </div>
+    <a class="fjump" data-go="feladatok" href="#f-ek">Gyakorold a Feladattípusok között — Egyed-kapcsolat modell (könyvesbolt, kalózok)</a>
   </div></details>
 
   <!-- 3e OR-SQL -->
@@ -2719,6 +2728,7 @@ FROM   Sells s
 WHERE  s.bar-&gt;name = 'Joe''s Bar';</pre>
       <p>A <span class="m">-&gt;</span> (vagy pont) a REF-en keresztül éri el a hivatkozott objektum mezőjét — nincs explicit join, a hivatkozás „bejárható”.</p>
     </div>
+    <a class="fjump" data-go="feladatok" href="#f-or">Gyakorold a Feladattípusok között — Objektum-relációs SQL</a>
   </div></details>
 
   <!-- 3f DTD/XSD -->
@@ -2751,6 +2761,7 @@ WHERE  s.bar-&gt;name = 'Joe''s Bar';</pre>
  &lt;/xs:sequence&gt;&lt;/xs:complexType&gt;
 &lt;/xs:element&gt;</pre>
     </div>
+    <a class="fjump" data-go="feladatok" href="#f-xml">Gyakorold a Feladattípusok között — DTD ↔ XML séma</a>
   </div></details>
 
   <!-- 3g XPath/XQuery -->
@@ -2774,6 +2785,7 @@ return &lt;olcsó&gt;{ data($k/cím) }&lt;/olcsó&gt;</pre>
         <li><span class="m">order by</span>: cím szerint rendez; <span class="m">return</span>: új elemet épít, a <span class="m">data()</span> a cím szöveges értékét teszi be.</li>
       </ol>
     </div>
+    <a class="fjump" data-go="feladatok" href="#f-xpath">Gyakorold a Feladattípusok között — XPath / XQuery</a>
   </div></details>
 
   <div class="note" style="margin-top:22px">Kész vagy? Ugorj a <strong>Gyakorlás → Próbavizsga</strong> módra egy időzített körre, majd a Kvíz „Csak amit nem értek” szűrőjével ismételd a gyengéket. Sok sikert! 🎓</div>
@@ -2828,6 +2840,7 @@ details.sol .solbody{padding:12px 16px}
 .chasewrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:8px 0}
 .chasearrow{font-family:var(--fh);color:var(--acc);font-size:.85rem;padding:0 4px}
 sub{font-size:.75em}
+#feladatok .topic.flash{box-shadow:0 0 0 2px var(--acc),0 0 14px var(--accbg);border-radius:8px;transition:box-shadow .25s}
 </style>
 
 <!-- ============================= FELADATTÍPUSOK ============================= -->
@@ -3659,18 +3672,42 @@ function showUser(){
 }
 
 /* ---------- fülek ---------- */
-function showTab(id){
+function showTab(id,opts){
+  opts=opts||{};
   $$('section.part').forEach(s=>s.classList.toggle('active',s.id===id));
   $$('#tabs button').forEach(b=>b.classList.toggle('active',b.dataset.t===id));
-  window.scrollTo({top:0});
+  if(!opts.keepScroll)window.scrollTo({top:0});
 }
 $$('#tabs button').forEach(b=>b.onclick=()=>showTab(b.dataset.t));
+/* fülek közti ugrás úgy, hogy a böngésző Vissza gombja visszahozza az előző nézetet
+   (aktív fül + görgetési pozíció). A [data-go] elem href-je a célhorgony. */
+function goToAnchor(anchor,flash){
+  const tgt=anchor?$(anchor):null;
+  if(!tgt)return;
+  setTimeout(()=>{
+    tgt.scrollIntoView({behavior:'smooth',block:'start'});
+    if(flash){tgt.classList.add('flash');setTimeout(()=>tgt.classList.remove('flash'),1600);}
+  },60);
+}
 document.addEventListener('click',e=>{
   const go=e.target.closest('[data-go]');
-  if(go){e.preventDefault();showTab(go.dataset.go);
-    const tgt=$(go.getAttribute('href'));
-    if(tgt)setTimeout(()=>tgt.scrollIntoView({behavior:'smooth',block:'start'}),60);
-  }
+  if(!go)return;
+  e.preventDefault();
+  const tab=go.dataset.go,anchor=go.getAttribute('href');
+  const cur=$('section.part.active');
+  /* az aktuális nézet elmentése a jelenlegi history-bejegyzésbe, hogy a Vissza ide hozzon */
+  history.replaceState({nav:1,tab:cur?cur.id:null,scrollY:window.scrollY},'');
+  /* új bejegyzés a célnak — innen a Vissza a fenti mentett nézethez lép */
+  history.pushState({nav:1,tab:tab,anchor:anchor},'');
+  showTab(tab,{keepScroll:true});
+  goToAnchor(anchor,true);
+});
+window.addEventListener('popstate',e=>{
+  const st=e.state;
+  if(!st||!st.nav)return;
+  showTab(st.tab,{keepScroll:true});
+  if(st.anchor){goToAnchor(st.anchor,false);}
+  else{setTimeout(()=>window.scrollTo({top:st.scrollY||0}),0);}
 });
 
 /* ---------- szójegyzék render ---------- */
